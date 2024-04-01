@@ -10,15 +10,15 @@ const Sidebar = () => {
         <i className="fa-solid fa-bars"></i>
       </Button>
       <Drawer open={open} onClose={() => setOpen(false)}>
-        <Box width={250} className="sidebar-profile-header">
-          <Box m={1}>
+        <Box p={1} width={250} className="sidebar-profile-header">
+          <Box >
             <img className="sidebar-avatar" src={StudentBoy} alt="" />
           </Box>
           <Box>
-            <Typography variant="h3" mb={0} className="sidebar-username">
+            <Typography variant="h3" fontWeight={550} mb={0} className="sidebar-username">
               Hii, Prathamesh Chavan
             </Typography>
-            <Typography color={"gray"} fontSize={12}>
+            <Typography color={"gray"} mt={"5px"} fontSize={12}>
               Class : 1-B
             </Typography>
           </Box>
