@@ -1,12 +1,16 @@
 import React, { useState } from "react";
-import { Drawer, Button } from "@mui/material";
 import Sidebar from "../components/Sidebar";
+import BottomNavbar from "../components/BottomNavbar";
+import TopNavbar from "../components/TopNavbar";
+
 
 const Home = () => {
-  const [open, setOpen] = useState(false);
+  const [openSidebar, setOpenSidebar] = useState(false);
   return (
     <>
-    <Sidebar />
+    <TopNavbar toggleSidebar={()=>setOpenSidebar(!openSidebar)} />
+    <Sidebar open={openSidebar} onClose={()=>setOpenSidebar(false)} />
+    <BottomNavbar/>
     </>
   );
 };
