@@ -2,8 +2,7 @@ import { useState } from "react";
 import { Drawer, Button, Box, Typography } from "@mui/material";
 import StudentBoy from "../assets/icon/student_boy.png";
 import {useNavigate} from "react-router-dom"
-const Sidebar = () => {
-  const [open, setOpen] = useState(false);
+const Sidebar = ({open, onClose}) => {
   const navigate = useNavigate();
   const menuItems = [
     { title: "My Profile", icon: "fa-user", path:"/profile" },
@@ -13,10 +12,7 @@ const Sidebar = () => {
   ];
   return (
     <>
-      <Button sx={{ fontSize: "30px" }} onClick={() => setOpen(true)}>
-        <i className="fa-solid fa-bars"></i>
-      </Button>
-      <Drawer open={open} onClose={() => setOpen(false)}>
+      <Drawer open={open} onClose={onClose}>
         <Box p={1} width={250} className="sidebar-profile-header">
           <Box>
             <img className="sidebar-avatar" src={StudentBoy} alt="" />
