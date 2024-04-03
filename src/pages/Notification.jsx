@@ -9,7 +9,7 @@ const Notification = () => {
     <Layout isBack title={"Notification"}>
       <Box
         position={"relative"}
-        height={"calc(100vh - 13rem)"}
+        height={"calc(100vh - 12rem)"}
         m={"0 8px"}
         display={"flex"}
         alignItems={"start"}
