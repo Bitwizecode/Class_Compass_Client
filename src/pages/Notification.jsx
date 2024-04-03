@@ -1,8 +1,9 @@
 import React from 'react'
+import Layout from '../components/Layout'
 
 const Notification = () => {
   return (
-    <div>Notification</div>
+    <Layout isBack title={"Notification"}></Layout>
   )
 }
 
