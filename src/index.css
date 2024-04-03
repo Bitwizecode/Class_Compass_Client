@@ -4,6 +4,18 @@
   font-family: "Outfit", sans-serif !important;
 }
 
+.flex{
+  display: flex !important;
+}
+
+.justify-center{
+  justify-content: center !important;
+}
+
+.align-center{
+  align-items: center !important;
+}
+
 i {
   font-family: "Font Awesome 6 Free" !important;
 }
@@ -98,3 +110,52 @@ i {
   margin-top: 32px;
 }
 
+.call-logo {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.profile-Call-Block-logo {
+  border-radius: 50%;
+  background: #1976d2;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  cursor: pointer;
+}
+
+.card-details-span {
+  margin-bottom: 0.8px;
+  font-weight: 600;
+}
+
+.notification-field-send-btn-box {
+  /* position: absolute; */
+  /* border: 2px solid red; */
+  width: 100%;
+  bottom: 0;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  gap: 5px;
+  max-width: 560px;
+}
+
+
+.notification-send-btn{
+  background-color: #1976d2;
+  color: #fff;
+  height: 46px;
+  width: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 200px;
+  margin-right: 8px;
+}

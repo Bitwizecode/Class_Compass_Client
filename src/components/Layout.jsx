@@ -10,6 +10,7 @@ const Layout = ({ isBack, title, children }) => {
       <TopNavbar isBack={isBack} title={title} toggleSidebar={() => setOpenSidebar(!openSidebar)} />
       <Sidebar />
       {children}
+      <BottomNavbar/>
     </>
   );
 };

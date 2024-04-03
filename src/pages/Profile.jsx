@@ -1,7 +1,13 @@
 import React from "react";
-import { Box, Typography, CardContent, IconButton, Tooltip } from "@mui/material";
+import {
+  Box,
+  Typography,
+  CardContent,
+  IconButton,
+  Tooltip,
+  Button,
+} from "@mui/material";
 import StudentBoy from "../assets/icon/student_boy.png";
-import TopNavbar from "../components/TopNavbar";
 import Layout from "../components/Layout";
 
 const Profile = () => {
@@ -52,52 +58,64 @@ const Profile = () => {
                     <i className="fa-regular fa-pen-to-square"></i>
                   </IconButton>
                 </Tooltip>
-                <hr className="line" style={{color:"red"}} />
+                <hr className="line" style={{ color: "red" }} />
               </Box>
               <CardContent className="card">
                 <Typography variant="h7" className="card-details">
-                  <span style={{ mb: 0.8, fontWeight: 600 }}>Class : </span>
+                  <span className="card-details-span">Class : </span>
                   10<sup>th</sup> - A
                 </Typography>
                 <Typography variant="h7" className="card-details">
-                  <span style={{ mb: 0.8, fontWeight: 600 }}>Roll No : </span>
+                  <span className="card-details-span">Roll No : </span>
                   45
                 </Typography>
                 <Typography variant="h7" className="card-details">
-                  <span style={{ mb: 0.8, fontWeight: 600 }}>Gender : </span>
+                  <span className="card-details-span">Gender : </span>
                   Male / Female
                 </Typography>
                 <Typography variant="h7" className="card-details">
-                  <span style={{ mb: 0.8, fontWeight: 600 }}>Phone No : </span>
+                  <span className="card-details-span">Phone No : </span>
                   +91 XXXXXXXXXX
                 </Typography>
                 <Typography variant="h7" className="card-details">
-                  <span style={{ mb: 0.8, fontWeight: 600 }}>Email : </span>
+                  <span className="card-details-span">Email : </span>
                   xyz123@gmail.com
                 </Typography>
                 <Typography variant="h7" className="card-details">
-                  <span style={{ mb: 0.8, fontWeight: 600 }}>DOB : </span>
+                  <span className="card-details-span">DOB : </span>
                   12 Dec 2001
                 </Typography>
                 <Typography variant="h7" className="card-details">
-                  <span style={{ mb: 0.8, fontWeight: 600 }}>Address : </span>
+                  <span className="card-details-span">Address : </span>
                   H. No 02, Kini Apartment, Sainath Nagar, Virar East, 401305.
                 </Typography>
                 <Typography variant="h7" className="card-details">
-                  <span style={{ mb: 0.8, fontWeight: 600 }}>State : </span>
+                  <span className="card-details-span">State : </span>
                   Maharashtra
                 </Typography>
                 <Typography variant="h7" className="card-details">
-                  <span style={{ mb: 0.8, fontWeight: 600 }}>Country : </span>
+                  <span className="card-details-span">Country : </span>
                   India
                 </Typography>
                 <Typography variant="h7" className="card-details">
-                  <span style={{ mb: 0.8, fontWeight: 600 }}>
+                  <span className="card-details-span">
                     Blood Group:{" "}
                   </span>
                   A+
                 </Typography>
               </CardContent>
+              <Box className="call-logo">
+              <Tooltip title="Call Parent" placement="top" arrow>
+                <Box className="profile-Call-Block-logo">
+                  <i style={{ fontSize: 16 }} className="fa-solid fa-phone"></i>
+                </Box>
+                </Tooltip>
+                <Tooltip title="Block Student" placement="top" arrow>
+                <Box className="profile-Call-Block-logo" >
+                  <i style={{ fontSize: 16 }} className="fa-solid fa-ban"></i>
+                </Box>
+                </Tooltip>
+              </Box>
             </Box>
           </Box>
         </Box>
