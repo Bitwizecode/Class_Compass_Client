@@ -31,7 +31,7 @@ const Sidebar = ({open, onClose}) => {
             </Typography>
           </Box>
         </Box>
-        <Box>
+        <Box mb={"100%"}>
           {menuItems.map((item, i) => (
             <Box key={i} className="sidebar-menu-item" onClick={()=> navigate(item.path)}>
               <i
@@ -42,11 +42,10 @@ const Sidebar = ({open, onClose}) => {
             </Box>
           ))}
         </Box>
-        <Box sx={{position:"absolute", bottom:"20px", textAlign:"center", width:"99%", color:"gray"}}>
+        <Box sx={{ textAlign:"center", width:"99%", color:"gray"}}>
           <Typography fontSize={"12px"}>
             Managed & Powered by <br />
             BetterMind 🧠 <br />
-            <br />
             Terms & Conditions
           </Typography>
         </Box>

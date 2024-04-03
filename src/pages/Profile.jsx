@@ -37,7 +37,7 @@ const Profile = () => {
                 >
                   Class : 1-B
                 </Typography>
-                <Tooltip title="Edit Profile" arrow>
+                <Tooltip title="Edit Profile" placement="top" arrow>
                   <IconButton
                     sx={{
                       fontSize: "16px",
@@ -52,7 +52,7 @@ const Profile = () => {
                     <i className="fa-regular fa-pen-to-square"></i>
                   </IconButton>
                 </Tooltip>
-                <hr className="line" />
+                <hr className="line" style={{color:"red"}} />
               </Box>
               <CardContent className="card">
                 <Typography variant="h7" className="card-details">
