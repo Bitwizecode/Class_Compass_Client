@@ -45,7 +45,9 @@ const Sidebar = ({open, onClose}) => {
         <Box sx={{position:"absolute", bottom:"20px", textAlign:"center", width:"99%", color:"gray"}}>
           <Typography fontSize={"12px"}>
             Managed & Powered by <br />
-            Better Mind
+            BetterMind 🧠 <br />
+            <br />
+            Terms & Conditions
           </Typography>
         </Box>
       </Drawer>
