@@ -2,8 +2,14 @@ import Layout from "../components/Layout";
 import { Box, TextField, Typography } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import BgImage from "../assets/icon/message_bg.jpg";
+import { useRef } from "react";
 
 const Notification = ({ selected, setSelected }) => {
+  const fileInputRef = useRef(null);
+
+  const handleOpenFile = () => {
+    fileInputRef.current.click();
+  };
   return (
     <Layout selected={selected} setSelected={setSelected}>
       <Box className="notification-main">
@@ -44,11 +50,32 @@ const Notification = ({ selected, setSelected }) => {
             ))}
           </Box>
           <Box className="notification-field-send-btn-box">
-            <TextField
-              sx={{ ml: 1, background: "#fff" }}
-              fullWidth
-              placeholder="Message"
-            />
+            <Box sx={{ width: "100%", position: "relative" }}>
+              <TextField
+                sx={{ ml: 1, background: "#fff" }}
+                fullWidth
+                placeholder="Message"
+              />
+              <i
+                className="fa-solid fa-paperclip"
+                onClick={handleOpenFile}
+                style={{
+                  position: "absolute",
+                  right: "1.5%",
+                  top: "20px",
+                  fontSize: "20px",
+                  cursor: "pointer",
+                  color: "gray",
+                }}
+              ></i>
+              <input
+                type="file"
+                ref={fileInputRef}
+                style={{ display: "none" }}
+                onChange={() => {}}
+              />
+            </Box>
+
             <Box
               onClick={() => console.log("object")}
               className="notification-send-btn"
@@ -68,9 +95,7 @@ const Notification = ({ selected, setSelected }) => {
             position={"absolute"}
             top={0}
             zIndex={-1}
-          >
-            lkfv
-          </Box>
+          ></Box>
         </Box>
       </Box>
     </Layout>

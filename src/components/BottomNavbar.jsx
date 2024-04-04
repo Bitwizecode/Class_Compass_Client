@@ -7,9 +7,7 @@ const BottomNavbar = ({selected, setSelected}) => {
     const navigate = useNavigate();
     const handleOnClick = (e, value) => {
       setSelected(value);
-      // setTimeout(()=>{
         navigate(value)
-      // },300)
     }
 
     console.log(selected,);
