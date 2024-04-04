@@ -8,8 +8,10 @@ const Notification = () => {
   return (
     <Layout isBack title={"Notification"}>
       <Box
-        border={"4px solid red"}   
-        height={"calc(100vh - 8rem)"}   
+        border={"4px solid red"}
+        height={"calc(100vh - 8rem)"}
+        position={"relative"}
+        marginBottom={"4rem"}
       >
         {/* <Box
           maxWidth={520}
@@ -32,7 +34,7 @@ const Notification = () => {
           </Box>
         </Box> */}
       </Box>
-     </Layout>
+    </Layout>
   );
 };
 
