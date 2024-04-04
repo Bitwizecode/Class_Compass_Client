@@ -2,6 +2,7 @@ import { AppBar, IconButton, Typography, Toolbar, Button } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import {useNavigate} from "react-router-dom"
+import SchoolLogo from "../assets/icon/school_logo.jpg"
 
 const TopNavbar = ({ title, isBack, toggleSidebar }) => {
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ const TopNavbar = ({ title, isBack, toggleSidebar }) => {
                   borderRadius: "50%",
                   marginRight: "15px",
                 }}
-                src="https://cdn-icons-png.flaticon.com/128/1080/1080985.png"
+                src= {SchoolLogo}
                 alt=""
               />
               <Box

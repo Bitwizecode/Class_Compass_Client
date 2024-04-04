@@ -8,6 +8,8 @@ import Map from "./pages/Map";
 import Notification from "./pages/Notification";
 import Profile from "./pages/Profile";
 import Students from "./pages/Students";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 function App() {
   const [selected, setSelected] = useState("/");
@@ -45,6 +47,14 @@ function App() {
         <Route
           path="/students"
           element={<Students selected={selected} setSelected={setSelected} />}
+        />
+        <Route
+          path="/login"
+          element={<Login/>}
+        />
+        <Route
+          path="/sign-up"
+          element={<Signup/>}
         />
       </Routes>
     </>
