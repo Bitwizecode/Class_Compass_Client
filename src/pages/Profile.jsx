@@ -10,10 +10,10 @@ import {
 import StudentBoy from "../assets/icon/student_boy.png";
 import Layout from "../components/Layout";
 
-const Profile = () => {
+const Profile = ({selected, setSelected}) => {
   return (
     <>
-      <Layout isBack title={"My Profile"}>
+      <Layout selected={selected} setSelected={setSelected} isBack title={"My Profile"}>
         <Box className="profile-main-details">
           <Box>
             <Box

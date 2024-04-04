@@ -3,9 +3,9 @@ import { Box, TextField, Typography } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import BgImage from "../assets/icon/message_bg.jpg";
 
-const Notification = () => {
+const Notification = ({ selected, setSelected }) => {
   return (
-    <Layout>
+    <Layout selected={selected} setSelected={setSelected}>
       <Box className="notification-main">
         <Box className="notification-message-box">
           <Box
@@ -17,7 +17,7 @@ const Notification = () => {
             display={"flex"}
             justifyContent={"right"}
           >
-            {[0, 1, 0, 1].map((item, i) => (
+            {[0, 1, 0, 1, 0, 1, 0, 1].map((item, i) => (
               <Box
                 key={i}
                 display={"flex"}

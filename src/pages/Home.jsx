@@ -1,17 +1,12 @@
 import { useState } from "react";
-import Sidebar from "../components/Sidebar";
-import BottomNavbar from "../components/BottomNavbar";
-import TopNavbar from "../components/TopNavbar";
+import Layout from "../components/Layout";
 
 
-const Home = () => {
+const Home = ({selected, setSelected}) => {
   const [openSidebar, setOpenSidebar] = useState(false);
   return (
     <>
-    
-    <TopNavbar toggleSidebar={()=>setOpenSidebar(!openSidebar)} />
-    <Sidebar open={openSidebar} onClose={()=>setOpenSidebar(false)} />
-    <BottomNavbar/>
+    <Layout selected={selected} setSelected={setSelected}></Layout>
     </>
   );
 };

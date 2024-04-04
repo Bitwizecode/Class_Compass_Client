@@ -5,9 +5,9 @@ import ContactUS2 from "../assets/icon/Contact_us2.png";
 import TopNavbar from "../components/TopNavbar";
 import Layout from "../components/Layout";
 
-const HelpSupport = () => {
+const HelpSupport = ({selected, setSelected}) => {
   return (
-      <Layout isBack title={"Help & Support"}>
+      <Layout selected={selected} setSelected={setSelected} isBack title={"Help & Support"}>
         <Box className="help-Support">
           <Box textAlign={"center"}>
             <img
