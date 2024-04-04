@@ -9,19 +9,53 @@ import Notification from "./pages/Notification";
 import Profile from "./pages/Profile";
 import Students from "./pages/Students";
 import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 function App() {
+  const [selected, setSelected] = useState("/");
   return (
     <>
       <Routes>
-        <Route path="*" element={<Home />} />
-        <Route path="/digest" element={<Digest />} />
-        <Route path="/help-support" element={<HelpSupport />} />
-        <Route path="/map" element={<Map />} />
-        <Route path="/notification" element={<Notification />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/students" element={<Students />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="*"
+          element={<Home selected={selected} setSelected={setSelected} />}
+        />
+        <Route
+          path="/digest"
+          element={<Digest selected={selected} setSelected={setSelected} />}
+        />
+        <Route
+          path="/help-support"
+          element={
+            <HelpSupport selected={selected} setSelected={setSelected} />
+          }
+        />
+        <Route
+          path="/map"
+          element={<Map selected={selected} setSelected={setSelected} />}
+        />
+        <Route
+          path="/notification"
+          element={
+            <Notification selected={selected} setSelected={setSelected} />
+          }
+        />
+        <Route
+          path="/profile"
+          element={<Profile selected={selected} setSelected={setSelected} />}
+        />
+        <Route
+          path="/students"
+          element={<Students selected={selected} setSelected={setSelected} />}
+        />
+        <Route
+          path="/login"
+          element={<Login/>}
+        />
+        <Route
+          path="/sign-up"
+          element={<Signup/>}
+        />
       </Routes>
     </>
   );

@@ -9,6 +9,8 @@ const Sidebar = ({open, onClose}) => {
     { title: "Notification", icon: "fa-bell", path:"/notification" },
     { title: "Help & Support", icon: "fa-circle-info", path:"/help-support" },
     { title: "Log Out", icon: "fa-arrow-right-from-bracket", path:"profile" },
+    { title: "Log In", icon: "fa-arrow-right-from-bracket", path:"/login" },
+    { title: "Sign Up", icon: "fa-arrow-right-from-bracket", path:"/sign-up" },
   ];
   return (
     <>

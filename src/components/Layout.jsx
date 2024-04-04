@@ -3,14 +3,15 @@ import Sidebar from "../components/Sidebar";
 import BottomNavbar from "../components/BottomNavbar";
 import TopNavbar from "../components/TopNavbar";
 
-const Layout = ({ isBack, title, children }) => {
+const Layout = ({ isBack, title, children, selected, setSelected }) => {
   const [openSidebar, setOpenSidebar] = useState(false);
+
   return (
     <>
       <TopNavbar isBack={isBack} title={title} toggleSidebar={() => setOpenSidebar(!openSidebar)} />
-      <Sidebar />
+      <Sidebar open={openSidebar} onClose={() => setOpenSidebar(!openSidebar)} />
       {children}
-      <BottomNavbar/>
+      <BottomNavbar selected={selected} setSelected={setSelected}/>
     </>
   );
 };

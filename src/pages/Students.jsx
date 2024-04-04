@@ -1,8 +1,12 @@
 import React from 'react'
+import {Box} from "@mui/material"
+import Layout from '../components/Layout'
 
-const Students = () => {
+const Students = ({selected, setSelected}) => {
   return (
-    <div>Students</div>
+    <Layout selected={selected} setSelected={setSelected}>
+
+    </Layout>
   )
 }
 

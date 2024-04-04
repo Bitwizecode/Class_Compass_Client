@@ -136,14 +136,13 @@ i {
 }
 
 .notification-field-send-btn-box {
-  /* position: absolute; */
   /* border: 2px solid red; */
   width: 100%;
   bottom: 0;
   display: flex;
-  align-items: end;
+  align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 15px;
   max-width: 560px;
 }
 
@@ -201,6 +200,7 @@ i {
 .forgot-password {
   color: #1976d2;
   font-weight: 650;
+  font-size: 13px !important;
 }
 
 .Login-SignUp-option {
@@ -210,4 +210,41 @@ i {
   display: flex;
   text-align: center;
   justify-content: center;
+}
+.notification-main{
+  height: calc(100vh - 9.5rem);
+  position: relative;
+  margin-bottom: 4.5rem;
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+}
+
+.notification-message-box{
+  max-width: 520px;
+    width: 100%;
+    height: 100%;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    border-radius: 8px;
+    padding: 8px 0;
+    flex-direction: column;
+    display: flex;
+    justify-content: end;
+    position: relative;
+}
+
+.notification-message-box ::-webkit-scrollbar {
+  width: 4px;
+}
+
+.notification-message-box ::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+.notification-message-box ::-webkit-scrollbar-thumb {
+  background: #dadada; 
+}
+
+.notification-message-box ::-webkit-scrollbar-thumb:hover {
+  background: #dadada; 
 }

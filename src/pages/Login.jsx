@@ -73,7 +73,7 @@ const Login = () => {
                 left={35}
                 sx={{ cursor: "pointer" }}
               >
-                <h6 className="forgot-password">Forgot password ? </h6>
+                <Typography className="forgot-password">Forgot password ? </Typography>
               </Box>
             </Box>
             <Box className="login-submit">

@@ -1,53 +1,81 @@
 import Layout from "../components/Layout";
-import { Box, TextField } from "@mui/material";
+import { Box, TextField, Typography } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import BgImage from "../assets/icon/message_bg.jpg";
+import { useRef } from "react";
 
-const Notification = () => {
+const Notification = ({ selected, setSelected }) => {
+  const fileInputRef = useRef(null);
+
+  const handleOpenFile = () => {
+    fileInputRef.current.click();
+  };
   return (
-    <Layout isBack title={"Notification"}>
-      <Box
-        height={"calc(100vh - 9.5rem)"}
-        position={"relative"}
-        marginBottom={"4.5rem"}
-        display={"flex"}
-        justifyContent={"center"}
-        p={"8px"}
-      >
-        <Box
-          maxWidth={520}
-          width={"100%"}
-          height={"100%"}
-          boxShadow={
-            "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px"
-          }
-          borderRadius={2}
-          p={"8px 0"}
-          flexDirection={"column"}
-          display={"flex"}
-          justifyContent={"end"}
-          position={"relative"}
-        >
+    <Layout selected={selected} setSelected={setSelected}>
+      <Box className="notification-main">
+        <Box className="notification-message-box">
           <Box
             height={"100%"}
             m={"0 8px 8px 8px"}
             overflow={"auto"}
+            flexDirection={"column"}
+            gap={"40px"}
+            display={"flex"}
+            justifyContent={"right"}
           >
-            {[
-              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-              0, 0,
-            ].map((item, i) => (
-              <Box key={i}>
-                <h1>ajkhsdlkd</h1>
+            {[0, 1, 0, 1, 0, 1, 0, 1].map((item, i) => (
+              <Box
+                key={i}
+                display={"flex"}
+                justifyContent={"right"}
+                flexDirection={"column"}
+                alignItems={item == 0 ? "end" : "start"}
+              >
+                <Typography fontSize={"10px"}>
+                  09:30 pm 04-April-2024
+                </Typography>
+                <Box
+                  width={"80%"}
+                  bgcolor={"lightblue"}
+                  p={"10px"}
+                  borderRadius={"10px"}
+                >
+                  <Typography>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Itaque illo voluptate est? Asperiores enim illo modi
+                    suscipit nobis eos fugit amet excepturi facilis facere.
+                  </Typography>
+                </Box>
               </Box>
             ))}
           </Box>
           <Box className="notification-field-send-btn-box">
-            <TextField
-              sx={{ ml: 1, background: "#fff" }}
-              fullWidth
-              placeholder="Message"
-            />
+            <Box sx={{ width: "100%", position: "relative" }}>
+              <TextField
+                sx={{ ml: 1, background: "#fff" }}
+                fullWidth
+                placeholder="Message"
+              />
+              <i
+                className="fa-solid fa-paperclip"
+                onClick={handleOpenFile}
+                style={{
+                  position: "absolute",
+                  right: "1.5%",
+                  top: "20px",
+                  fontSize: "20px",
+                  cursor: "pointer",
+                  color: "gray",
+                }}
+              ></i>
+              <input
+                type="file"
+                ref={fileInputRef}
+                style={{ display: "none" }}
+                onChange={() => {}}
+              />
+            </Box>
+
             <Box
               onClick={() => console.log("object")}
               className="notification-send-btn"
@@ -67,9 +95,7 @@ const Notification = () => {
             position={"absolute"}
             top={0}
             zIndex={-1}
-          >
-            lkfv
-          </Box>
+          ></Box>
         </Box>
       </Box>
     </Layout>
