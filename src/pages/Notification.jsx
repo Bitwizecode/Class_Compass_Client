@@ -9,7 +9,7 @@ const Notification = () => {
     <Layout isBack title={"Notification"}>
       <Box
         position={"relative"}
-        height={"calc(100vh - 12rem)"}
+        height={"calc(100vh - 10rem)"}
         m={"0 8px"}
         display={"flex"}
         alignItems={"start"}
@@ -25,12 +25,6 @@ const Notification = () => {
           justifyContent={"center"}
           alignItems={"end"}
           pb={1}
-          sx={{
-            backgroundImage: `url(${BgImage})`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            bgcolor: "rgba(0,0,0,0)",
-          }}
           boxShadow={
             "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px"
           }
