@@ -8,7 +8,7 @@ const Layout = ({ isBack, title, children }) => {
   return (
     <>
       <TopNavbar isBack={isBack} title={title} toggleSidebar={() => setOpenSidebar(!openSidebar)} />
-      <Sidebar />
+      <Sidebar open={openSidebar} onClose={() => setOpenSidebar(!openSidebar)} />
       {children}
       <BottomNavbar/>
     </>
