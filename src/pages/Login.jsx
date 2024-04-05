@@ -9,15 +9,17 @@ import {
   Button,
 } from "@mui/material";
 import SchoolLogo from "../assets/icon/school_logo.jpg";
+import {useNavigate} from "react-router-dom"
 import { Password } from "@mui/icons-material";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
   return (
     <>
       <Box className="Login-main">
         <Box>
-          <Box className="LoginPage-main" sx={{ minWidth: 330, }}>
+          <Box className="LoginPage-main" sx={{ minWidth: 280, maxWidth: 400 }}>
             <Box textAlign={"center"}>
               <img
                 className="profile-avatar"
@@ -83,6 +85,7 @@ const Login = () => {
               <span>
                 Don't have an account ?{" "}
                 <span
+                onClick={()=>navigate("/sign-up")}
                   style={{
                     color: "#1976d2",
                     cursor: "pointer",
