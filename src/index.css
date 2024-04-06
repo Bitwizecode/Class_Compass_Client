@@ -63,6 +63,7 @@ i {
   flex-direction: column;
   align-items: center;
   margin-top: 80px;
+  height: 100vh;
 }
 .profile-avatar {
   width: 75px;
@@ -98,6 +99,15 @@ i {
   background-color: #fff;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
     rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+.help-Support{
+  border: 2px solid red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 .help-Support-logo {
@@ -168,7 +178,7 @@ i {
 }
 
 .LoginPage-main {
-  padding: 10px;
+  padding: 10px 0px;
   position: relative;
   border-radius: 10px;
   background-color: #fff;
@@ -280,5 +290,45 @@ input[type=number]::-webkit-outer-spin-button {
   display: flex;
   justify-content: center;
   margin-top: 28px;
+  margin-bottom: 30px;
+}
+
+.forgot-pass-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid red;
+  height: 100vh;
+}
+
+.forgotPass-page-main {
+  padding: 10px 0px;
+  position: relative;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+.forgot-pass-logo{
+  width: 200px;
+}
+
+.forgot-pass-hr-line{
+  width: 200px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.forgot-pass-buttons{
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.submit-button{
+  margin-top: 35px;
   margin-bottom: 30px;
 }

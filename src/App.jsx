@@ -10,6 +10,7 @@ import Profile from "./pages/Profile";
 import Students from "./pages/Students";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import ForgotPassword from "./pages/ForgotPassword";
 
 function App() {
   const [selected, setSelected] = useState("/");
@@ -55,6 +56,10 @@ function App() {
         <Route
           path="/sign-up"
           element={<Signup/>}
+        />
+        <Route
+          path="/forgot-password"
+          element={<ForgotPassword/>}
         />
       </Routes>
     </>

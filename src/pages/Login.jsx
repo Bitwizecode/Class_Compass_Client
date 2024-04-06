@@ -75,7 +75,7 @@ const Login = () => {
                 left={35}
                 sx={{ cursor: "pointer" }}
               >
-                <Typography className="forgot-password">Forgot password ? </Typography>
+                <Typography onClick={()=>navigate("/forgot-password")}  className="forgot-password">Forgot password ? </Typography>
               </Box>
             </Box>
             <Box className="login-submit">

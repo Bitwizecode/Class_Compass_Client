@@ -12,7 +12,7 @@ import {
   Grid,
 } from "@mui/material";
 import SchoolLogo from "../assets/icon/school_logo.jpg";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import Login from "./Login";
 
 const Signup = () => {
@@ -23,7 +23,10 @@ const Signup = () => {
     <>
       <Box className="SignUp-main">
         <Box>
-          <Box className="LoginPage-main" sx={{ minWidth: 240, maxWidth: 600, padding: "20px" }}>
+          <Box
+            className="LoginPage-main"
+            sx={{ minWidth: 240, maxWidth: 600, padding: "20px" }}
+          >
             <Box textAlign={"center"}>
               <img
                 className="profile-avatar"
@@ -48,24 +51,23 @@ const Signup = () => {
             </Box>
 
             <Grid container>
-
-            <Grid display={"flex"}  gap={"7px"} xs={12}>
-              <Grid mb={1} xs={12} md={12} sm={12}>
-                <TextField
-                  required
-                  id="outlined-required"
-                  label="First Name"
-                  fullWidth
-                />
-              </Grid>
-              <Grid mb={1} xs={12} md={12} sm={12}>
-                <TextField
-                  required
-                  id="outlined-required"
-                  label="Last Name"
-                  fullWidth
-                />
-              </Grid>
+              <Grid display={"flex"} gap={"7px"} xs={12}>
+                <Grid mb={1} xs={12} md={12} sm={12}>
+                  <TextField
+                    required
+                    id="outlined-required"
+                    label="First Name"
+                    fullWidth
+                  />
+                </Grid>
+                <Grid mb={1} xs={12} md={12} sm={12}>
+                  <TextField
+                    required
+                    id="outlined-required"
+                    label="Last Name"
+                    fullWidth
+                  />
+                </Grid>
               </Grid>
 
               <Grid display={"flex"} mb={1} gap={"7px"} xs={12}>
@@ -198,20 +200,20 @@ const Signup = () => {
             </Grid>
 
             <Box className="sign-up-submit">
-              <Button  variant="contained">Sign Up</Button>
+              <Button variant="contained">Sign Up</Button>
             </Box>
             <Box className="Login-SignUp-option">
               <span>
                 Already have an account ?{" "}
                 <span
-                onClick={()=>navigate("/login")}
+                  onClick={() => navigate("/login")}
                   style={{
                     color: "#1976d2",
                     cursor: "pointer",
                     fontWeight: 550,
                   }}
                 >
-                  Sign In
+                  Login
                 </span>
               </span>
             </Box>
