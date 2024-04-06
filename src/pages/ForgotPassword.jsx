@@ -35,7 +35,7 @@ const ForgotPassword = () => {
             >
               Please enter the Phone/Email <br /> linked with your account
             </Typography>
-            <hr className="hr-line" style={{ color: "red" }} />
+            <hr className="hr-line" />
           </Box>
           <Box
             display={"flex"}

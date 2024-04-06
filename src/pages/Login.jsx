@@ -38,7 +38,7 @@ const Login = () => {
               >
                 Log in to your existing account
               </Typography>
-              <hr className="hr-line" style={{ color: "red" }} />
+              <hr className="hr-line" />
             </Box>
             <Box
               display={"flex"}

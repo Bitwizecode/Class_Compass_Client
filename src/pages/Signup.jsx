@@ -47,7 +47,7 @@ const Signup = () => {
                 Enter Your Personal Information <br />
                 to create Your account.
               </Typography>
-              <hr className="hr-line" style={{ color: "red" }} />
+              <hr className="hr-line" />
             </Box>
 
             <Grid container>
