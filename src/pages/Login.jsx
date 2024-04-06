@@ -27,18 +27,18 @@ const Login = () => {
                 src={SchoolLogo}
                 alt=""
               />
-              <Typography variant="h4" fontWeight={650} mt={2}>
+              <Typography variant="h5" fontWeight={650} mt={1}>
                 Welcome Back!
               </Typography>
               <Typography
                 color={"gray"}
                 mt={"1px"}
                 marginBottom={"11px"}
-                fontSize={16}
+                fontSize={14}
               >
                 Log in to your existing account
               </Typography>
-              <hr className="login-hr-line" style={{ color: "red" }} />
+              <hr className="hr-line" style={{ color: "red" }} />
             </Box>
             <Box
               display={"flex"}
@@ -70,9 +70,7 @@ const Login = () => {
                 ></i>
               </Box>
               <Box
-                position={"absolute"}
-                top={313}
-                left={35}
+                mt={"-12px"}
                 sx={{ cursor: "pointer" }}
               >
                 <Typography onClick={()=>navigate("/forgot-password")}  className="forgot-password">Forgot password ? </Typography>

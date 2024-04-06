@@ -4,15 +4,15 @@
   font-family: "Outfit", sans-serif !important;
 }
 
-.flex{
+.flex {
   display: flex !important;
 }
 
-.justify-center{
+.justify-center {
   justify-content: center !important;
 }
 
-.align-center{
+.align-center {
   align-items: center !important;
 }
 
@@ -100,7 +100,7 @@ i {
     rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
 
-.help-Support{
+.help-Support {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -144,7 +144,6 @@ i {
 }
 
 .notification-field-send-btn-box {
-  /* border: 2px solid red; */
   width: 100%;
   bottom: 0;
   display: flex;
@@ -154,8 +153,7 @@ i {
   max-width: 560px;
 }
 
-
-.notification-send-btn{
+.notification-send-btn {
   background-color: #1976d2;
   color: #fff;
   height: 46px;
@@ -184,8 +182,8 @@ i {
     rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
 
-.login-hr-line{
-  width: 260px;
+.hr-line {
+  width: 220px;
   margin: 0 auto;
   margin-bottom: 50px;
 }
@@ -214,12 +212,11 @@ i {
 .Login-SignUp-option {
   font-size: 13px;
   margin-bottom: 10px;
-  /* border: 2px solid red; */
   display: flex;
   text-align: center;
   justify-content: center;
 }
-.notification-main{
+.notification-main {
   height: calc(100vh - 9.5rem);
   position: relative;
   margin-bottom: 4.5rem;
@@ -228,17 +225,17 @@ i {
   padding: 8px;
 }
 
-.notification-message-box{
+.notification-message-box {
   max-width: 520px;
-    width: 100%;
-    height: 100%;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-    border-radius: 8px;
-    padding: 8px 0;
-    flex-direction: column;
-    display: flex;
-    justify-content: end;
-    position: relative;
+  width: 100%;
+  height: 100%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  border-radius: 8px;
+  padding: 8px 0;
+  flex-direction: column;
+  display: flex;
+  justify-content: end;
+  position: relative;
 }
 
 .notification-message-box ::-webkit-scrollbar {
@@ -246,29 +243,23 @@ i {
 }
 
 .notification-message-box ::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: #f1f1f1;
 }
- 
+
 .notification-message-box ::-webkit-scrollbar-thumb {
-  background: #dadada; 
+  background: #dadada;
 }
 
 .notification-message-box ::-webkit-scrollbar-thumb:hover {
-  background: #dadada; 
+  background: #dadada;
 }
 
-.SignUp-main{
+.SignUp-main {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 80px 20px;
-}
-
-.signUp-hr-line{
-  width: 230px;
-  margin: 0 auto;
-  margin-bottom: 40px;
 }
 
 .pass-eye-icon {
@@ -278,13 +269,13 @@ i {
   cursor: pointer;
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-.sign-up-submit{
+.sign-up-submit {
   display: flex;
   justify-content: center;
   margin-top: 28px;
@@ -296,7 +287,6 @@ input[type=number]::-webkit-outer-spin-button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 2px solid red;
   height: 100vh;
 }
 
@@ -309,24 +299,18 @@ input[type=number]::-webkit-outer-spin-button {
     rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
 
-.forgot-pass-logo{
+.forgot-pass-logo {
   width: 200px;
 }
 
-.forgot-pass-hr-line{
-  width: 200px;
-  margin: 0 auto;
-  margin-bottom: 30px;
-}
-
-.forgot-pass-buttons{
+.forgot-pass-buttons {
   display: flex;
   gap: 20px;
   align-items: center;
   justify-content: center;
 }
 
-.submit-button{
+.submit-button {
   margin-top: 35px;
   margin-bottom: 30px;
 }

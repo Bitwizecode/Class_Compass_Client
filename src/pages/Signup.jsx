@@ -35,19 +35,19 @@ const Signup = () => {
                 src={SchoolLogo}
                 alt=""
               />
-              <Typography variant="h4" fontWeight={650} mt={1}>
+              <Typography variant="h5" fontWeight={650} mt={1}>
                 Register
               </Typography>
               <Typography
                 color={"gray"}
                 mt={"10px"}
                 marginBottom={"12px"}
-                fontSize={16}
+                fontSize={14}
               >
                 Enter Your Personal Information <br />
                 to create Your account.
               </Typography>
-              <hr className="signUp-hr-line" style={{ color: "red" }} />
+              <hr className="hr-line" style={{ color: "red" }} />
             </Box>
 
             <Grid container>

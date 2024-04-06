@@ -2,15 +2,14 @@ import React from "react";
 import {
   Box,
   Typography,
-  CardContent,
-  IconButton,
-  Tooltip,
   TextField,
   Button,
 } from "@mui/material";
+import {useNavigate} from "react-router-dom"
 import SchoolLogo from "../assets/icon/school_logo.jpg";
 
 const ForgotPassword = () => {
+  const navigate = useNavigate();
   return (
     <Box className="forgot-pass-main">
       <Box>
@@ -25,18 +24,18 @@ const ForgotPassword = () => {
               src={SchoolLogo}
               alt=""
             />
-            <Typography variant="h4" fontSize={"33px"} fontWeight={650} mt={2}>
+            <Typography variant="h5"  fontWeight={650} mt={1}>
               Forgot Password
             </Typography>
             <Typography
               color={"gray"}
               mt={"1px"}
               marginBottom={"11px"}
-              fontSize={16}
+              fontSize={14}
             >
               Please enter the Phone/Email <br /> linked with your account
             </Typography>
-            <hr className="forgot-pass-hr-line" style={{ color: "red" }} />
+            <hr className="hr-line" style={{ color: "red" }} />
           </Box>
           <Box
             display={"flex"}
@@ -84,7 +83,7 @@ const ForgotPassword = () => {
               <Button variant="contained">Send OTP</Button>
             </Box>
             <Box className="submit-button">
-              <Button variant="outlined">Cancel</Button>
+              <Button onClick={()=>navigate("/login")} variant="outlined">Cancel</Button>
             </Box>
           </Box>
         </Box>
