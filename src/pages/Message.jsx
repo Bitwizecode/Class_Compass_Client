@@ -4,14 +4,14 @@ import SendIcon from "@mui/icons-material/Send";
 import BgImage from "../assets/icon/message_bg.jpg";
 import { useRef } from "react";
 
-const Notification = ({ selected, setSelected }) => {
+const Message = ({ selected, setSelected }) => {
   const fileInputRef = useRef(null);
 
   const handleOpenFile = () => {
     fileInputRef.current.click();
   };
   return (
-    <Layout isBack  title={"Notification"} selected={selected} setSelected={setSelected}>
+    <Layout isBottomNavbar selected={selected} setSelected={setSelected}>
       <Box className="notification-main">
         <Box className="notification-message-box">
           <Box
@@ -23,7 +23,7 @@ const Notification = ({ selected, setSelected }) => {
             display={"flex"}
             justifyContent={"right"}
           >
-            {[0, 0,0,0,0,0,0].map((item, i) => (
+            {[0, 1, 0, 1, 0, 1, 0, 1].map((item, i) => (
               <Box
                 key={i}
                 display={"flex"}
@@ -49,6 +49,40 @@ const Notification = ({ selected, setSelected }) => {
               </Box>
             ))}
           </Box>
+          <Box className="notification-field-send-btn-box">
+            <Box sx={{ width: "100%", position: "relative" }}>
+              <TextField
+                sx={{ ml: 1, background: "#fff" }}
+                fullWidth
+                placeholder="Message"
+              />
+              <i
+                className="fa-solid fa-paperclip"
+                onClick={handleOpenFile}
+                style={{
+                  position: "absolute",
+                  right: "1.5%",
+                  top: "20px",
+                  fontSize: "20px",
+                  cursor: "pointer",
+                  color: "gray",
+                }}
+              ></i>
+              <input
+                type="file"
+                ref={fileInputRef}
+                style={{ display: "none" }}
+                onChange={() => {}}
+              />
+            </Box>
+
+            <Box
+              onClick={() => console.log("object")}
+              className="notification-send-btn"
+            >
+              <SendIcon sx={{ fontSize: "26px" }} />
+            </Box>
+          </Box>
           <Box
             sx={{
               opacity: 0.1,
@@ -68,4 +102,4 @@ const Notification = ({ selected, setSelected }) => {
   );
 };
 
-export default Notification;
+export default Message;
