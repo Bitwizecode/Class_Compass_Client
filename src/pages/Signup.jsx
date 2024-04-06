@@ -51,7 +51,7 @@ const Signup = () => {
             </Box>
 
             <Grid container>
-              <Grid display={"flex"} gap={"7px"} xs={12}>
+              <Grid display={"flex"} gap={1} xs={12}>
                 <Grid mb={1} xs={12} md={12} sm={12}>
                   <TextField
                     required
@@ -70,7 +70,7 @@ const Signup = () => {
                 </Grid>
               </Grid>
 
-              <Grid display={"flex"} mb={1} gap={"7px"} xs={12}>
+              <Grid display={"flex"} mb={1} gap={1} xs={12}>
                 <Grid xs={6} md={6} sm={12}>
                   <TextField
                     id="outlined-select-gender"
@@ -99,7 +99,7 @@ const Signup = () => {
               <Grid mb={1} xs={12}>
                 <TextField
                   required
-                  type="Number"
+                  type="number"
                   id="outlined-required"
                   label="Phone No."
                   InputProps={{
@@ -113,6 +113,7 @@ const Signup = () => {
               <Grid mb={1} xs={12}>
                 <TextField
                   required
+                  type="Email"
                   id="outlined-required"
                   label="Enter Your Email"
                   fullWidth
@@ -157,7 +158,7 @@ const Signup = () => {
                   fullWidth
                 />
               </Grid>
-              <Grid display={"flex"} mb={1} gap={"7px"} xs={12}>
+              <Grid display={"flex"} mb={1} gap={1} xs={12}>
                 <Grid item md={6} xs={12}>
                   <TextField
                     required
@@ -177,7 +178,7 @@ const Signup = () => {
                   />
                 </Grid>
               </Grid>
-              <Grid display={"flex"} gap={"7px"} xs={12}>
+              <Grid display={"flex"} gap={1} xs={12}>
                 <Grid mb={1} md={6} xs={12}>
                   <TextField
                     disabled

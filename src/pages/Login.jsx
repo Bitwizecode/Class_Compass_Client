@@ -23,7 +23,7 @@ const Login = () => {
             <Box textAlign={"center"}>
               <img
                 className="profile-avatar"
-                style={{ marginTop: "-60px" }}
+                style={{ marginTop: "-50px" }}
                 src={SchoolLogo}
                 alt=""
               />
@@ -43,7 +43,7 @@ const Login = () => {
             <Box
               display={"flex"}
               flexDirection={"column"}
-              gap={2}
+              gap={1.2}
               marginInline={2}
             >
               <Box>
@@ -73,7 +73,7 @@ const Login = () => {
                 mt={"-12px"}
                 sx={{ cursor: "pointer" }}
               >
-                <Typography onClick={()=>navigate("/forgot-password")}  className="forgot-password">Forgot password ? </Typography>
+                <Typography onClick={()=>navigate("/forgot-password")}  className="forgot-password" mt={0.5}>Forgot password ? </Typography>
               </Box>
             </Box>
             <Box className="login-submit">
@@ -87,10 +87,10 @@ const Login = () => {
                   style={{
                     color: "#1976d2",
                     cursor: "pointer",
-                    fontWeight: 550,
+                    fontWeight: 500,
                   }}
                 >
-                  Sign Up
+                  Register
                 </span>
               </span>
             </Box>
