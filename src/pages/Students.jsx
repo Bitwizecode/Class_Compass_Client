@@ -4,8 +4,8 @@ import Layout from '../components/Layout'
 
 const Students = ({selected, setSelected}) => {
   return (
-    <Layout selected={selected} setSelected={setSelected}>
-
+    <Layout isBottomNavbar selected={selected} setSelected={setSelected}>
+       <h1>Students</h1>
     </Layout>
   )
 }

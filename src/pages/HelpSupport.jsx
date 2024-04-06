@@ -12,7 +12,6 @@ const HelpSupport = ({selected, setSelected}) => {
           <Box textAlign={"center"}>
             <img
               className="help-Support-logo"
-              style={{ marginTop: "20px" }}
               src={ContactUS2}
               alt="helpSupportLoGo"
             />

@@ -18,6 +18,7 @@ import Login from "./Login";
 const Signup = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const gender = [{ value: "Male" }, { value: "Female" }];
   return (
     <>
@@ -36,7 +37,6 @@ const Signup = () => {
               />
               <Typography variant="h4" fontWeight={650} mt={1}>
                 Register
-                {/* Sign Up */}
               </Typography>
               <Typography
                 color={"gray"}
@@ -136,16 +136,16 @@ const Signup = () => {
               <Grid mb={1} xs={12} position={"relative"}>
                 <TextField
                   required
-                  type={showPassword ? "text" : "password"}
+                  type={showConfirmPassword ? "text" : "password"}
                   id="outlined-required"
                   label="Confirm Password"
                   defaultValue={""}
                   fullWidth
                 />
                 <i
-                  onClick={() => setShowPassword(!showPassword)}
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                   className={`fa-solid fa-eye${
-                    showPassword ? "" : "-slash"
+                    showConfirmPassword ? "" : "-slash"
                   } pass-eye-icon`}
                 ></i>
               </Grid>

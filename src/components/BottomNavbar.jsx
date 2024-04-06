@@ -38,7 +38,7 @@ const BottomNavbar = ({selected, setSelected}) => {
         />
         <BottomNavigationAction
           label="Message"
-          value="/notification"
+          value="/message"
           icon={<i className="fa-solid fa-comment-dots bottom-navbar-icon"></i>}
         />
       </BottomNavigation>
