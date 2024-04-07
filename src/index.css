@@ -218,9 +218,8 @@ i {
   justify-content: center;
 }
 .notification-main {
-  height: calc(100vh - 9.5rem);
+  height: calc(100vh - 6rem);
   position: relative;
-  margin-bottom: 4.5rem;
   display: flex;
   justify-content: center;
   padding: 8px;
@@ -232,6 +231,7 @@ i {
   height: 100%;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   border-radius: 8px;
+  border: 1px solid gray;
   padding: 8px 0;
   flex-direction: column;
   display: flex;

@@ -77,7 +77,7 @@ const Login = () => {
               </Box>
             </Box>
             <Box className="login-submit">
-              <Button variant="contained">Login</Button>
+              <Button onClick={()=>navigate("/")} variant="contained">Login</Button>
             </Box>
             <Box className="Login-SignUp-option">
               <span>

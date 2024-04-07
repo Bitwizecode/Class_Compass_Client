@@ -1,15 +1,11 @@
-import React from "react";
-import {
-  Box,
-  Typography,
-  TextField,
-  Button,
-} from "@mui/material";
-import {useNavigate} from "react-router-dom"
+import React, { useState } from "react";
+import { Box, Typography, TextField, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import SchoolLogo from "../assets/icon/school_logo.jpg";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
+  const [isOtpSent, setIsOtpSent] = useState(false);
   return (
     <Box className="forgot-pass-main">
       <Box>
@@ -24,7 +20,7 @@ const ForgotPassword = () => {
               src={SchoolLogo}
               alt=""
             />
-            <Typography variant="h5"  fontWeight={650} mt={1}>
+            <Typography variant="h5" fontWeight={650} mt={1}>
               Forgot Password
             </Typography>
             <Typography
@@ -43,44 +39,57 @@ const ForgotPassword = () => {
             gap={1.2}
             marginInline={2}
           >
-            <Box>
-              <TextField
-                required
-                id="outlined-required"
-                label="Phone/Email"
-                fullWidth
-              />
-            </Box>
-
-          <Box>
-              <TextField
-                required
-                type="Number"
-                id="outlined-required"
-                label="OTP"
-                fullWidth
-              />
-            </Box>
-            <Box>
-              <TextField
-                required
-                id="outlined-required"
-                label="New Password"
-                fullWidth
-              />
-            </Box>
-            <Box>
-              <TextField
-                required
-                id="outlined-required"
-                label="Confirm Password"
-                fullWidth
-              />
-            </Box>
+            {!isOtpSent ? (
+              <Box>
+                <TextField
+                  required
+                  id="outlined-required"
+                  label="Phone/Email"
+                  fullWidth
+                />
+              </Box>
+            ) : (
+              <>
+                <Box>
+                  <TextField
+                    required
+                    type="Number"
+                    id="outlined-required"
+                    label="OTP"
+                    fullWidth
+                  />
+                </Box>
+                <Box>
+                  <TextField
+                    required
+                    id="outlined-required"
+                    label="New Password"
+                    fullWidth
+                  />
+                </Box>
+                <Box>
+                  <TextField
+                    required
+                    id="outlined-required"
+                    label="Confirm Password"
+                    fullWidth
+                  />
+                </Box>
+              </>
+            )}
           </Box>
           <Box className="forgot-pass-buttons">
-              <Button onClick={()=>navigate("/login")} variant="outlined">Cancel</Button>
-              <Button variant="contained">Send OTP</Button>
+            <Button onClick={() =>{ isOtpSent ? setIsOtpSent(false) : navigate("/login")}} variant="outlined">
+             {isOtpSent ? "Back" : "Cancel"}
+            </Button>
+            <Button
+              onClick={() => {
+                isOtpSent ? navigate("/login") : setIsOtpSent(true);
+              }}
+              variant="contained"
+            >
+              {isOtpSent ? "Reset" : "Send OTP"}
+            </Button>
           </Box>
         </Box>
       </Box>
