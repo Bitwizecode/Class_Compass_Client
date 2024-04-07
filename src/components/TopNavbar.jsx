@@ -7,8 +7,8 @@ import SchoolLogo from "../assets/icon/school_logo.jpg"
 const TopNavbar = ({ title, isBack, toggleSidebar }) => {
   const navigate = useNavigate();
   return (
-    <Box>
-      <AppBar position="static">
+    <Box mb={7}>
+      <AppBar position="fixed" >
         {!isBack ? (
           <Toolbar>
             <IconButton

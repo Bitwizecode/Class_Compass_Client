@@ -225,6 +225,16 @@ i {
   padding: 8px;
 }
 
+
+.message-main {
+  height: calc(100vh - 9.4rem);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+}
+
+
 .notification-message-box {
   max-width: 520px;
   width: 100%;

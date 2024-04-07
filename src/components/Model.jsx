@@ -46,7 +46,7 @@ const Model = ({
           <Button variant="outlined" onClick={() => setOpen(false)}>
             Cancel
           </Button>
-          <Button variant="contained">{submitText}</Button>
+          <Button onClick={onSubmit} variant="contained">{submitText}</Button>
         </Box>
       </Box>
     </Modal>

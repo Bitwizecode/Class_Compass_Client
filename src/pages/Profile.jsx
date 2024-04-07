@@ -20,7 +20,8 @@ import Model from "../components/Model";
 const Profile = ({ selected, setSelected }) => {
   const [openEdit, setOpenEdit] = React.useState(false);
   const [openResetPass, setOpenResetPass] = React.useState(false);
-  const [showPassword, setShowPassword] = useState(false);
+  const [showOldPassword, setShowOldPassword] = useState(false);
+  const [showNewPassword, setNewShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   return (
     <>
@@ -83,7 +84,7 @@ const Profile = ({ selected, setSelected }) => {
                   headerText={"Edit Profile"}
                   submitText={"Update"}
                   subHeaderText={"Update Your Profile Information"}
-                  onSubmit={() => {}}
+                  onSubmit={() => {setOpenEdit(false)}}
                 >
                   <Grid container>
                     <Grid display={"flex"} gap={1} xs={12}>
@@ -295,54 +296,54 @@ const Profile = ({ selected, setSelected }) => {
                 headerText={"Reset Password"}
                 submitText={"Reset"}
                 subHeaderText={"Reset your password to ensure security"}
-                onSubmit={() => {}}
+                onSubmit={() => {setOpenResetPass(false)}}
               >
                 <Grid container>
+                  <Grid mb={1} xs={12} position={"relative"}>
+                    <TextField
+                      required
+                      type={showOldPassword ? "text" : "password"}
+                      id="outlined-required"
+                      label="New Password"
+                      fullWidth
+                    />
+                    <i
+                      onClick={() => setShowOldPassword(!showOldPassword)}
+                      className={`fa-solid fa-eye${
+                        showOldPassword ? "" : "-slash"
+                      } pass-eye-icon`}
+                    ></i>
+                  </Grid>
+                  <Grid mb={1} xs={12} position={"relative"}>
+                    <TextField
+                      required
+                      type={showNewPassword ? "text" : "password"}
+                      id="outlined-required"
+                      label="Confirm Password"
+                      fullWidth
+                    />
+                    <i
+                      onClick={() => setNewShowPassword(!showNewPassword)}
+                      className={`fa-solid fa-eye${
+                        showNewPassword ? "" : "-slash"
+                      } pass-eye-icon`}
+                    ></i>
+                  </Grid>
+                </Grid>
                 <Grid mb={1} xs={12} position={"relative"}>
-                <TextField
-                  required
-                  type={showPassword ? "text" : "password"}
-                  id="outlined-required"
-                  label="Old Password"
-                  fullWidth
-                />
-                <i
-                  onClick={() => setShowPassword(!showPassword)}
-                  className={`fa-solid fa-eye${
-                    showPassword ? "" : "-slash"
-                  } pass-eye-icon`}
-                ></i>
-              </Grid>
-              <Grid mb={1} xs={12} position={"relative"}>
-                <TextField
-                  required
-                  type={showPassword ? "text" : "password"}
-                  id="outlined-required"
-                  label="New Password"
-                  fullWidth
-                />
-                <i
-                  onClick={() => setShowPassword(!showPassword)}
-                  className={`fa-solid fa-eye${
-                    showPassword ? "" : "-slash"
-                  } pass-eye-icon`}
-                ></i>
-              </Grid>
-              <Grid mb={1} xs={12} position={"relative"}>
-                <TextField
-                  required
-                  type={showPassword ? "text" : "password"}
-                  id="outlined-required"
-                  label="Confirm Password"
-                  fullWidth
-                />
-                <i
-                  onClick={() => setShowPassword(!showPassword)}
-                  className={`fa-solid fa-eye${
-                    showPassword ? "" : "-slash"
-                  } pass-eye-icon`}
-                ></i>
-              </Grid>
+                  <TextField
+                    required
+                    type={showConfirmPassword ? "text" : "password"}
+                    id="outlined-required"
+                    label="Old Password"
+                    fullWidth
+                  />
+                  <i
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    className={`fa-solid fa-eye${
+                      showConfirmPassword ? "" : "-slash"
+                    } pass-eye-icon`}
+                  ></i>
                 </Grid>
               </Model>
             </Box>
