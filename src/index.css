@@ -63,9 +63,10 @@ i {
   align-items: center;
   justify-content: center;
   height: 100vh;
+
 }
 .profile-avatar {
-  width: 75px;
+  width: 65px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
@@ -304,13 +305,24 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .forgot-pass-buttons {
+  padding: 0px 18px;
   display: flex;
-  gap: 20px;
-  align-items: center;
-  justify-content: center;
+  gap: 10px;
+  justify-content: right;
+  margin-top: 18px;
+  margin-bottom: 8px;
 }
 
-.submit-button {
-  margin-top: 35px;
-  margin-bottom: 30px;
+.edit-profile-main{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 255px;
+  max-width: 460px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  padding: 20px ;
 }

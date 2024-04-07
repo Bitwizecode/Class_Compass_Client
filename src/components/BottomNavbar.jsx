@@ -9,8 +9,6 @@ const BottomNavbar = ({selected, setSelected}) => {
       setSelected(value);
         navigate(value)
     }
-
-    console.log(selected,);
   return (
     <Box
       position={"fixed"}

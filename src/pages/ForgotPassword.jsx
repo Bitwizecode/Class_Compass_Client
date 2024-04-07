@@ -79,12 +79,8 @@ const ForgotPassword = () => {
             </Box>
           </Box>
           <Box className="forgot-pass-buttons">
-            <Box className="submit-button">
-              <Button variant="contained">Send OTP</Button>
-            </Box>
-            <Box className="submit-button">
               <Button onClick={()=>navigate("/login")} variant="outlined">Cancel</Button>
-            </Box>
+              <Button variant="contained">Send OTP</Button>
           </Box>
         </Box>
       </Box>
