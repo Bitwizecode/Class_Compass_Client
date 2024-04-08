@@ -12,7 +12,7 @@ const Notification = ({ selected, setSelected }) => {
   };
   return (
     <Layout isBack  title={"Notification"} selected={selected} setSelected={setSelected}>
-      <Box className="notification-main">
+      <Box mt={8} className="notification-main">
         <Box className="notification-message-box">
           <Box
             height={"100%"}
@@ -53,7 +53,7 @@ const Notification = ({ selected, setSelected }) => {
             sx={{
               opacity: 0.1,
               backgroundImage: `url(${BgImage})`,
-              backgroundRepeat: "no-repeat",
+              // backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
             }}
             height={"100%"}
