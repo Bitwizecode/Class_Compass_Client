@@ -201,7 +201,7 @@ const Signup = () => {
             </Grid>
 
             <Box className="sign-up-submit">
-              <Button variant="contained">Sign Up</Button>
+              <Button onClick={()=>{navigate("/")}} variant="contained">Sign Up</Button>
             </Box>
             <Box className="Login-SignUp-option">
               <span>

@@ -328,3 +328,17 @@ input[type="number"]::-webkit-outer-spin-button {
     rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
   padding: 20px;
 }
+
+.home-items{
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.home-items:hover{
+  background: whitesmoke;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
