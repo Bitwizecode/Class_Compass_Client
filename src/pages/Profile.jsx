@@ -32,7 +32,13 @@ const Profile = ({ selected, setSelected }) => {
         title={"My Profile"}
       >
         <Box className="profile-main-details">
-          <Box>
+          <Box
+            sx={{
+              width: "100%",
+              justifyContent:"center",
+              display:"flex",
+            }}
+          >
             <Box
               className="card-main"
               sx={{ minWidth: 255, maxWidth: 460, m: "0 10px  " }}
@@ -84,7 +90,9 @@ const Profile = ({ selected, setSelected }) => {
                   headerText={"Edit Profile"}
                   submitText={"Update"}
                   subHeaderText={"Update Your Profile Information"}
-                  onSubmit={() => {setOpenEdit(false)}}
+                  onSubmit={() => {
+                    setOpenEdit(false);
+                  }}
                 >
                   <Grid container>
                     <Grid display={"flex"} gap={1} xs={12}>
@@ -296,7 +304,9 @@ const Profile = ({ selected, setSelected }) => {
                 headerText={"Reset Password"}
                 submitText={"Reset"}
                 subHeaderText={"Reset your password to ensure security"}
-                onSubmit={() => {setOpenResetPass(false)}}
+                onSubmit={() => {
+                  setOpenResetPass(false);
+                }}
               >
                 <Grid container>
                   <Grid mb={1} xs={12} position={"relative"}>
