@@ -12,7 +12,7 @@ const Message = ({ selected, setSelected }) => {
   };
   return (
     <Layout isBottomNavbar selected={selected} setSelected={setSelected}>
-      <Box className="message-main">
+      <Box mt={8} className="message-main">
         <Box className="notification-message-box">
           <Box
             height={"100%"}
