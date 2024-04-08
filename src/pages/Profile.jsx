@@ -22,7 +22,6 @@ const Profile = ({ selected, setSelected }) => {
   const [showNewPassword, setNewShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   return (
-    <>
       <Layout
         selected={selected}
         setSelected={setSelected}
@@ -358,7 +357,6 @@ const Profile = ({ selected, setSelected }) => {
           </Box>
         </Box>
       </Layout>
-    </>
   );
 };
 
