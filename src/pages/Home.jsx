@@ -74,6 +74,7 @@ const Home = ({ selected, setSelected }) => {
             <Grid item xs={4}>
               <Box className="home-items" >
                 <Box
+                
                   textAlign={"center"}
                   p={"10px 0"}
                   borderRadius={"10px"}
@@ -85,7 +86,7 @@ const Home = ({ selected, setSelected }) => {
                 >
                   <img width={"60px"} src={Attendance} alt="" />
                 </Box>
-                <Typography sx={{ lineHeight: 1, mt: "10px" }}>
+                <Typography sx={{ lineHeight: 1.1, mt: "10px", fontSize: "13px"}}>
                   Student Attendance
                 </Typography>
               </Box>
