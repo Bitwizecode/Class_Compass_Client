@@ -23,7 +23,7 @@ const Notification = ({ selected, setSelected }) => {
             display={"flex"}
             justifyContent={"right"}
           >
-            {[0, 0,0,0,0,0,0].map((item, i) => (
+            {[0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,].map((item, i) => (
               <Box
                 key={i}
                 display={"flex"}
