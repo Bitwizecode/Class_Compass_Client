@@ -44,7 +44,7 @@ const Home = ({ selected, setSelected }) => {
           borderRadius={"10px"}
           boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"}
         >
-          <Typography variant="h5">Greetings, Nisha mam</Typography>
+          <Typography variant="h6">Greetings, Nisha mam</Typography>
           <Box
             m={"10px 0"}
             bgcolor={"whitesmoke"}
@@ -54,7 +54,7 @@ const Home = ({ selected, setSelected }) => {
             p={1}
             borderRadius={"10px"}
           >
-            <Typography variant="h6">
+            <Typography variant="p">
               “Just believe in yourself. Even if you don't pretend that you do
               and, at some point, you will.” <br />
             </Typography>
