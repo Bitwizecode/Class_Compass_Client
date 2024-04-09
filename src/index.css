@@ -329,16 +329,27 @@ input[type="number"]::-webkit-outer-spin-button {
   padding: 20px;
 }
 
-.home-items{
-  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-  margin: 10px;
+.home-items {
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  height: 123px;
   padding: 10px;
+  width: 100%;
   border-radius: 10px;
   text-align: center;
   cursor: pointer;
 }
 
-.home-items:hover{
+.home-items:hover {
   background: whitesmoke;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.home-item-icon {
+  text-align: center;
+  padding: 10px 0px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }

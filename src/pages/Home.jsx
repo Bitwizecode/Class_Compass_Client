@@ -1,6 +1,16 @@
 import { useState } from "react";
 import Layout from "../components/Layout";
 import Attendance from "../assets/icon/attendance.png";
+import Timetable from "../assets/icon/timetable.png";
+import Results from "../assets/icon/results.png";
+import Leave from "../assets/icon/student_leave.png";
+import HomeWork from "../assets/icon/homework.png";
+import ExamTT from "../assets/icon/exam_time_table.png";
+import Leave2 from "../assets/icon/leave.png";
+import HomeWork2 from "../assets/icon/home_work.png";
+import Attendance2 from "../assets/icon/attendance2.png";
+import Timetable2 from "../assets/icon/time_table.png";
+
 import {
   Box,
   Typography,
@@ -13,6 +23,16 @@ import {
 
 const Home = ({ selected, setSelected }) => {
   const [openSidebar, setOpenSidebar] = useState(false);
+  const items = [
+    { icon: Attendance, text: "Student Attendance" },
+    { icon: Leave2, text: "Student's Leave" },
+    { icon: Timetable2, text: "Time Table" },
+    { icon: Results, text: "Exam Results" },
+    { icon: HomeWork, text: "HomeWork" },
+    { icon: ExamTT, text: "Exam Time Table" },
+    { icon: ExamTT, text: "School Gallery" },
+    { icon: HomeWork, text: "Syllabus" },
+  ];
   return (
     <Layout isBottomNavbar selected={selected} setSelected={setSelected}>
       <Box mt={8} mb={8}>
@@ -68,31 +88,28 @@ const Home = ({ selected, setSelected }) => {
             </Button>
           </Box>
         </Box>
-
-        <Grid mt={"20px"} container>
-          {[0, 0, 0, 0, 0, 0].map((item) => (
-            <Grid item xs={4}>
-              <Box className="home-items" >
-                <Box
-                
-                  textAlign={"center"}
-                  p={"10px 0"}
-                  borderRadius={"10px"}
-                  bgcolor={"#fff"}
-                  // border={"2px solid blue"}
-                  boxShadow={
-                    "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px"
-                  }
-                >
-                  <img width={"60px"} src={Attendance} alt="" />
+        <Box display={"flex"} justifyContent={"center"}>
+        <Grid  width={["100%", "50%", "50%"]} mt={"20px"} padding={"0 8px"} container>
+          
+          {items.map((item, index) => (
+            <Grid spacing={1}  display={"flex"} justifyContent={"center"} alignItems={"center"} item xs={4} key={index}>
+              <Box className="home-items" m={"10px"} >
+                <Box className="home-item-icon">
+                  <img width={"60px"} src={item.icon} alt="" />
                 </Box>
-                <Typography sx={{ lineHeight: 1.1, mt: "10px", fontSize: "13px"}}>
-                  Student Attendance
+                <Typography
+                  className="home-item-text"
+                  sx={{ lineHeight: 1.1, mt: "10px", fontSize: "14px" }}
+                >
+                  {item.text}
                 </Typography>
               </Box>
             </Grid>
           ))}
         </Grid>
+        </Box>
+
+        
       </Box>
     </Layout>
   );
