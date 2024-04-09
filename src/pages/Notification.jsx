@@ -11,7 +11,12 @@ const Notification = ({ selected, setSelected }) => {
     fileInputRef.current.click();
   };
   return (
-    <Layout isBack  title={"Notification"} selected={selected} setSelected={setSelected}>
+    <Layout
+      isBack
+      title={"Notification"}
+      selected={selected}
+      setSelected={setSelected}
+    >
       <Box mt={8} className="notification-main">
         <Box className="notification-message-box">
           <Box
@@ -23,7 +28,9 @@ const Notification = ({ selected, setSelected }) => {
             display={"flex"}
             justifyContent={"right"}
           >
-            {[0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,].map((item, i) => (
+            {[
+              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            ].map((item, i) => (
               <Box
                 key={i}
                 display={"flex"}
@@ -36,9 +43,10 @@ const Notification = ({ selected, setSelected }) => {
                 </Typography>
                 <Box
                   width={"80%"}
-                  bgcolor={"lightblue"}
+                  bgcolor={"#1976d2"}
                   p={"10px"}
                   borderRadius={"10px"}
+                  color={"#fff"}
                 >
                   <Typography>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.

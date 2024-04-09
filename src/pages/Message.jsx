@@ -36,9 +36,10 @@ const Message = ({ selected, setSelected }) => {
                 </Typography>
                 <Box
                   width={"80%"}
-                  bgcolor={"lightblue"}
+                  bgcolor={"#1976d2"}
                   p={"10px"}
                   borderRadius={"10px"}
+                  color={"#fff"}
                 >
                   <Typography>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
