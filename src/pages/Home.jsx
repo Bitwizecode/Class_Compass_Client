@@ -2,15 +2,16 @@ import { useState } from "react";
 import Layout from "../components/Layout";
 import Attendance from "../assets/icon/attendance.png";
 import Timetable from "../assets/icon/timetable.png";
-import Results from "../assets/icon/results.png";
+// import Results from "../assets/icon/results.png";
+import Results from "../assets/icon/passed.gif";
 import Leave from "../assets/icon/student_leave.png";
 import HomeWork from "../assets/icon/homework.png";
 import ExamTT from "../assets/icon/exam_time_table.png";
 import Leave2 from "../assets/icon/leave.png";
 import HomeWork2 from "../assets/icon/home_work.png";
 import Attendance2 from "../assets/icon/attendance2.png";
-import Timetable2 from "../assets/icon/time_table.png";
-
+// import Timetable2 from "../assets/icon/time_table.png";
+import Timetable2 from "../assets/icon/calendar.gif";
 import {
   Box,
   Typography,
@@ -32,6 +33,7 @@ const Home = ({ selected, setSelected }) => {
     { icon: ExamTT, text: "Exam Time Table" },
     { icon: ExamTT, text: "School Gallery" },
     { icon: HomeWork, text: "Syllabus" },
+    { icon: HomeWork, text: "Todo" },
   ];
   return (
     <Layout isBottomNavbar selected={selected} setSelected={setSelected}>
