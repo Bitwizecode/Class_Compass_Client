@@ -69,12 +69,13 @@ const Home = ({ selected, setSelected }) => {
           <Typography variant="h6">Greetings, Nisha mam</Typography>
           <Box
             m={"10px 0"}
-            bgcolor={"whitesmoke"}
+            bgcolor={"#1976d2"}
             boxShadow={
               "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px"
             }
             p={1}
             borderRadius={"10px"}
+            color={"#fff"}
           >
             <Typography variant="p">
               “Just believe in yourself. Even if you don't pretend that you do
