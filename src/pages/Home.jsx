@@ -1,24 +1,15 @@
 import { useState } from "react";
 import Layout from "../components/Layout";
-import Attendance from "../assets/icon/attendance.png";
-import Timetable from "../assets/icon/timetable.png";
-// import Results from "../assets/icon/results.png";
 import Results from "../assets/icon/result.gif";
-import Leave from "../assets/icon/student_leave.png";
-import HomeWork from "../assets/icon/homework.png";
-import ExamTT from "../assets/icon/exam_time_table.png";
 import ExamTT2 from "../assets/icon/exam_time_table.gif";
-import Leave2 from "../assets/icon/leave2.gif";
 import Leave3 from "../assets/icon/leave3.png";
-import HomeWork2 from "../assets/icon/home_work.png";
-import Attendance2 from "../assets/icon/attendance2.png";
 import Syllabus from "../assets/icon/syllabus.gif";
 import Timetable2 from "../assets/icon/calendar.gif";
 import HomeWork3 from "../assets/icon/homework2.gif";
 import SchoolGallery from "../assets/icon/school_gallery.gif";
 import Attendance3 from "../assets/icon/attendance3.gif";
 import Todo from "../assets/icon/todo1.gif";
-
+import {useNavigate} from "react-router-dom"
 import {
   Box,
   Typography,
@@ -30,17 +21,17 @@ import {
 } from "@mui/material";
 
 const Home = ({ selected, setSelected }) => {
-  const [openSidebar, setOpenSidebar] = useState(false);
+  const navigate = useNavigate();
   const items = [
-    { icon: Attendance3, text: "Student Attendance" },
-    { icon: HomeWork3, text: "HomeWork" },
-    { icon: Timetable2, text: "Time Table" },
-    { icon: Todo, text: "Todo" },
-    { icon: Leave3, text: "Student's Leave" },
-    { icon: Syllabus, text: "Syllabus" },
-    { icon: Results, text: "Exam Results" },
-    { icon: ExamTT2, text: "Exam Time Table" },
-    { icon: SchoolGallery, text: "School Gallery" },
+    { icon: Attendance3, text: "Student Attendance",path:"/attendance" },
+    { icon: HomeWork3, text: "HomeWork",path:"/attendance" },
+    { icon: Timetable2, text: "Time Table",path:"/attendance" },
+    { icon: Todo, text: "Todo",path:"/attendance" },
+    { icon: Leave3, text: "Student's Leave",path:"/attendance" },
+    { icon: Syllabus, text: "Syllabus",path:"/attendance" },
+    { icon: Results, text: "Exam Results",path:"/attendance" },
+    { icon: ExamTT2, text: "Exam Time Table",path:"/attendance" },
+    { icon: SchoolGallery, text: "School Gallery",path:"/attendance" },
   ];
   return (
     <Layout isBottomNavbar selected={selected} setSelected={setSelected}>
@@ -102,7 +93,7 @@ const Home = ({ selected, setSelected }) => {
         <Grid  width={["100%", "50%", "50%"]} mt={"20px"} padding={"0 8px"} container>
           
           {items.map((item, index) => (
-            <Grid spacing={1}  display={"flex"} justifyContent={"center"} alignItems={"center"} item xs={4} key={index}>
+            <Grid spacing={1} onClick={()=>{navigate(item.path)}}  display={"flex"} justifyContent={"center"} alignItems={"center"} item xs={4} key={index}>
               <Box className="home-items" m={"10px"} >
                 <Box className="home-item-icon">
                   <img width={"60px"} src={item.icon} alt="" />
