@@ -3,15 +3,22 @@ import Layout from "../components/Layout";
 import Attendance from "../assets/icon/attendance.png";
 import Timetable from "../assets/icon/timetable.png";
 // import Results from "../assets/icon/results.png";
-import Results from "../assets/icon/passed.gif";
+import Results from "../assets/icon/result.gif";
 import Leave from "../assets/icon/student_leave.png";
 import HomeWork from "../assets/icon/homework.png";
 import ExamTT from "../assets/icon/exam_time_table.png";
-import Leave2 from "../assets/icon/leave.png";
+import ExamTT2 from "../assets/icon/exam_time_table.gif";
+import Leave2 from "../assets/icon/leave2.gif";
+import Leave3 from "../assets/icon/leave3.png";
 import HomeWork2 from "../assets/icon/home_work.png";
 import Attendance2 from "../assets/icon/attendance2.png";
-// import Timetable2 from "../assets/icon/time_table.png";
+import Syllabus from "../assets/icon/syllabus.gif";
 import Timetable2 from "../assets/icon/calendar.gif";
+import HomeWork3 from "../assets/icon/homework2.gif";
+import SchoolGallery from "../assets/icon/school_gallery.gif";
+import Attendance3 from "../assets/icon/attendance3.gif";
+import Todo from "../assets/icon/todo1.gif";
+
 import {
   Box,
   Typography,
@@ -25,15 +32,15 @@ import {
 const Home = ({ selected, setSelected }) => {
   const [openSidebar, setOpenSidebar] = useState(false);
   const items = [
-    { icon: Attendance, text: "Student Attendance" },
-    { icon: Leave2, text: "Student's Leave" },
+    { icon: Attendance3, text: "Student Attendance" },
+    { icon: HomeWork3, text: "HomeWork" },
     { icon: Timetable2, text: "Time Table" },
+    { icon: Todo, text: "Todo" },
+    { icon: Leave3, text: "Student's Leave" },
+    { icon: Syllabus, text: "Syllabus" },
     { icon: Results, text: "Exam Results" },
-    { icon: HomeWork, text: "HomeWork" },
-    { icon: ExamTT, text: "Exam Time Table" },
-    { icon: ExamTT, text: "School Gallery" },
-    { icon: HomeWork, text: "Syllabus" },
-    { icon: HomeWork, text: "Todo" },
+    { icon: ExamTT2, text: "Exam Time Table" },
+    { icon: SchoolGallery, text: "School Gallery" },
   ];
   return (
     <Layout isBottomNavbar selected={selected} setSelected={setSelected}>
