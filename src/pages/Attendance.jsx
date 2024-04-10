@@ -35,8 +35,8 @@ const Attendance = ({ selected, setSelected }) => {
   return (
     <Layout isBottomNavbar selected={selected} setSelected={setSelected}>
       <Box mt={9} width={"100%"} mb={9}>
-        <Box>
-          <Typography ml={6} variant="h5">
+        <Box width={"95%"} m={"auto"} >
+          <Typography variant="h5">
             Attendance
           </Typography>
         </Box>
