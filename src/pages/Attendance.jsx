@@ -56,16 +56,13 @@ const Attendance = ({ selected, setSelected }) => {
               <TableHead>
                 <TableRow>
                   <TableCell sx={{ pl: "25px" }}>
-                    {" "}
-                    <Typography variant="h6">Name</Typography>
+                  Name
                   </TableCell>
                   <TableCell align="left">
-                    {" "}
-                    <Typography variant="h6"> Roll No </Typography>
+                     Roll No 
                   </TableCell>
                   <TableCell align="center">
-                    {" "}
-                    <Typography variant="h6"> Attendance </Typography>
+                     Attendance 
                   </TableCell>
                 </TableRow>
               </TableHead>
@@ -79,7 +76,7 @@ const Attendance = ({ selected, setSelected }) => {
                           src="https://cdn-icons-png.flaticon.com/128/2641/2641333.png"
                           alt=""
                         />
-                        <Typography fontSize={"20px"}> {row.name} </Typography>
+                         {row.name} 
                       </Box>
                     </TableCell>
                     <TableCell align="left">{row.calories}</TableCell>
