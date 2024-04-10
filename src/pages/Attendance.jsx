@@ -81,7 +81,7 @@ const Attendance = ({ selected, setSelected }) => {
                     </TableCell>
                     <TableCell align="left">{row.calories}</TableCell>
                     <TableCell align="center">
-                      <Checkbox size="large" />
+                      <Checkbox size="medium" />
                     </TableCell>
                   </TableRow>
                 ))}
