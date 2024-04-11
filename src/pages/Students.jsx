@@ -37,11 +37,11 @@ const Students = ({ selected, setSelected }) => {
     <Layout isBottomNavbar selected={selected} setSelected={setSelected}>
       <Box mt={9} width={"100%"} mb={9}>
         <Box width={"95%"} m={"auto"}>
-          <Typography variant="h5" sx={{ fontWeight: 550, mb: "5px" }}>
+          <Typography variant="h5" sx={{ fontWeight: 550, mb: "7px" }}>
             My Students
           </Typography>
         </Box>
-        <Box width={"95%"} m={"auto"} display={"flex"} justifyContent={"space-between"}>
+        <Box width={"95%"} m={"auto"} mb={"-6px"} display={"flex"} justifyContent={"space-between"}>
           <Button variant="outlined" size="small">
             No of Students : 102
           </Button>
