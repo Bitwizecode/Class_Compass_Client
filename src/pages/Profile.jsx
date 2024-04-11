@@ -9,6 +9,7 @@ import {
   Grid,
   MenuItem,
   TextField,
+  Button,
 } from "@mui/material";
 import StudentBoy from "../assets/icon/student_boy.png";
 const gender = [{ value: "Male" }, { value: "Female" }];
@@ -290,6 +291,17 @@ const Profile = ({ selected, setSelected }) => {
                 >
                   Reset Password
                 </h5>
+              </Box>
+            </Tooltip>
+            <Tooltip
+              title="Click here to View Students Attendance"
+              placement="top"
+              arrow
+            >
+              <Box align="center">
+                <Button variant="outlined" size="small">
+                  View Attendance
+                </Button>
               </Box>
             </Tooltip>
             <Model
