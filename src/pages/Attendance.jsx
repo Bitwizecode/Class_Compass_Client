@@ -36,8 +36,8 @@ const Attendance = ({ selected, setSelected }) => {
     <Layout isBottomNavbar selected={selected} setSelected={setSelected}>
       <Box mt={9} width={"100%"} mb={9}>
         <Box width={"95%"} m={"auto"} >
-          <Typography variant="h5"  sx={{fontWeight: 550, mb:"-10px"}}>
-            Attendance
+          <Typography variant="h5"  sx={{fontWeight: 550, mb:"-10px", color: "#1976d2"}}>
+            Monday, <span style={{fontSize:"13px", color: "black", fontWeight: 450}}>1<sup>st</sup> July 2024</span>
           </Typography>
         </Box>
         <Box

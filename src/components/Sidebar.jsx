@@ -8,7 +8,7 @@ const Sidebar = ({open, onClose}) => {
     { title: "My Profile", icon: "fa-user", path:"/profile" },
     { title: "Notification", icon: "fa-bell", path:"/notification" },
     { title: "Help & Support", icon: "fa-circle-info", path:"/help-support" },
-    { title: "Log Out", icon: "fa-arrow-right-from-bracket", path:"profile" },
+    { title: "Log Out", icon: "fa-arrow-right-from-bracket", path:"login"},
     { title: "Log In", icon: "fa-arrow-right-from-bracket", path:"/login" },
     { title: "Sign Up", icon: "fa-arrow-right-from-bracket", path:"/sign-up" },
   ];

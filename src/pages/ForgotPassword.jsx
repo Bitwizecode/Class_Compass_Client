@@ -6,34 +6,18 @@ import SchoolLogo from "../assets/icon/school_logo.jpg";
 const ForgotPassword = () => {
   const navigate = useNavigate();
   const [isOtpSent, setIsOtpSent] = useState(false);
-  const inputRefs = useRef([]);
+  const [otp, setOtp] = useState(new Array(4).fill(""));
 
-  const handleInputChange = (index, event) => {
-    const { value } = event.target;
+  const handleInputChange = (e, index) => {
+    const value = e.target.value;
+    if (isNaN(value)) return false;
 
-    // Ensure only one digit from 0 to 9 is entered
-    if (/^[0-9]?$/.test(value)) {
-      // Update the input value
-      if (value.length <= 1) {
-        inputRefs.current[index].value = value;
-      }
+    setOtp([
+      ...otp.map((data, indx) => (indx === index ? e.target.value : data)),
+    ]);
 
-      // Move focus to the next input if available
-      if (index < inputRefs.current.length - 1 && value !== "") {
-        if (value.length > 1) {
-          return; // Prevent moving focus if more than one digit is entered
-        }
-        inputRefs.current[index + 1].focus();
-      } else if (value === "") {
-        // Clear the previous input if the value is empty
-        inputRefs.current[index - 1].value = "";
-        if (index > 0) {
-          inputRefs.current[index - 1].focus();
-        }
-      } else if (index === inputRefs.current.length - 1) {
-        // Ensure only one digit in the last input box
-        inputRefs.current[index].value = value.slice(0, 1);
-      }
+    if (e.target.value && e.target.nextSibling) {
+      e.target.nextSibling.focus();
     }
   };
   return (
@@ -80,27 +64,50 @@ const ForgotPassword = () => {
               </Box>
             ) : (
               <>
-                <Grid container spacing={1.2}>
-                  {[...Array(4)].map((_, index) => (
-                    <Grid item xs={3} key={index}>
-                      <TextField
-                        type="number"
-                        variant="outlined"
-                        inputRef={(el) => (inputRefs.current[index] = el)}
-                        onChange={(event) => handleInputChange(index, event)}
-                        sx={{ width: "55px", height: "55px" }}
+                <div className="otp-area">
+                  {otp.map((data, i) => {
+                    return (
+                      <input
+                        className="otp-input"
+                        type="text"
+                        value={data}
+                        maxLength={1}
+                        onChange={(e) => handleInputChange(e, i)}
+                        onFocus={(e) => e.target.select()}
                       />
-                    </Grid>
-                  ))}
-                </Grid>
-                <Box display={"flex"} justifyContent={"end"} mt={"-12px"} sx={{ cursor: "pointer" }}>
+                    );
+                  })}
+                </div>
+                <Box
+                  display={"flex"}
+                  justifyContent={"start"}
+                  mt={"-12px"}
+                >
+                  <Typography
+                    sx={{fontSize: "13px", color: "grey"}}
+                    mt={0.7}
+                    mb={-0.8}
+                  >
+                    Didn't receive OTP? &nbsp;
+                  </Typography>
                   <Typography
                     onClick={() => navigate("/forgot-password")}
                     className="forgot-password"
-                    mt={0.7} mb={-0.8}
+                    mt={0.7}
+                    mb={-0.8}
+                    sx={{ cursor: "pointer" }}
                   >
-                    Resend OTP?
+                    Resend
                   </Typography>
+                </Box>
+
+                <Box className="send-otp-buttons">
+                  <Button onClick={e => setOtp([...otp.map(e => "")])} variant="outlined">
+                    Clear
+                  </Button>
+                  <Button onClick={() => navigate("/")} variant="contained">
+                    Submit
+                  </Button>
                 </Box>
                 <Box>
                   <TextField

@@ -14,9 +14,11 @@ import {
 import StudentBoy from "../assets/icon/student_boy.png";
 const gender = [{ value: "Male" }, { value: "Female" }];
 import Layout from "../components/Layout";
+import { useNavigate } from "react-router-dom";
 import Model from "../components/Model";
 
 const Profile = ({ selected, setSelected }) => {
+  const navigate = useNavigate();
   const [openEdit, setOpenEdit] = React.useState(false);
   const [openResetPass, setOpenResetPass] = React.useState(false);
   const [showOldPassword, setShowOldPassword] = useState(false);
@@ -293,17 +295,7 @@ const Profile = ({ selected, setSelected }) => {
                 </h5>
               </Box>
             </Tooltip>
-            <Tooltip
-              title="Click here to View Students Attendance"
-              placement="top"
-              arrow
-            >
-              <Box align="center">
-                <Button variant="outlined" size="small">
-                  View Attendance
-                </Button>
-              </Box>
-            </Tooltip>
+            
             <Model
               open={openResetPass}
               setOpen={setOpenResetPass}
@@ -362,6 +354,17 @@ const Profile = ({ selected, setSelected }) => {
                 </Grid>
               </Grid>
             </Model>
+            <Tooltip
+              title="Click here to View Students Attendance"
+              placement="top"
+              arrow
+            >
+              <Box align="center">
+                <Button variant="outlined" size="small" onClick={() => navigate("/view-attendance")}>
+                  View Attendance
+                </Button>
+              </Box>
+            </Tooltip>
           </Box>
         </Box>
       </Box>

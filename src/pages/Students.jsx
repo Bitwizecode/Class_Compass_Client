@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Layout from "../components/Layout";
 import {
   Box,
@@ -11,11 +11,19 @@ import {
   TableRow,
   TableHead,
   Paper,
-  Checkbox,
+  TextField,
+  Tooltip
 } from "@mui/material";
-import {useNavigate} from "react-router-dom"
+import Model from "../components/Model";
+import { useNavigate } from "react-router-dom";
+import Edit from "../assets/icon/edit.png";
 
 const Students = ({ selected, setSelected }) => {
+  const fileInputRef = useRef(null);
+  const handleOpenFile = () => {
+    fileInputRef.current.click();
+  };
+  const [openAddStudents, setOpenAddStudents] = React.useState(false);
   const navigate = useNavigate();
   function createData(name, calories, fat, carbs, protein) {
     return { name, calories, fat, carbs, protein };
@@ -37,17 +45,82 @@ const Students = ({ selected, setSelected }) => {
     <Layout isBottomNavbar selected={selected} setSelected={setSelected}>
       <Box mt={9} width={"100%"} mb={9}>
         <Box width={"95%"} m={"auto"}>
-          <Typography variant="h5" sx={{ fontWeight: 550, mb: "7px" }}>
-            My Students
+          <Typography variant="h6" sx={{ fontWeight: 550, mb: "7px"}}>
+            Class - 2 / B
           </Typography>
         </Box>
-        <Box width={"95%"} m={"auto"} mb={"-6px"} display={"flex"} justifyContent={"space-between"}>
+        <Box
+          width={"95%"}
+          m={"auto"}
+          mb={"-6px"}
+          display={"flex"}
+          justifyContent={"space-between"}
+        >
           <Button variant="outlined" size="small">
             No of Students : 102
           </Button>
-          <Button variant="contained" size="small">
+          <Button
+            variant="contained"
+            size="small"
+            onClick={() => {
+              setOpenAddStudents(true);
+            }}
+          >
             Add Students
           </Button>
+          <Model
+            open={openAddStudents}
+            setOpen={setOpenAddStudents}
+            headerText={"Add Student"}
+            submitText={"Submit"}
+            subHeaderText={"Fill the Student Details"}
+            onSubmit={() => {
+              setOpenAddStudents(false);
+            }}
+          >
+            <Box display={"flex"} justifyContent={"center"} mt={2} mb={1.3}>
+             <Tooltip title="Add Student Photo" placement="top" arrow>
+              <img className="students-profile-pic-add" src={Edit} alt="" onClick={handleOpenFile}/>
+              <input
+                type="file"
+                ref={fileInputRef}
+                style={{ display: "none" }}
+                onChange={() => {}}
+              />
+            </Tooltip>
+            </Box>
+            <Box
+              display={"flex"}
+              flexDirection={"column"}
+              gap={1.2}
+              mb={2}
+            >
+              <Box>
+                <TextField
+                  required
+                  id="outlined-required"
+                  label="Student Name"
+                  fullWidth
+                />
+              </Box>
+              <Box>
+                <TextField
+                  required
+                  id="outlined-required"
+                  label="Roll No"
+                  fullWidth
+                />
+              </Box>
+              <Box>
+                <TextField
+                  required
+                  id="outlined-required"
+                  label="Student Phone/Email"
+                  fullWidth
+                />
+              </Box>
+            </Box>
+          </Model>
         </Box>
         <Box
           width={"100%"}
@@ -83,9 +156,14 @@ const Students = ({ selected, setSelected }) => {
                       </Box>
                     </TableCell>
                     <TableCell align="left">{row.calories}</TableCell>
-                    
+
                     <TableCell align="center">
-                      <Button variant="contained" size="small" sx={{fontSize: "11px"}} onClick={()=>navigate("/profile")}>
+                      <Button
+                        variant="contained"
+                        size="small"
+                        sx={{ fontSize: "11px" }}
+                        onClick={() => navigate("/profile")}
+                      >
                         View Details
                       </Button>
                     </TableCell>
