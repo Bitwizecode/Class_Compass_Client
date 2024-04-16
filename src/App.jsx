@@ -13,6 +13,7 @@ import Signup from "./pages/Signup";
 import ForgotPassword from "./pages/ForgotPassword";
 import Message from "./pages/Message";
 import Attendance from "./pages/Attendance"
+import SchoolGallery from "./pages/SchoolGallery";
 function App() {
   const [selected, setSelected] = useState("/");
   return (
@@ -61,6 +62,10 @@ function App() {
          <Route
           path="/forgot-password"
           element={<ForgotPassword/>}
+        />
+         <Route
+          path="/school-gallery"
+          element={<SchoolGallery/>}
         />
 
         <Route path="/login" element={<Login />} />

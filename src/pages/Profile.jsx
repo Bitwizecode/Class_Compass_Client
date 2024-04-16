@@ -273,7 +273,7 @@ const Profile = ({ selected, setSelected }) => {
                 </Box>
               </Tooltip>
             </Box>
-            <Tooltip
+            {/* <Tooltip
               title="If you want to change the password, Click here"
               placement="top"
               arrow
@@ -294,7 +294,7 @@ const Profile = ({ selected, setSelected }) => {
                   Reset Password
                 </h5>
               </Box>
-            </Tooltip>
+            </Tooltip> */}
             
             <Model
               open={openResetPass}
@@ -359,7 +359,7 @@ const Profile = ({ selected, setSelected }) => {
               placement="top"
               arrow
             >
-              <Box align="center">
+              <Box mb={2} align="center">
                 <Button variant="outlined" size="small" onClick={() => navigate("/view-attendance")}>
                   View Attendance
                 </Button>

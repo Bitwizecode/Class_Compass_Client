@@ -31,7 +31,7 @@ const Home = ({ selected, setSelected }) => {
     { icon: Syllabus, text: "Syllabus",path:"/attendance" },
     { icon: Results, text: "Exam Results",path:"/attendance" },
     { icon: ExamTT2, text: "Exam Time Table",path:"/attendance" },
-    { icon: SchoolGallery, text: "School Gallery",path:"/attendance" },
+    { icon: SchoolGallery, text: "School Gallery",path:"/school-gallery" },
   ];
   return (
     <Layout isBottomNavbar selected={selected} setSelected={setSelected}>
@@ -84,7 +84,10 @@ const Home = ({ selected, setSelected }) => {
             </Typography>
           </Box>
           <Box width={"100%"} textAlign={"right"}>
-            <Button variant="outlined" size="small">
+            <Button onClick={()=>{
+              navigate("/attendance");
+              setSelected("/attendance")
+            }} variant="outlined" size="small">
               Take Attendance
             </Button>
           </Box>

@@ -23,7 +23,7 @@ const Message = ({ selected, setSelected }) => {
             display={"flex"}
             justifyContent={"right"}
           >
-            {[0, 1, 0, 1, 0, 1, 0, 1].map((item, i) => (
+            {[0, 0, 0, 0, 0, 0, 0].map( (item, i) => (
               <Box
                 key={i}
                 display={"flex"}
