@@ -16,6 +16,7 @@ import Attendance from "./pages/Attendance";
 import SchoolGallery from "./pages/SchoolGallery";
 import Class from "./pages/Class";
 import Division from "./pages/Division";
+import Teachers from "./pages/Teachers";
 function App() {
   const [selected, setSelected] = useState("/");
   return (
@@ -40,6 +41,10 @@ function App() {
         <Route
           path="/division"
           element={<Division selected={selected} setSelected={setSelected} />}
+        />
+        <Route
+          path="/teachers"
+          element={<Teachers selected={selected} setSelected={setSelected} />}
         />
         <Route
           path="/attendance"

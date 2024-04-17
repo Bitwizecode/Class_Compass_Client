@@ -61,7 +61,7 @@ const Division = ({ selected, setSelected }) => {
               variant="h5"
               sx={{ fontWeight: 550, color: "#1976d2", ml: "10px", mb: "10px" }}
             >
-              Division
+              1 <sup>st</sup>
             </Typography>
           </Box>
           <TableContainer

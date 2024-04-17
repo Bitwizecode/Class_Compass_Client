@@ -1,8 +1,9 @@
-import React, { useRef } from "react";
+import React, { useState, useRef } from "react";
 import Layout from "../components/Layout";
 import {
   Box,
   Button,
+  Typography,
   Table,
   TableBody,
   TableCell,
@@ -17,26 +18,37 @@ import Model from "../components/Model";
 import { useNavigate } from "react-router-dom";
 import Edit from "../assets/icon/edit.png";
 
-const Students = ({ selected, setSelected }) => {
+const Teachers = ({ selected, setSelected }) => {
   const fileInputRef = useRef(null);
   const handleOpenFile = () => {
     fileInputRef.current.click();
   };
   const [openAddStudents, setOpenAddStudents] = React.useState(false);
   const navigate = useNavigate();
+  function createData(name, calories, fat, carbs, protein) {
+    return { name, calories, fat, carbs, protein };
+  }
 
   const rows = [
-    { name: "Ravi Gupta", class: "1-A" },
-    { name: "Ravi Gupta", class: "1-A" },
-    { name: "Ravi Gupta", class: "1-A" },
-    { name: "Ravi Gupta", class: "1-A" },
-    { name: "Ravi Gupta", class: "1-A" },
-    { name: "Ravi Gupta", class: "1-A" },
+    createData("Frozen yoghurt", 159),
+    createData("Ice cream sandwich", 237),
+    createData("Eclair", 262),
+    createData("Cupcake", 305),
+    createData("Gingerbread", 356),
+    createData("Frozen yoghurt", 159),
+    createData("Ice cream sandwich", 237),
+    createData("Eclair", 262),
+    createData("Cupcake", 305),
+    createData("Gingerbread", 356),
   ];
-
   return (
     <Layout isBottomNavbar selected={selected} setSelected={setSelected}>
-      <Box mt={10} width={"100%"} mb={9}>
+      <Box mt={9} width={"100%"} mb={9}>
+        <Box width={"95%"} m={"auto"}>
+          <Typography variant="h6" sx={{ fontWeight: 550, mb: "7px" }}>
+            Class - 2 / B
+          </Typography>
+        </Box>
         <Box
           width={"95%"}
           m={"auto"}
@@ -45,7 +57,7 @@ const Students = ({ selected, setSelected }) => {
           justifyContent={"space-between"}
         >
           <Button variant="outlined" size="small">
-            No of Teachers : 102
+            No of Students : 102
           </Button>
           <Button
             variant="contained"
@@ -54,14 +66,14 @@ const Students = ({ selected, setSelected }) => {
               setOpenAddStudents(true);
             }}
           >
-            Add Teacher
+            Add Students
           </Button>
           <Model
             open={openAddStudents}
             setOpen={setOpenAddStudents}
-            headerText={"Add Teacher"}
+            headerText={"Add Student"}
             submitText={"Submit"}
-            subHeaderText={"Fill the Teacher Details"}
+            subHeaderText={"Fill the Student Details"}
             onSubmit={() => {
               setOpenAddStudents(false);
             }}
@@ -87,7 +99,7 @@ const Students = ({ selected, setSelected }) => {
                 <TextField
                   required
                   id="outlined-required"
-                  label="Teacher Name"
+                  label="Student Name"
                   fullWidth
                 />
               </Box>
@@ -95,7 +107,7 @@ const Students = ({ selected, setSelected }) => {
                 <TextField
                   required
                   id="outlined-required"
-                  label="Class"
+                  label="Roll No"
                   fullWidth
                 />
               </Box>
@@ -126,8 +138,8 @@ const Students = ({ selected, setSelected }) => {
               <TableHead>
                 <TableRow>
                   <TableCell sx={{ pl: "25px" }}>Name</TableCell>
-                  <TableCell align="left">Class</TableCell>
-                  <TableCell align="center"></TableCell>
+                  <TableCell align="left">Roll No</TableCell>
+                  <TableCell align="center">View Details</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -143,7 +155,9 @@ const Students = ({ selected, setSelected }) => {
                         {row.name}
                       </Box>
                     </TableCell>
-                    <TableCell align="left">{row.class}</TableCell>
+                    <TableCell contentEditable align="left">
+                      {row.calories}
+                    </TableCell>
 
                     <TableCell align="center">
                       <Button
@@ -166,4 +180,4 @@ const Students = ({ selected, setSelected }) => {
   );
 };
 
-export default Students;
+export default Teachers;
