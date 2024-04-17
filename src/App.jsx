@@ -12,8 +12,10 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import ForgotPassword from "./pages/ForgotPassword";
 import Message from "./pages/Message";
-import Attendance from "./pages/Attendance"
+import Attendance from "./pages/Attendance";
 import SchoolGallery from "./pages/SchoolGallery";
+import Class from "./pages/Class";
+import Division from "./pages/Division";
 function App() {
   const [selected, setSelected] = useState("/");
   return (
@@ -30,6 +32,14 @@ function App() {
         <Route
           path="/students"
           element={<Students selected={selected} setSelected={setSelected} />}
+        />
+        <Route
+          path="/class"
+          element={<Class selected={selected} setSelected={setSelected} />}
+        />
+        <Route
+          path="/division"
+          element={<Division selected={selected} setSelected={setSelected} />}
         />
         <Route
           path="/attendance"
@@ -59,14 +69,8 @@ function App() {
           path="/profile"
           element={<Profile selected={selected} setSelected={setSelected} />}
         />
-         <Route
-          path="/forgot-password"
-          element={<ForgotPassword/>}
-        />
-         <Route
-          path="/school-gallery"
-          element={<SchoolGallery/>}
-        />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/school-gallery" element={<SchoolGallery />} />
 
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<Signup />} />

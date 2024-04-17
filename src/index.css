@@ -359,7 +359,7 @@ input[type="number"]::-webkit-outer-spin-button {
   gap: 10px;
 }
 
-.otp-input{
+.otp-input {
   width: 55px;
   height: 55px;
   text-align: center;
@@ -368,7 +368,7 @@ input[type="number"]::-webkit-outer-spin-button {
   border: 1px solid rgb(186, 185, 185);
   font-size: 16px;
 
-  &:focus{
+  &:focus {
     border: 1px solid #1976d2;
   }
 }
@@ -390,4 +390,13 @@ input[type="number"]::-webkit-outer-spin-button {
   padding: 8px;
   background: #1976d2;
   cursor: pointer;
+}
+
+.clickable-cell {
+  cursor: pointer;
+}
+
+.clickable-cell:hover {
+  background-color: #1976d2;
+  color: #fff;
 }

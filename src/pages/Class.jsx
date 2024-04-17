@@ -18,7 +18,7 @@ import Model from "../components/Model";
 import { useNavigate } from "react-router-dom";
 import Edit from "../assets/icon/edit.png";
 
-const Students = ({ selected, setSelected }) => {
+const Class = ({ selected, setSelected }) => {
   const fileInputRef = useRef(null);
   const handleOpenFile = () => {
     fileInputRef.current.click();
@@ -30,25 +30,23 @@ const Students = ({ selected, setSelected }) => {
   }
 
   const rows = [
-    createData("Frozen yoghurt", 159),
-    createData("Ice cream sandwich", 237),
-    createData("Eclair", 262),
-    createData("Cupcake", 305),
-    createData("Gingerbread", 356),
-    createData("Frozen yoghurt", 159),
-    createData("Ice cream sandwich", 237),
-    createData("Eclair", 262),
-    createData("Cupcake", 305),
-    createData("Gingerbread", 356),
+    "Nursary",
+    "Jr Kg",
+    "Sr Kg",
+    "I",
+    "II",
+    "III",
+    "IV",
+    "V",
+    "VI",
+    "VII",
+    "VIII",
+    "IX",
+    "X",
   ];
   return (
     <Layout isBottomNavbar selected={selected} setSelected={setSelected}>
       <Box mt={9} width={"100%"} mb={9}>
-        <Box width={"95%"} m={"auto"}>
-          <Typography variant="h6" sx={{ fontWeight: 550, mb: "7px" }}>
-            Class - 2 / B
-          </Typography>
-        </Box>
         <Box
           width={"95%"}
           m={"auto"}
@@ -56,18 +54,6 @@ const Students = ({ selected, setSelected }) => {
           display={"flex"}
           justifyContent={"space-between"}
         >
-          <Button variant="outlined" size="small">
-            No of Students : 102
-          </Button>
-          <Button
-            variant="contained"
-            size="small"
-            onClick={() => {
-              setOpenAddStudents(true);
-            }}
-          >
-            Add Students
-          </Button>
           <Model
             open={openAddStudents}
             setOpen={setOpenAddStudents}
@@ -130,44 +116,32 @@ const Students = ({ selected, setSelected }) => {
           flexDirection={"column"}
           alignItems={"center"}
         >
+          <Box width={"95%"}>
+            <Typography
+              variant="h5"
+              sx={{ fontWeight: 550, color: "#1976d2", ml: "10px", mb: "10px" }}
+            >
+              Class
+            </Typography>
+          </Box>
           <TableContainer
             sx={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px", width: "95%" }}
             component={Paper}
           >
             <Table aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell sx={{ pl: "25px" }}>Name</TableCell>
-                  <TableCell align="left">Roll No</TableCell>
-                  <TableCell align="center">View Details</TableCell>
-                </TableRow>
-              </TableHead>
+              <TableHead></TableHead>
               <TableBody>
                 {rows.map((row) => (
-                  <TableRow key={row.name}>
-                    <TableCell>
+                  <TableRow
+                    key={row}
+                    onClick={() => {
+                      navigate("/division");
+                    }}
+                  >
+                    <TableCell className="clickable-cell">
                       <Box display={"flex"} alignItems={"center"} gap={"10px"}>
-                        <img
-                          width={"50px"}
-                          src="https://cdn-icons-png.flaticon.com/128/2641/2641333.png"
-                          alt=""
-                        />
-                        {row.name}
+                        <Typography variant="h6">{row}</Typography>
                       </Box>
-                    </TableCell>
-                    <TableCell contentEditable align="left">
-                      {row.calories}
-                    </TableCell>
-
-                    <TableCell align="center">
-                      <Button
-                        variant="contained"
-                        size="small"
-                        sx={{ fontSize: "11px" }}
-                        onClick={() => navigate("/profile")}
-                      >
-                        View Details
-                      </Button>
                     </TableCell>
                   </TableRow>
                 ))}
@@ -180,4 +154,4 @@ const Students = ({ selected, setSelected }) => {
   );
 };
 
-export default Students;
+export default Class;
