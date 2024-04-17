@@ -25,7 +25,7 @@ const Home = ({ selected, setSelected }) => {
   const items = [
     { icon: Attendance3, text: "Student Attendance",path:"/attendance" },
     { icon: HomeWork3, text: "HomeWork",path:"/attendance" },
-    { icon: Timetable2, text: "Time Table",path:"/attendance" },
+    { icon: Timetable2, text: "Time Table",path:"/time-table" },
     { icon: Todo, text: "Todo",path:"/attendance" },
     { icon: Leave3, text: "Student's Leave",path:"/attendance" },
     { icon: Syllabus, text: "Syllabus",path:"/attendance" },
