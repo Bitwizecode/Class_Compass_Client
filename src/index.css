@@ -400,6 +400,9 @@ input[type="number"]::-webkit-outer-spin-button {
   
 }
 
+.table-name {
+  font-size: 17px !important;
+}
 .table-name:nth-child(6) {
   background-color: rgb(231, 229, 229) !important;
 }
@@ -407,4 +410,11 @@ input[type="number"]::-webkit-outer-spin-button {
   font-size: 16px;
   font-weight: 500;
   background-color: rgb(231, 229, 229) !important;
+}
+
+.exam-time-table-head {
+  font-size:19px !important;
+  background-color: #1976d2;
+  color: #fff !important;
+  text-align: center !important;
 }

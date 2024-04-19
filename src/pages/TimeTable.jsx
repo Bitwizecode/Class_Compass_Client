@@ -109,7 +109,7 @@ function TimeTable() {
       justifyContent={"center"}
       flexDirection={"column"}
       alignItems={"center"}
-      height={"100vh"}
+      // height={"100vh"}
     >
       <Box>
         <Typography variant="h4" fontWeight={650} p={2}>
@@ -146,10 +146,10 @@ function TimeTable() {
                 {row.subjects.map((sub) => {
                   console.log(sub);
                   return (
-                    <TableCell align="center" className="table-name">
+                    <TableCell align="center" className="table-name" style={{ color: sub.name === 'Recess' ? 'red' : 'inherit' , fontWeight: sub.name === 'Recess' ? '550' : 'inherit' }}>
                       <Box>
                         {sub.name}
-                        <Typography fontSize={"10px"}>{sub.timing}</Typography>
+                        <Typography fontSize={"11px"}>{sub.timing}</Typography>
                       </Box>
                     </TableCell>
                   );

@@ -15,6 +15,7 @@ import Message from "./pages/Message";
 import Attendance from "./pages/Attendance"
 import SchoolGallery from "./pages/SchoolGallery";
 import TimeTable from "./pages/TimeTable";
+import ExamTimeTable from "./pages/ExamTimeTable";
 function App() {
   const [selected, setSelected] = useState("/");
   return (
@@ -71,6 +72,10 @@ function App() {
          <Route
           path="/time-table"
           element={<TimeTable/>}
+        />
+         <Route
+          path="/exam-time-table"
+          element={<ExamTimeTable/>}
         />
 
         <Route path="/login" element={<Login />} />
