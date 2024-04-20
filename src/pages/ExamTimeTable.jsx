@@ -13,10 +13,12 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import Layout from "../components/Layout";
+import Model from "../components/Model";
 
-
-function ExamTimeTable({selected, setSelected}) {
+function ExamTimeTable({ selected, setSelected }) {
   const navigate = useNavigate();
+  const [openEditExamTimeTable, setOpenEditExamTimeTable] =
+    React.useState(false);
   const rows = [
     {
       day: "23 March 2024",
@@ -73,13 +75,14 @@ function ExamTimeTable({selected, setSelected}) {
   ];
   return (
     <Box
-      width={"100%"}
+      maxWidth={"1000px"}
+      m={"0 auto"}
       display={"flex"}
       mt={"20px"}
       justifyContent={"center"}
       flexDirection={"column"}
       alignItems={"center"}
-    //   height={"100vh"}
+      height={"100vh"}
     >
       <Box>
         <Typography variant="h5" fontWeight={650} p={2}>
@@ -93,7 +96,7 @@ function ExamTimeTable({selected, setSelected}) {
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell className="exam-time-table-head" align="left">
+              <TableCell className="exam-time-table-head"  align="left">
                 Date
               </TableCell>
               <TableCell className="exam-time-table-head">Subject</TableCell>
@@ -146,11 +149,23 @@ function ExamTimeTable({selected, setSelected}) {
           variant="contained"
           size="small"
           sx={{ fontSize: "14px" }}
-          onClick={() => navigate("/profile")}
+          onClick={() => {
+            setOpenEditExamTimeTable(true);
+          }}
         >
           Edit Time-Table
         </Button>
       </Box>
+      <Model
+        open={openEditExamTimeTable}
+        setOpen={setOpenEditExamTimeTable}
+        headerText={"Edit Time-Table"}
+        submitText={"Update"}
+        subHeaderText={"Update or Edit the Time-Table"}
+        onSubmit={() => {
+          setOpenEditExamTimeTable(false);
+        }}
+      ></Model>
     </Box>
   );
 }

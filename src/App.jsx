@@ -9,12 +9,14 @@ import Notification from "./pages/Notification";
 import Profile from "./pages/Profile";
 import Students from "./pages/Students";
 import Login from "./pages/Login";
+import Class from "./pages/Class";
+import Teachers from "./pages/Teachers";
+import Division from "./pages/Division";
 import Signup from "./pages/Signup";
 import ForgotPassword from "./pages/ForgotPassword";
 import Message from "./pages/Message";
-import Attendance from "./pages/Attendance"
+import Attendance from "./pages/Attendance";
 import SchoolGallery from "./pages/SchoolGallery";
-import TimeTable from "./pages/TimeTable";
 import ExamTimeTable from "./pages/ExamTimeTable";
 function App() {
   const [selected, setSelected] = useState("/");
@@ -32,6 +34,18 @@ function App() {
         <Route
           path="/students"
           element={<Students selected={selected} setSelected={setSelected} />}
+        />
+        <Route
+          path="/class"
+          element={<Class selected={selected} setSelected={setSelected} />}
+        />
+        <Route
+          path="/division"
+          element={<Division selected={selected} setSelected={setSelected} />}
+        />
+        <Route
+          path="/teachers"
+          element={<Teachers selected={selected} setSelected={setSelected} />}
         />
         <Route
           path="/attendance"
@@ -69,11 +83,7 @@ function App() {
           path="/school-gallery"
           element={<SchoolGallery/>}
         />
-         <Route
-          path="/time-table"
-          element={<TimeTable/>}
-        />
-         <Route
+        <Route
           path="/exam-time-table"
           element={<ExamTimeTable/>}
         />

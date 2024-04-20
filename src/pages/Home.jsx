@@ -9,7 +9,7 @@ import HomeWork3 from "../assets/icon/homework2.gif";
 import SchoolGallery from "../assets/icon/school_gallery.gif";
 import Attendance3 from "../assets/icon/attendance3.gif";
 import Todo from "../assets/icon/todo1.gif";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   Typography,
@@ -22,6 +22,18 @@ import {
 
 const Home = ({ selected, setSelected }) => {
   const navigate = useNavigate();
+  // const items = [
+  //   { icon: Attendance3, text: "Student Attendance",path:"/attendance" },
+  //   { icon: HomeWork3, text: "HomeWork",path:"/attendance" },
+  //   { icon: Timetable2, text: "Time Table",path:"/attendance" },
+  //   { icon: Todo, text: "Todo",path:"/attendance" },
+  //   { icon: Leave3, text: "Student's Leave",path:"/attendance" },
+  //   { icon: Syllabus, text: "Syllabus",path:"/attendance" },
+  //   { icon: Results, text: "Exam Results",path:"/attendance" },
+  //   { icon: ExamTT2, text: "Exam Time Table",path:"/attendance" },
+  //   { icon: SchoolGallery, text: "School Gallery",path:"/school-gallery" },
+  // ];
+
   const items = [
     { icon: Attendance3, text: "Student Attendance",path:"/attendance" },
     { icon: HomeWork3, text: "HomeWork",path:"/attendance" },
@@ -32,6 +44,9 @@ const Home = ({ selected, setSelected }) => {
     { icon: Results, text: "Exam Results",path:"/attendance" },
     { icon: ExamTT2, text: "Exam Time Table",path:"/exam-time-table" },
     { icon: SchoolGallery, text: "School Gallery",path:"/school-gallery" },
+    { icon: Attendance3, text: "Class", path: "/class" },
+    { icon: HomeWork3, text: "Teachers", path: "/teachers" },
+    { icon: Timetable2, text: "Drivers", path: "/attendance" },
   ];
   return (
     <Layout isBottomNavbar selected={selected} setSelected={setSelected}>
@@ -84,36 +99,53 @@ const Home = ({ selected, setSelected }) => {
             </Typography>
           </Box>
           <Box width={"100%"} textAlign={"right"}>
-            <Button onClick={()=>{
-              navigate("/attendance");
-              setSelected("/attendance")
-            }} variant="outlined" size="small">
+            <Button
+              onClick={() => {
+                navigate("/attendance");
+                setSelected("/attendance");
+              }}
+              variant="outlined"
+              size="small"
+            >
               Take Attendance
             </Button>
           </Box>
         </Box>
         <Box display={"flex"} justifyContent={"center"}>
-        <Grid  width={["100%", "50%", "50%"]} mt={"20px"} padding={"0 8px"} container>
-          
-          {items.map((item, index) => (
-            <Grid spacing={1} onClick={()=>{navigate(item.path)}}  display={"flex"} justifyContent={"center"} alignItems={"center"} item xs={4} key={index}>
-              <Box className="home-items" m={"10px"} >
-                <Box className="home-item-icon">
-                  <img width={"60px"} src={item.icon} alt="" />
+          <Grid
+            width={["100%", "50%", "50%"]}
+            mt={"20px"}
+            padding={"0 8px"}
+            container
+          >
+            {items.map((item, index) => (
+              <Grid
+                spacing={1}
+                onClick={() => {
+                  navigate(item.path);
+                }}
+                display={"flex"}
+                justifyContent={"center"}
+                alignItems={"center"}
+                item
+                xs={4}
+                key={index}
+              >
+                <Box className="home-items" m={"10px"}>
+                  <Box className="home-item-icon">
+                    <img width={"60px"} src={item.icon} alt="" />
+                  </Box>
+                  <Typography
+                    className="home-item-text"
+                    sx={{ lineHeight: 1.1, mt: "10px", fontSize: "14px" }}
+                  >
+                    {item.text}
+                  </Typography>
                 </Box>
-                <Typography
-                  className="home-item-text"
-                  sx={{ lineHeight: 1.1, mt: "10px", fontSize: "14px" }}
-                >
-                  {item.text}
-                </Typography>
-              </Box>
-            </Grid>
-          ))}
-        </Grid>
+              </Grid>
+            ))}
+          </Grid>
         </Box>
-
-        
       </Box>
     </Layout>
   );
