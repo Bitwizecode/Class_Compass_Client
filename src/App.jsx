@@ -18,6 +18,8 @@ import Message from "./pages/Message";
 import Attendance from "./pages/Attendance";
 import SchoolGallery from "./pages/SchoolGallery";
 import ExamTimeTable from "./pages/ExamTimeTable";
+import TimeTable from "./pages/TimeTable";
+import Drivers from "./pages/Drivers";
 function App() {
   const [selected, setSelected] = useState("/");
   return (
@@ -75,19 +77,12 @@ function App() {
           path="/profile"
           element={<Profile selected={selected} setSelected={setSelected} />}
         />
-         <Route
-          path="/forgot-password"
-          element={<ForgotPassword/>}
-        />
-         <Route
-          path="/school-gallery"
-          element={<SchoolGallery/>}
-        />
-        <Route
-          path="/exam-time-table"
-          element={<ExamTimeTable/>}
-        />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/school-gallery" element={<SchoolGallery />} />
+        <Route path="/exam-time-table" element={<ExamTimeTable />} />
 
+        <Route path="/time-table" element={<TimeTable />} />
+        <Route path="/drivers" element={<Drivers />} />
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<Signup />} />
       </Routes>

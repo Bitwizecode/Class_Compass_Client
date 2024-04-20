@@ -10,6 +10,7 @@ import SchoolGallery from "../assets/icon/school_gallery.gif";
 import Attendance3 from "../assets/icon/attendance3.gif";
 import Todo from "../assets/icon/todo1.gif";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import {
   Box,
   Typography,
@@ -34,19 +35,24 @@ const Home = ({ selected, setSelected }) => {
   //   { icon: SchoolGallery, text: "School Gallery",path:"/school-gallery" },
   // ];
 
+  const store = useSelector((store) => {
+    return store;
+  });
+
+  console.log("store", store);
   const items = [
-    { icon: Attendance3, text: "Student Attendance",path:"/attendance" },
-    { icon: HomeWork3, text: "HomeWork",path:"/attendance" },
-    { icon: Timetable2, text: "Time Table",path:"/time-table" },
-    { icon: Todo, text: "Todo",path:"/attendance" },
-    { icon: Leave3, text: "Student's Leave",path:"/attendance" },
-    { icon: Syllabus, text: "Syllabus",path:"/attendance" },
-    { icon: Results, text: "Exam Results",path:"/attendance" },
-    { icon: ExamTT2, text: "Exam Time Table",path:"/exam-time-table" },
-    { icon: SchoolGallery, text: "School Gallery",path:"/school-gallery" },
+    { icon: Attendance3, text: "Student Attendance", path: "/attendance" },
+    { icon: HomeWork3, text: "HomeWork", path: "/attendance" },
+    { icon: Timetable2, text: "Time Table", path: "/time-table" },
+    { icon: Todo, text: "Todo", path: "/attendance" },
+    { icon: Leave3, text: "Student's Leave", path: "/attendance" },
+    { icon: Syllabus, text: "Syllabus", path: "/attendance" },
+    { icon: Results, text: "Exam Results", path: "/attendance" },
+    { icon: ExamTT2, text: "Exam Time Table", path: "/exam-time-table" },
+    { icon: SchoolGallery, text: "School Gallery", path: "/school-gallery" },
     { icon: Attendance3, text: "Class", path: "/class" },
     { icon: HomeWork3, text: "Teachers", path: "/teachers" },
-    { icon: Timetable2, text: "Drivers", path: "/attendance" },
+    { icon: Timetable2, text: "Drivers", path: "/drivers" },
   ];
   return (
     <Layout isBottomNavbar selected={selected} setSelected={setSelected}>

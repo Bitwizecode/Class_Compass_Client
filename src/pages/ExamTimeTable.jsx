@@ -74,99 +74,103 @@ function ExamTimeTable({ selected, setSelected }) {
     },
   ];
   return (
-    <Box
-      maxWidth={"1000px"}
-      m={"0 auto"}
-      display={"flex"}
-      mt={"20px"}
-      justifyContent={"center"}
-      flexDirection={"column"}
-      alignItems={"center"}
-      height={"100vh"}
-    >
-      <Box>
-        <Typography variant="h5" fontWeight={650} p={2}>
-          2<sup>nd</sup> Semester Exam
-        </Typography>
-      </Box>
-      <TableContainer
-        sx={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px", width: "95%" }}
-        component={Paper}
+    <Layout isBack title={"Exam Time Table"}>
+      <Box
+        maxWidth={"1000px"}
+        m={"0 auto"}
+        display={"flex"}
+        mt={"6rem"}
+        justifyContent={"center"}
+        flexDirection={"column"}
+        alignItems={"center"}
+        // height={"100vh"}
       >
-        <Table aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell className="exam-time-table-head"  align="left">
-                Date
-              </TableCell>
-              <TableCell className="exam-time-table-head">Subject</TableCell>
-              <TableCell className="exam-time-table-head">Time</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map((row) => (
-              <TableRow key={row.name}>
-                <TableCell align="center" className="table-name">
-                  {row.day}
-                </TableCell>
-                {row.subjects.map((sub) => {
-                  console.log(sub);
-                  return (
-                    <TableCell
-                      align="center"
-                      className="table-name"
-                      style={{
-                        color: sub.name === "Holiday" ? "red" : "inherit",
-                        fontWeight: sub.name === "Holiday" ? "650" : "inherit",
-                      }}
-                    >
-                      <Box>{sub.name}</Box>
-                    </TableCell>
-                  );
-                })}
-                {row.subjects.map((sub) => {
-                  console.log(sub);
-                  return (
-                    <TableCell
-                      align="center"
-                      className="table-name"
-                      style={{
-                        color: sub.name === "Holiday" ? "red" : "inherit",
-                        fontWeight: sub.name === "Holiday" ? "650" : "inherit",
-                      }}
-                    >
-                      <Box>{sub.timing}</Box>
-                    </TableCell>
-                  );
-                })}
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <Box p={3}>
-        <Button
-          variant="contained"
-          size="small"
-          sx={{ fontSize: "14px" }}
-          onClick={() => {
-            setOpenEditExamTimeTable(true);
-          }}
+        <Box>
+          <Typography variant="h5" fontWeight={650} p={2}>
+            2<sup>nd</sup> Semester Exam
+          </Typography>
+        </Box>
+        <TableContainer
+          sx={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px", width: "95%" }}
+          component={Paper}
         >
-          Edit Time-Table
-        </Button>
+          <Table aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell className="exam-time-table-head" align="left">
+                  Date
+                </TableCell>
+                <TableCell className="exam-time-table-head">Subject</TableCell>
+                <TableCell className="exam-time-table-head">Time</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows.map((row) => (
+                <TableRow key={row.name}>
+                  <TableCell align="center" className="table-name">
+                    {row.day}
+                  </TableCell>
+                  {row.subjects.map((sub, i) => {
+                    console.log(sub);
+                    return (
+                      <TableCell
+                        key={i}
+                        align="center"
+                        className="table-name"
+                        style={{
+                          color: sub.name === "Holiday" ? "red" : "inherit",
+                          // fontWeight: sub.name === "Holiday" ? "650" : "inherit",
+                        }}
+                      >
+                        <Box>{sub.name}</Box>
+                      </TableCell>
+                    );
+                  })}
+                  {row.subjects.map((sub, i) => {
+                    console.log(sub);
+                    return (
+                      <TableCell
+                        key={i}
+                        align="center"
+                        className="table-name"
+                        style={{
+                          color: sub.name === "Holiday" ? "red" : "inherit",
+                          // fontWeight: sub.name === "Holiday" ? "650" : "inherit",
+                        }}
+                      >
+                        <Box>{sub.timing}</Box>
+                      </TableCell>
+                    );
+                  })}
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <Box p={3}>
+          <Button
+            variant="contained"
+            size="small"
+            sx={{ fontSize: "14px" }}
+            onClick={() => {
+              setOpenEditExamTimeTable(true);
+            }}
+          >
+            Edit Time-Table
+          </Button>
+        </Box>
+        <Model
+          open={openEditExamTimeTable}
+          setOpen={setOpenEditExamTimeTable}
+          headerText={"Edit Time-Table"}
+          submitText={"Update"}
+          subHeaderText={"Update or Edit the Time-Table"}
+          onSubmit={() => {
+            setOpenEditExamTimeTable(false);
+          }}
+        ></Model>
       </Box>
-      <Model
-        open={openEditExamTimeTable}
-        setOpen={setOpenEditExamTimeTable}
-        headerText={"Edit Time-Table"}
-        submitText={"Update"}
-        subHeaderText={"Update or Edit the Time-Table"}
-        onSubmit={() => {
-          setOpenEditExamTimeTable(false);
-        }}
-      ></Model>
-    </Box>
+    </Layout>
   );
 }
 
