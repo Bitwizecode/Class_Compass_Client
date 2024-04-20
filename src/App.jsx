@@ -18,7 +18,8 @@ import Message from "./pages/Message";
 import Attendance from "./pages/Attendance";
 import SchoolGallery from "./pages/SchoolGallery";
 import ExamTimeTable from "./pages/ExamTimeTable";
-import ExamResult from "./pages/ExamResult";
+import TimeTable from "./pages/TimeTable";
+import Drivers from "./pages/Drivers";
 function App() {
   const [selected, setSelected] = useState("/");
   return (
@@ -88,12 +89,12 @@ function App() {
           path="/exam-time-table"
           element={<ExamTimeTable/>}
         />
-        <Route
-          path="/exam-result"
-          element={<ExamResult/>}
+ <Route
+          path="/time-table"
+          element={<TimeTable/>}
         />
-
         <Route path="/login" element={<Login />} />
+        <Route path="/drivers" element={<Drivers />} />
         <Route path="/sign-up" element={<Signup />} />
       </Routes>
     </>
