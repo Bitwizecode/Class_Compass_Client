@@ -18,6 +18,7 @@ import Message from "./pages/Message";
 import Attendance from "./pages/Attendance";
 import SchoolGallery from "./pages/SchoolGallery";
 import ExamTimeTable from "./pages/ExamTimeTable";
+import ExamResult from "./pages/ExamResult";
 function App() {
   const [selected, setSelected] = useState("/");
   return (
@@ -86,6 +87,10 @@ function App() {
         <Route
           path="/exam-time-table"
           element={<ExamTimeTable/>}
+        />
+        <Route
+          path="/exam-result"
+          element={<ExamResult/>}
         />
 
         <Route path="/login" element={<Login />} />
