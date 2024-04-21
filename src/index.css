@@ -423,3 +423,25 @@ input[type="number"]::-webkit-outer-spin-button {
   background-color: #1976d2;
   color: #fff;
 }
+
+.css-1n4twyu-MuiInputBase-input-MuiOutlinedInput-input {
+  padding: 6.5px 5px !important;
+}
+
+.exam-tt-textfield {
+  @media (max-width: 440px) {
+    max-width: 90px;
+  }
+  @media (max-width: 348px) {
+    max-width: 60px;
+  }
+}
+
+.exam-tt-textfield-time {
+  @media (max-width: 440px) {
+    max-width: 80px;
+  }
+  @media (max-width: 348px) {
+    max-width: 50px;
+  }
+}
