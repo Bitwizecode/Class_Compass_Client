@@ -114,7 +114,7 @@ function TimeTable() {
         // height={"100vh"}
       >
         <Box>
-          <Typography variant="h4" fontWeight={650} p={2}>
+          <Typography variant="h5" fontWeight={650} p={2}>
             Time-Table
           </Typography>
         </Box>
