@@ -90,6 +90,7 @@ function ExamTimeTable({ selected, setSelected }) {
         alignItems={"center"}
       >
         <Box
+          className="toggle-main"
           width={"90%"}
           display={"flex"}
           p={2}
@@ -104,10 +105,11 @@ function ExamTimeTable({ selected, setSelected }) {
             className="toggle-button"
             sx={{ position: "absolute", right: 0 }}
           >
-            <Tooltip title={state ? "Edit Time-Table" : "View Time-Table"}>
-              <Switch onChange={() => setState(!state)} />
-            </Tooltip>
-          </FormGroup>
+              <FormControlLabel
+                control={<Switch onChange={() => setState(!state)} />}
+                label={state ? "View" : "Edit"}
+              />
+            </FormGroup>
         </Box>
         {!state ? (
           <TableContainer
@@ -121,7 +123,7 @@ function ExamTimeTable({ selected, setSelected }) {
                   <TableCell className="exam-time-table-head" align="left">
                     Date
                   </TableCell>
-                  <TableCell className="exam-time-table-head">
+                  <TableCell  className="exam-time-table-head">
                     Subject
                   </TableCell>
                   <TableCell className="exam-time-table-head">Time</TableCell>
@@ -131,7 +133,11 @@ function ExamTimeTable({ selected, setSelected }) {
                 {rows.map((row) => (
                   <TableRow key={row.name}>
                     <TableCell align="center" className="table-name">
-                      <TextField className="exam-tt-textfield" type="date" size="small" />
+                      <TextField
+                        className="exam-tt-textfield"
+                        type="date"
+                        size="small"
+                      />
                     </TableCell>
                     {row.subjects.map((sub) => {
                       return (
@@ -144,7 +150,11 @@ function ExamTimeTable({ selected, setSelected }) {
                               sub.name === "Holiday" ? "650" : "inherit",
                           }}
                         >
-                          <TextField className="exam-tt-textfield" placeholder="e.g English" size="small" />
+                          <TextField
+                            className="exam-tt-textfield"
+                            placeholder="e.g English"
+                            size="small"
+                          />
                         </TableCell>
                       );
                     })}
@@ -160,7 +170,11 @@ function ExamTimeTable({ selected, setSelected }) {
                               sub.name === "Holiday" ? "650" : "inherit",
                           }}
                         >
-                          <TextField className="exam-tt-textfield-time" type="time" size="small" />
+                          <TextField
+                            className="exam-tt-textfield-time"
+                            type="time"
+                            size="small"
+                          />
                         </TableCell>
                       );
                     })}
@@ -168,6 +182,7 @@ function ExamTimeTable({ selected, setSelected }) {
                 ))}
               </TableBody>
             </Table>
+                
           </TableContainer>
         ) : (
           <TableContainer
@@ -230,6 +245,19 @@ function ExamTimeTable({ selected, setSelected }) {
             </Table>
           </TableContainer>
         )}
+        <Box
+              sx={{
+                p: "0 18px",
+                display: "flex",
+                justifyContent: "center",
+                mt: "18px",
+                mb: "9px",
+              }}
+            >
+              <Button size="small" variant="contained">
+                Submit
+              </Button>
+            </Box>
       </Box>
     </Layout>
   );
