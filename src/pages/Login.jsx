@@ -9,15 +9,30 @@ import {
   Button,
 } from "@mui/material";
 import SchoolLogo from "../assets/icon/school_logo.jpg";
-import {useNavigate} from "react-router-dom"
-import { Password } from "@mui/icons-material";
-
+import { useNavigate } from "react-router-dom";
+import { authApiService } from "../api-services/authApiService";
+import { ToastContainer, toast } from "react-toastify";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [loginInput, setLoginInput] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const { login } = authApiService();
+
+  const handleLogin = async () => {
+    try {
+      const user = { loginInput, password };
+      const res = await login(user);
+      toast.error("Login successfully!");
+    } catch (error) {
+      console.log(error);
+      toast.error("Invalid username or password");
+    }
+  };
   return (
     <>
       <Box className="Login-main">
+        <ToastContainer />
         <Box>
           <Box className="LoginPage-main" sx={{ minWidth: 280, maxWidth: 400 }}>
             <Box textAlign={"center"}>
@@ -52,6 +67,7 @@ const Login = () => {
                   id="outlined-required"
                   label="Phone/Email"
                   fullWidth
+                  onChange={(e) => setLoginInput(e.target.value)}
                 />
               </Box>
               <Box position={"relative"}>
@@ -61,6 +77,7 @@ const Login = () => {
                   id="outlined-required"
                   label="Password"
                   fullWidth
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <i
                   onClick={() => setShowPassword(!showPassword)}
@@ -69,21 +86,26 @@ const Login = () => {
                   } eye-icon`}
                 ></i>
               </Box>
-              <Box
-                mt={"-12px"}
-                sx={{ cursor: "pointer" }}
-              >
-                <Typography onClick={()=>navigate("/forgot-password")}  className="forgot-password" mt={0.5}>Forgot password ? </Typography>
+              <Box mt={"-12px"} sx={{ cursor: "pointer" }}>
+                <Typography
+                  onClick={() => navigate("/forgot-password")}
+                  className="forgot-password"
+                  mt={0.5}
+                >
+                  Forgot password ?{" "}
+                </Typography>
               </Box>
             </Box>
             <Box className="login-submit">
-              <Button onClick={()=>navigate("/")} variant="contained">Login</Button>
+              <Button onClick={handleLogin} variant="contained">
+                Login
+              </Button>
             </Box>
             <Box className="Login-SignUp-option">
               <span>
                 Don't have an account ?{" "}
                 <span
-                onClick={()=>navigate("/sign-up")}
+                  onClick={() => navigate("/sign-up")}
                   style={{
                     color: "#1976d2",
                     cursor: "pointer",
