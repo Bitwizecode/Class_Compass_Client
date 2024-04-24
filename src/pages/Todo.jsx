@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Box, Typography, TextField, Button, Grid } from "@mui/material";
-import CancelIcon from '@mui/icons-material/Cancel';
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from "@mui/icons-material/Close";
 const styles = {
   removeButton: {
     padding: "5px 10px",
@@ -20,14 +19,14 @@ function Todo() {
   const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
-    const storedTodos = localStorage.getItem('todos');
+    const storedTodos = localStorage.getItem("todos");
     if (storedTodos) {
       setTodos(JSON.parse(storedTodos));
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(todos));
+    localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
   const handleInputChange = (event) => {
@@ -53,41 +52,57 @@ function Todo() {
     }
   };
   return (
-    <Box
-      className="todo-main-container"
-      sx={{ minWidth: 240, maxWidth: 600, padding: "20px" }}
-    >
-      <Typography variant="h4" fontWeight={650} p={"15px"}>
-        TODO List
-      </Typography>
-      <TextField
-        size="small"
-        type="text"
-        value={inputValue}
-        onChange={handleInputChange}
-        onKeyPress={handleKeyPress}
-        placeholder="Enter Your Todo"
-        sx={{ minWidth: 310, maxWidth: 600 }}
-      ></TextField>
-      <Box className="login-submit">
-        <Button onClick={handleAddTodo} size="large" variant="contained">
-          Add
-        </Button>
-      </Box>
-      <Box border={"1px solid red"}
-      minWidth={300}
+    <Box height={"100vh"}>
+      <Box
+        className="todo-main-container"
+        sx={{ minWidth: 230, maxWidth: 500, padding: "20px" }}
       >
-        <ul className="todo-list">
-          {todos.map((todo, index) => (
-            <li key={index} className="li-list-todo" >
-                <div>{index+1}.</div>
-              <div className="todo-list-text">{todo}</div>
-              <Box>
-              <CloseIcon onClick={handleRemoveTodo} className="todo-cancel" />
-              </Box>
-            </li>
-          ))}
-        </ul>
+        <Typography variant="h4" fontWeight={650} p={"15px"}>
+          TODO List
+        </Typography>
+        <Box>
+          <TextField
+            size="small"
+            type="text"
+            value={inputValue}
+            onChange={handleInputChange}
+            onKeyPress={handleKeyPress}
+            placeholder="Enter Your Task Here..."
+            sx={{ minWidth: 310, maxWidth: 600, mb: "20px" }}
+          ></TextField>
+          {todos.length > 0 && (
+          <Box mt={"-12px"} sx={{ cursor: "pointer" }} display={"flex"} justifyContent={"space-between"}>
+            <Typography className="todo-work" mt={0.5}>
+              Today's Works
+            </Typography>
+            <Typography className="todo-work" mt={0.5}>
+              Remove
+            </Typography>
+          </Box>
+          )}
+        </Box>
+        <Box minWidth={300}>
+          <ul className="todo-list">
+            {todos.map((todo, index) => (
+              <li key={index} className="li-list-todo">
+                <div>{index + 1}.</div>
+                <div className="todo-list-text">{todo}</div>
+                <Box>
+                  <CloseIcon
+                    sx={{ color: "red" }}
+                    onClick={handleRemoveTodo}
+                    className="todo-cancel"
+                  />
+                </Box>
+              </li>
+            ))}
+          </ul>
+        </Box>
+        <Box className="login-submit">
+          <Button onClick={handleAddTodo} size="small" variant="contained">
+            Add
+          </Button>
+        </Box>
       </Box>
     </Box>
   );
