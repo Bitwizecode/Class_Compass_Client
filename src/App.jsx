@@ -21,6 +21,7 @@ import ExamTimeTable from "./pages/ExamTimeTable";
 import TimeTable from "./pages/TimeTable";
 import Drivers from "./pages/Drivers";
 import Todo from "./pages/Todo";
+import Syllabus from "./pages/Syllabus";
 function App() {
   const [selected, setSelected] = useState("/");
   return (
@@ -86,6 +87,7 @@ function App() {
         <Route path="/drivers" element={<Drivers />} />
         <Route path="/sign-up" element={<Signup />} />
         <Route path="/todo" element={<Todo />} />
+        <Route path="/syllabus" element={<Syllabus />} />
       </Routes>
     </>
   );

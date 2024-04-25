@@ -1,18 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Box, Typography, TextField, Button, Grid } from "@mui/material";
+import { Box, Typography, TextField, Button } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-const styles = {
-  removeButton: {
-    padding: "5px 10px",
-    fontSize: "14px",
-    fontWeight: "bold",
-    backgroundColor: "#f44336",
-    color: "white",
-    border: "none",
-    borderRadius: "4px",
-    cursor: "pointer",
-  },
-};
+import Todosvg from "../assets/icon/todo_svg.svg";
+import TodoLogo from "../assets/icon/todo_logo.png";
+import Layout from "../components/Layout";
 
 function Todo() {
   const [todos, setTodos] = useState([]);
@@ -52,14 +43,16 @@ function Todo() {
     }
   };
   return (
-    <Box height={"100vh"}>
+    <Layout isBack title={"Todo List"}>
+    <Box height={"100vh"} display={"flex"} justifyContent={"center"} alignItems={"center"} >
       <Box
         className="todo-main-container"
         sx={{ minWidth: 230, maxWidth: 500, padding: "20px" }}
       >
         <Typography variant="h4" fontWeight={650} p={"15px"}>
-          TODO List
+          Todo <img src={TodoLogo} style={{ width: "29px" }} />
         </Typography>
+
         <Box>
           <TextField
             size="small"
@@ -70,33 +63,42 @@ function Todo() {
             placeholder="Enter Your Task Here..."
             sx={{ minWidth: 310, maxWidth: 600, mb: "20px" }}
           ></TextField>
-          {todos.length > 0 && (
-          <Box mt={"-12px"} sx={{ cursor: "pointer" }} display={"flex"} justifyContent={"space-between"}>
-            <Typography className="todo-work" mt={0.5}>
-              Today's Works
-            </Typography>
-            <Typography className="todo-work" mt={0.5}>
-              Remove
-            </Typography>
-          </Box>
-          )}
         </Box>
-        <Box minWidth={300}>
-          <ul className="todo-list">
-            {todos.map((todo, index) => (
-              <li key={index} className="li-list-todo">
-                <div>{index + 1}.</div>
-                <div className="todo-list-text">{todo}</div>
-                <Box>
-                  <CloseIcon
-                    sx={{ color: "red" }}
-                    onClick={handleRemoveTodo}
-                    className="todo-cancel"
-                  />
-                </Box>
-              </li>
-            ))}
-          </ul>
+        <Box height={"300px"} overflow={"auto"} >
+          {todos.length > 0 ? (
+            <Box
+              mt={"0px"}
+              sx={{ cursor: "pointer" }}
+              display={"flex"}
+              justifyContent={"space-between"}
+            >
+              <Typography className="todo-work" mt={0.5}>
+                Today's Works
+              </Typography>
+              <Typography className="todo-work" mt={0.5} paddingRight={"7px"}>
+                Remove
+              </Typography>
+            </Box>
+          ) : (
+            <img src={Todosvg} style={{marginTop: "30px"}} />
+          )}
+          <Box minWidth={300}  className= "todo-works">
+            <ul className="todo-list">
+              {todos.map((todo, index) => (
+                <li key={index} className="li-list-todo">
+                  <div>{index + 1}.</div>
+                  <div className="todo-list-text">{todo}</div>
+                  <Box>
+                    <CloseIcon
+                      sx={{ color: "red" }}
+                      onClick={handleRemoveTodo}
+                      className="todo-cancel"
+                    />
+                  </Box>
+                </li>
+              ))}
+            </ul>
+          </Box>
         </Box>
         <Box className="login-submit">
           <Button onClick={handleAddTodo} size="small" variant="contained">
@@ -105,7 +107,9 @@ function Todo() {
         </Box>
       </Box>
     </Box>
+    </Layout>
   );
 }
+
 
 export default Todo;
