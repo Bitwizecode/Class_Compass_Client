@@ -20,11 +20,8 @@ import SchoolGallery from "./pages/SchoolGallery";
 import ExamTimeTable from "./pages/ExamTimeTable";
 import TimeTable from "./pages/TimeTable";
 import Drivers from "./pages/Drivers";
-<<<<<<< HEAD
 import Loader from "./components/Loader";
-=======
 import Todo from "./pages/Todo";
->>>>>>> 90c5966a18ceef9e0a4cab2400e07283dfb950b7
 function App() {
   const [selected, setSelected] = useState("/");
   return (
