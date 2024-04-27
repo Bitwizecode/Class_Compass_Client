@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import { Box } from "@mui/system";
-import {useNavigate} from "react-router-dom"
-const BottomNavbar = ({selected, setSelected}) => {
-    
-    const navigate = useNavigate();
-    const handleOnClick = (e, value) => {
-      setSelected(value);
-        navigate(value)
-    }
+import { useNavigate } from "react-router-dom";
+const BottomNavbar = ({ selected, setSelected }) => {
+  const navigate = useNavigate();
+  const handleOnClick = (e, value) => {
+    setSelected(value);
+    navigate(value);
+  };
   return (
     <Box
       position={"fixed"}
@@ -18,7 +17,7 @@ const BottomNavbar = ({selected, setSelected}) => {
         "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px"
       }
     >
-      <BottomNavigation value={selected}   onChange={handleOnClick}>
+      <BottomNavigation value={selected} onChange={handleOnClick}>
         <BottomNavigationAction
           label="Home"
           value="/"
@@ -32,7 +31,9 @@ const BottomNavbar = ({selected, setSelected}) => {
         <BottomNavigationAction
           label="Attendance"
           value="/attendance"
-          icon={<i className="fa-regular fa-calendar-check bottom-navbar-icon"></i>}
+          icon={
+            <i className="fa-regular fa-calendar-check bottom-navbar-icon"></i>
+          }
         />
         <BottomNavigationAction
           label="Message"

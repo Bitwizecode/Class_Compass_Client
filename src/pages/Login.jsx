@@ -12,26 +12,38 @@ import SchoolLogo from "../assets/icon/school_logo.jpg";
 import { useNavigate } from "react-router-dom";
 import { authApiService } from "../api-services/authApiService";
 import { ToastContainer, toast } from "react-toastify";
+import Loader from "../components/Loader";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [loginInput, setLoginInput] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const { login } = authApiService();
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoading(true);
     try {
       const user = { loginInput, password };
       const res = await login(user);
-      toast.error("Login successfully!");
+
+      localStorage.setItem("_token", res?.data?.token);
+      toast.success("Login successfully!");
+      setTimeout(() => {
+        navigate("/");
+      }, [2000]);
     } catch (error) {
       console.log(error);
       toast.error("Invalid username or password");
+    } finally {
+      setLoading(false);
     }
   };
   return (
     <>
       <Box className="Login-main">
+        {loading && <Loader />}
         <ToastContainer />
         <Box>
           <Box className="LoginPage-main" sx={{ minWidth: 280, maxWidth: 400 }}>
@@ -55,52 +67,54 @@ const Login = () => {
               </Typography>
               <hr className="hr-line" />
             </Box>
-            <Box
-              display={"flex"}
-              flexDirection={"column"}
-              gap={1.2}
-              marginInline={2}
-            >
-              <Box>
-                <TextField
-                  required
-                  id="outlined-required"
-                  label="Phone/Email"
-                  fullWidth
-                  onChange={(e) => setLoginInput(e.target.value)}
-                />
+            <form onSubmit={handleLogin}>
+              <Box
+                display={"flex"}
+                flexDirection={"column"}
+                gap={1.2}
+                marginInline={2}
+              >
+                <Box>
+                  <TextField
+                    required
+                    id="outlined-required"
+                    label="Phone/Email"
+                    fullWidth
+                    onChange={(e) => setLoginInput(e.target.value)}
+                  />
+                </Box>
+                <Box position={"relative"}>
+                  <TextField
+                    required
+                    type={showPassword ? "text" : "password"}
+                    id="outlined-required"
+                    label="Password"
+                    fullWidth
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <i
+                    onClick={() => setShowPassword(!showPassword)}
+                    className={`fa-solid fa-eye${
+                      showPassword ? "" : "-slash"
+                    } eye-icon`}
+                  ></i>
+                </Box>
+                <Box mt={"-12px"} sx={{ cursor: "pointer" }}>
+                  <Typography
+                    onClick={() => navigate("/forgot-password")}
+                    className="forgot-password"
+                    mt={0.5}
+                  >
+                    Forgot password ?{" "}
+                  </Typography>
+                </Box>
               </Box>
-              <Box position={"relative"}>
-                <TextField
-                  required
-                  type={showPassword ? "text" : "password"}
-                  id="outlined-required"
-                  label="Password"
-                  fullWidth
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <i
-                  onClick={() => setShowPassword(!showPassword)}
-                  className={`fa-solid fa-eye${
-                    showPassword ? "" : "-slash"
-                  } eye-icon`}
-                ></i>
+              <Box className="login-submit">
+                <Button type="submit" variant="contained">
+                  Login
+                </Button>
               </Box>
-              <Box mt={"-12px"} sx={{ cursor: "pointer" }}>
-                <Typography
-                  onClick={() => navigate("/forgot-password")}
-                  className="forgot-password"
-                  mt={0.5}
-                >
-                  Forgot password ?{" "}
-                </Typography>
-              </Box>
-            </Box>
-            <Box className="login-submit">
-              <Button onClick={handleLogin} variant="contained">
-                Login
-              </Button>
-            </Box>
+            </form>
             <Box className="Login-SignUp-option">
               <span>
                 Don't have an account ?{" "}

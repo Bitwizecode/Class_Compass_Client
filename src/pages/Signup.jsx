@@ -14,42 +14,88 @@ import {
 import SchoolLogo from "../assets/icon/school_logo.jpg";
 import { useNavigate } from "react-router-dom";
 import Login from "./Login";
+import { authApiService } from "../api-services/authApiService";
+import { toast, ToastContainer } from "react-toastify";
+import Loader from "../components/Loader";
 
 const Signup = () => {
+  const { register } = authApiService();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const gender = [{ value: "Male" }, { value: "Female" }];
-  return (
-    <>
-      <Box className="SignUp-main">
-        <Box>
-          <Box
-            className="LoginPage-main"
-            sx={{ minWidth: 240, maxWidth: 600, padding: "20px" }}
-          >
-            <Box textAlign={"center"}>
-              <img
-                className="profile-avatar"
-                style={{ marginTop: "-60px" }}
-                src={SchoolLogo}
-                alt=""
-              />
-              <Typography variant="h5" fontWeight={650} mt={1}>
-                Register
-              </Typography>
-              <Typography
-                color={"gray"}
-                mt={"10px"}
-                marginBottom={"12px"}
-                fontSize={14}
-              >
-                Enter Your Personal Information <br />
-                to create Your account.
-              </Typography>
-              <hr className="hr-line" />
-            </Box>
+  const [signUpData, setSignUpData] = useState({
+    first_name: "",
+    last_name: "",
+    gender: "",
+    dob: "",
+    phone: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    address: "",
+    pin_code: "",
+    district: "",
+    state: "Maharashtra",
+    country: "India",
+    classes: [],
+    school_id: "123456",
+  });
 
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      if (signUpData.password !== signUpData.confirmPassword) {
+        toast.error("Password does not match!");
+        return;
+      }
+      const res = await register(signUpData);
+      console.log(res);
+      toast.success("Teacher registered successfully!");
+      setTimeout(() => {
+        navigate("/login");
+      }, [2000]);
+    } catch (error) {
+      console.log(error);
+      toast.error(error?.response?.data?.message || "something went wrong!");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <Box>
+      {loading && <Loader />}
+
+      <Box className="SignUp-main">
+        <Box
+          className="LoginPage-main"
+          sx={{ minWidth: 240, maxWidth: 600, padding: "20px" }}
+        >
+          <Box textAlign={"center"}>
+            <img
+              className="profile-avatar"
+              style={{ marginTop: "-60px" }}
+              src={SchoolLogo}
+              alt=""
+            />
+            <Typography variant="h5" fontWeight={650} mt={1}>
+              Register
+            </Typography>
+            <Typography
+              color={"gray"}
+              mt={"10px"}
+              marginBottom={"12px"}
+              fontSize={14}
+            >
+              Enter Your Personal Information <br />
+              to create Your account.
+            </Typography>
+            <hr className="hr-line" />
+          </Box>
+          <form onSubmit={handleSignUp}>
             <Grid container>
               <Grid display={"flex"} gap={1} xs={12}>
                 <Grid mb={1} xs={12} md={12} sm={12}>
@@ -58,6 +104,13 @@ const Signup = () => {
                     id="outlined-required"
                     label="First Name"
                     fullWidth
+                    value={signUpData.first_name}
+                    onChange={(e) => {
+                      setSignUpData({
+                        ...signUpData,
+                        first_name: e.target.value,
+                      });
+                    }}
                   />
                 </Grid>
                 <Grid mb={1} xs={12} md={12} sm={12}>
@@ -66,6 +119,13 @@ const Signup = () => {
                     id="outlined-required"
                     label="Last Name"
                     fullWidth
+                    value={signUpData.last_name}
+                    onChange={(e) => {
+                      setSignUpData({
+                        ...signUpData,
+                        last_name: e.target.value,
+                      });
+                    }}
                   />
                 </Grid>
               </Grid>
@@ -77,6 +137,13 @@ const Signup = () => {
                     select
                     label="Gender"
                     fullWidth
+                    value={signUpData.gender}
+                    onChange={(e) => {
+                      setSignUpData({
+                        ...signUpData,
+                        gender: e.target.value,
+                      });
+                    }}
                   >
                     {gender.map((option) => (
                       <MenuItem key={option.value} value={option.value}>
@@ -92,7 +159,14 @@ const Signup = () => {
                     type="date"
                     label="Date of Birth"
                     fullWidth
-                  ></TextField>
+                    value={signUpData.dob}
+                    onChange={(e) => {
+                      setSignUpData({
+                        ...signUpData,
+                        dob: e.target.value,
+                      });
+                    }}
+                  />
                 </Grid>
               </Grid>
 
@@ -108,6 +182,13 @@ const Signup = () => {
                     ),
                   }}
                   fullWidth
+                  value={signUpData.phone}
+                  onChange={(e) => {
+                    setSignUpData({
+                      ...signUpData,
+                      phone: e.target.value,
+                    });
+                  }}
                 />
               </Grid>
               <Grid mb={1} xs={12}>
@@ -115,8 +196,15 @@ const Signup = () => {
                   required
                   type="Email"
                   id="outlined-required"
-                  label="Enter Your Email"
+                  label="Email Address"
                   fullWidth
+                  value={signUpData.email}
+                  onChange={(e) => {
+                    setSignUpData({
+                      ...signUpData,
+                      email: e.target.value,
+                    });
+                  }}
                 />
               </Grid>
               <Grid mb={1} xs={12} position={"relative"}>
@@ -126,6 +214,13 @@ const Signup = () => {
                   id="outlined-required"
                   label="Password"
                   fullWidth
+                  value={signUpData.password}
+                  onChange={(e) => {
+                    setSignUpData({
+                      ...signUpData,
+                      password: e.target.value,
+                    });
+                  }}
                 />
                 <i
                   onClick={() => setShowPassword(!showPassword)}
@@ -142,6 +237,13 @@ const Signup = () => {
                   label="Confirm Password"
                   defaultValue={""}
                   fullWidth
+                  value={signUpData.confirmPassword}
+                  onChange={(e) => {
+                    setSignUpData({
+                      ...signUpData,
+                      confirmPassword: e.target.value,
+                    });
+                  }}
                 />
                 <i
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
@@ -154,8 +256,15 @@ const Signup = () => {
                 <TextField
                   required
                   id="outlined-required"
-                  label="Enter Your Address"
+                  label="Residential Address"
                   fullWidth
+                  value={signUpData.address}
+                  onChange={(e) => {
+                    setSignUpData({
+                      ...signUpData,
+                      address: e.target.value,
+                    });
+                  }}
                 />
               </Grid>
               <Grid display={"flex"} mb={1} gap={1} xs={12}>
@@ -166,6 +275,13 @@ const Signup = () => {
                     id="outlined-required"
                     label="Pin Code"
                     fullWidth
+                    value={signUpData.pin_code}
+                    onChange={(e) => {
+                      setSignUpData({
+                        ...signUpData,
+                        pin_code: e.target.value,
+                      });
+                    }}
                   />
                 </Grid>
 
@@ -175,6 +291,13 @@ const Signup = () => {
                     id="outlined-required"
                     label="District"
                     fullWidth
+                    value={signUpData.district}
+                    onChange={(e) => {
+                      setSignUpData({
+                        ...signUpData,
+                        district: e.target.value,
+                      });
+                    }}
                   />
                 </Grid>
               </Grid>
@@ -199,29 +322,31 @@ const Signup = () => {
                 </Grid>
               </Grid>
             </Grid>
-
             <Box className="sign-up-submit">
-              <Button onClick={()=>{navigate("/")}} variant="contained">Sign Up</Button>
+              <Button type="submit" variant="contained">
+                Sign Up
+              </Button>
             </Box>
-            <Box className="Login-SignUp-option">
-              <span>
-                Already have an account ?{" "}
-                <span
-                  onClick={() => navigate("/login")}
-                  style={{
-                    color: "#1976d2",
-                    cursor: "pointer",
-                    fontWeight: 550,
-                  }}
-                >
-                  Login
-                </span>
+          </form>
+          <Box className="Login-SignUp-option">
+            <span>
+              Already have an account ?{" "}
+              <span
+                onClick={() => navigate("/login")}
+                style={{
+                  color: "#1976d2",
+                  cursor: "pointer",
+                  fontWeight: 550,
+                }}
+              >
+                Login
               </span>
-            </Box>
+            </span>
           </Box>
         </Box>
+        <ToastContainer />
       </Box>
-    </>
+    </Box>
   );
 };
 

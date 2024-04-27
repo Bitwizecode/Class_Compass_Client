@@ -1,14 +1,14 @@
 import { AppBar, IconButton, Typography, Toolbar, Button } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
-import {useNavigate} from "react-router-dom"
-import SchoolLogo from "../assets/icon/school_logo.jpg"
+import { useNavigate } from "react-router-dom";
+import SchoolLogo from "../assets/icon/school_logo.jpg";
 
 const TopNavbar = ({ title, isBack, toggleSidebar }) => {
   const navigate = useNavigate();
   return (
     <Box>
-      <AppBar position="fixed" >
+      <AppBar position="fixed">
         {!isBack ? (
           <Toolbar>
             <IconButton
@@ -36,7 +36,7 @@ const TopNavbar = ({ title, isBack, toggleSidebar }) => {
                   borderRadius: "50%",
                   marginRight: "15px",
                 }}
-                src= {SchoolLogo}
+                src={SchoolLogo}
                 alt=""
               />
               <Box
@@ -57,7 +57,7 @@ const TopNavbar = ({ title, isBack, toggleSidebar }) => {
               edge="start"
               color="inherit"
               aria-label="menu"
-              onClick={()=>navigate("/")}
+              onClick={() => navigate("/")}
             >
               <i className="fa-solid fa-arrow-left"></i>
             </IconButton>

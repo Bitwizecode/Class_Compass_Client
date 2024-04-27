@@ -435,6 +435,62 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 }
 
+.exam-tt-textfield-time {
+  @media (max-width: 440px) {
+    max-width: 80px;
+  }
+  @media (max-width: 348px) {
+    max-width: 50px;
+  }
+}
+.loading-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.loader {
+  --r1: 154%;
+  --r2: 68.5%;
+  width: 70px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+      var(--r1) var(--r2) at top,
+      #0000 79.5%,
+      #269af2 80%
+    ),
+    radial-gradient(var(--r1) var(--r2) at bottom, #269af2 79.5%, #0000 80%),
+    radial-gradient(var(--r1) var(--r2) at top, #0000 79.5%, #269af2 80%),
+    #ffffff;
+  background-size: 50.5% 220%;
+  background-position: -100% 0%, 0% 0%, 100% 0%;
+  background-repeat: no-repeat;
+  animation: l9 2s infinite linear;
+}
+@keyframes l9 {
+  33% {
+    background-position: 0% 33%, 100% 33%, 200% 33%;
+  }
+  66% {
+    background-position: -100% 66%, 0% 66%, 100% 66%;
+  }
+  100% {
+    background-position: 0% 100%, 100% 100%, 200% 100%;
+  }
+}
+
+.loader-container {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: #090909c0;
+  overflow: hidden;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .todo-main-container {
   display: flex;
   flex-direction: column;
@@ -446,8 +502,17 @@ input[type="number"]::-webkit-outer-spin-button {
       box-shadow: none;
       background-color: #fff;
     }
+  background-color: #f3fbfb;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  /* box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px; */
+  /* box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px; */
+  /* box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px; */
+  @media (max-width: 575px) {
+    box-shadow: none;
+    background-color: #fff;
+  }
 }
-
 
 .li-list-todo {
   display: flex;
@@ -457,7 +522,7 @@ input[type="number"]::-webkit-outer-spin-button {
   border-bottom: 1px solid #ccc;
 }
 
-.todo-list-text{
+.todo-list-text {
   padding-inline: 7px;
   text-align: left;
   word-wrap: break-word;

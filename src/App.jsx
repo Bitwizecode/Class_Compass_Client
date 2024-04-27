@@ -20,12 +20,15 @@ import SchoolGallery from "./pages/SchoolGallery";
 import ExamTimeTable from "./pages/ExamTimeTable";
 import TimeTable from "./pages/TimeTable";
 import Drivers from "./pages/Drivers";
+import Loader from "./components/Loader";
 import Todo from "./pages/Todo";
 import Syllabus from "./pages/Syllabus";
 function App() {
   const [selected, setSelected] = useState("/");
   return (
     <>
+      {/* {true && <Loader />} */}
+
       <Routes>
         <Route
           path="*"
