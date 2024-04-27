@@ -444,9 +444,6 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 }
 .loading-text {
-  position: absolute;
-  top: 45%;
-  left: 45.2%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -490,6 +487,9 @@ input[type="number"]::-webkit-outer-spin-button {
   background: #090909c0;
   overflow: hidden;
   z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .todo-main-container {
   display: flex;

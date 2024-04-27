@@ -6,7 +6,7 @@ const Loader = () => {
     <div className="loader-container">
       <div className="loading-text">
         <div className="loader"></div>
-        <Typography sx={{ color: "#fff", ml: "25px" }} variant="h5">
+        <Typography sx={{ color: "#fff" }} variant="h5">
           LOADING...
         </Typography>
       </div>
