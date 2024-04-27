@@ -12,6 +12,7 @@ import SchoolLogo from "../assets/icon/school_logo.jpg";
 import { useNavigate } from "react-router-dom";
 import { authApiService } from "../api-services/authApiService";
 import { ToastContainer, toast } from "react-toastify";
+import Loader from "../components/Loader";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -26,7 +27,12 @@ const Login = () => {
     try {
       const user = { loginInput, password };
       const res = await login(user);
-      toast.error("Login successfully!");
+
+      localStorage.setItem("_token", res?.data?.token);
+      toast.success("Login successfully!");
+      setTimeout(() => {
+        navigate("/");
+      }, [2000]);
     } catch (error) {
       console.log(error);
       toast.error("Invalid username or password");
@@ -37,6 +43,7 @@ const Login = () => {
   return (
     <>
       <Box className="Login-main">
+        {loading && <Loader />}
         <ToastContainer />
         <Box>
           <Box className="LoginPage-main" sx={{ minWidth: 280, maxWidth: 400 }}>
