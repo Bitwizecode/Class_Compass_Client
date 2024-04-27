@@ -116,7 +116,7 @@ const Profile = ({ selected, setSelected }) => {
 
                   <Grid display={"flex"} mb={1} gap={1} xs={12}>
                     <Grid xs={6} md={6} sm={12}>
-                      <TextField
+                       <TextField
                         id="outlined-select-gender"
                         select
                         label="Gender"
