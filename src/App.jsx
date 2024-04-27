@@ -26,7 +26,7 @@ function App() {
   const [selected, setSelected] = useState("/");
   return (
     <>
-      <Loader />
+      {/* <Loader /> */}
 
       <Routes>
         <Route
