@@ -22,6 +22,7 @@ const Signup = () => {
   const { register } = authApiService();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const gender = [{ value: "Male" }, { value: "Female" }];
   const [signUpData, setSignUpData] = useState({
@@ -44,6 +45,7 @@ const Signup = () => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       if (signUpData.password !== signUpData.confirmPassword) {
         toast.error("Password does not match!");
@@ -58,12 +60,16 @@ const Signup = () => {
     } catch (error) {
       console.log(error);
       toast.error(error?.response?.data?.message || "something went wrong!");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <Box className="SignUp-main">
-      <Box>
+    <Box>
+      {loading && <Loader />}
+
+      <Box className="SignUp-main">
         <Box
           className="LoginPage-main"
           sx={{ minWidth: 240, maxWidth: 600, padding: "20px" }}
@@ -338,8 +344,8 @@ const Signup = () => {
             </span>
           </Box>
         </Box>
+        <ToastContainer />
       </Box>
-      <ToastContainer />
     </Box>
   );
 };
