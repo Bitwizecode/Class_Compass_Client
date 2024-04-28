@@ -23,6 +23,7 @@ import Drivers from "./pages/Drivers";
 import Loader from "./components/Loader";
 import Todo from "./pages/Todo";
 import Syllabus from "./pages/Syllabus";
+import Homework from "./pages/Homework";
 function App() {
   const [selected, setSelected] = useState("/");
   return (
@@ -91,6 +92,7 @@ function App() {
         <Route path="/sign-up" element={<Signup />} />
         <Route path="/todo" element={<Todo />} />
         <Route path="/syllabus" element={<Syllabus />} />
+        <Route path="/homework" element={<Homework />} />
       </Routes>
     </>
   );

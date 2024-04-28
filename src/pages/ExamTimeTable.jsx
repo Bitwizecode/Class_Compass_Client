@@ -19,7 +19,7 @@ import { useNavigate } from "react-router-dom";
 import Layout from "../components/Layout";
 import Model from "../components/Model";
 import Switch from "@mui/material/Switch";
-
+import EditIcon from "@mui/icons-material/Edit";
 function ExamTimeTable({ selected, setSelected }) {
   const [state, setState] = useState(false);
   const rows = [
@@ -101,163 +101,75 @@ function ExamTimeTable({ selected, setSelected }) {
           <Typography variant="h6" fontWeight={650}>
             2<sup>nd</sup> Semester Exam
           </Typography>
-          <FormGroup
-            className="toggle-button"
-            sx={{ position: "absolute", right: 0 }}
-          >
-              <FormControlLabel
-                control={<Switch onChange={() => setState(!state)} />}
-                label={state ? "View" : "Edit"}
-              />
-            </FormGroup>
         </Box>
-        {!state ? (
-          <TableContainer
-            className="table-date-size"
-            sx={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px", width: "95%" }}
-            component={Paper}
-          >
-            <Table aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell className="exam-time-table-head" align="left">
-                    Date
+
+        <TableContainer
+          sx={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px", width: "95%" }}
+          component={Paper}
+        >
+          <Table aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell className="exam-time-table-head" align="left">
+                  Date
+                </TableCell>
+                <TableCell className="exam-time-table-head">Subject</TableCell>
+                <TableCell className="exam-time-table-head">Time</TableCell>
+                <TableCell className="exam-time-table-head"></TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows.map((row) => (
+                <TableRow key={row.name}>
+                  <TableCell align="center" className="table-name">
+                    {row.day}
                   </TableCell>
-                  <TableCell  className="exam-time-table-head">
-                    Subject
+                  {row.subjects.map((sub) => {
+                    console.log(sub);
+                    return (
+                      <TableCell
+                        align="center"
+                        className="table-name"
+                        style={{
+                          color: sub.name === "Holiday" ? "red" : "inherit",
+                          fontWeight:
+                            sub.name === "Holiday" ? "650" : "inherit",
+                        }}
+                      >
+                        <Box>{sub.name}</Box>
+                      </TableCell>
+                    );
+                  })}
+                  {row.subjects.map((sub) => {
+                    console.log(sub);
+                    return (
+                      <TableCell
+                        align="center"
+                        className="table-name"
+                        style={{
+                          color: sub.name === "Holiday" ? "red" : "inherit",
+                          fontWeight:
+                            sub.name === "Holiday" ? "650" : "inherit",
+                        }}
+                      >
+                        <Box>{sub.timing}</Box>
+                      </TableCell>
+                    );
+                  })}
+                  <TableCell align="center" className="table-name">
+                    <Button
+                      size="small"
+                      variant="contained"
+                      startIcon={<EditIcon />}
+                    >
+                      Edit
+                    </Button>
                   </TableCell>
-                  <TableCell className="exam-time-table-head">Time</TableCell>
                 </TableRow>
-              </TableHead>
-              <TableBody>
-                {rows.map((row) => (
-                  <TableRow key={row.name}>
-                    <TableCell align="center" className="table-name">
-                      <TextField
-                        className="exam-tt-textfield"
-                        type="date"
-                        size="small"
-                      />
-                    </TableCell>
-                    {row.subjects.map((sub) => {
-                      return (
-                        <TableCell
-                          align="center"
-                          className="table-name"
-                          style={{
-                            color: sub.name === "Holiday" ? "red" : "inherit",
-                            fontWeight:
-                              sub.name === "Holiday" ? "650" : "inherit",
-                          }}
-                        >
-                          <TextField
-                            className="exam-tt-textfield"
-                            placeholder="e.g English"
-                            size="small"
-                          />
-                        </TableCell>
-                      );
-                    })}
-                    {row.subjects.map((sub) => {
-                      console.log(sub);
-                      return (
-                        <TableCell
-                          align="center"
-                          className="table-name"
-                          style={{
-                            color: sub.name === "Holiday" ? "red" : "inherit",
-                            fontWeight:
-                              sub.name === "Holiday" ? "650" : "inherit",
-                          }}
-                        >
-                          <TextField
-                            className="exam-tt-textfield-time"
-                            type="time"
-                            size="small"
-                          />
-                        </TableCell>
-                      );
-                    })}
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-                
-          </TableContainer>
-        ) : (
-          <TableContainer
-            sx={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px", width: "95%" }}
-            component={Paper}
-          >
-            <Table aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell className="exam-time-table-head" align="left">
-                    Date
-                  </TableCell>
-                  <TableCell className="exam-time-table-head">
-                    Subject
-                  </TableCell>
-                  <TableCell className="exam-time-table-head">Time</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {rows.map((row) => (
-                  <TableRow key={row.name}>
-                    <TableCell align="center" className="table-name">
-                      {row.day}
-                    </TableCell>
-                    {row.subjects.map((sub) => {
-                      console.log(sub);
-                      return (
-                        <TableCell
-                          align="center"
-                          className="table-name"
-                          style={{
-                            color: sub.name === "Holiday" ? "red" : "inherit",
-                            fontWeight:
-                              sub.name === "Holiday" ? "650" : "inherit",
-                          }}
-                        >
-                          <Box>{sub.name}</Box>
-                        </TableCell>
-                      );
-                    })}
-                    {row.subjects.map((sub) => {
-                      console.log(sub);
-                      return (
-                        <TableCell
-                          align="center"
-                          className="table-name"
-                          style={{
-                            color: sub.name === "Holiday" ? "red" : "inherit",
-                            fontWeight:
-                              sub.name === "Holiday" ? "650" : "inherit",
-                          }}
-                        >
-                          <Box>{sub.timing}</Box>
-                        </TableCell>
-                      );
-                    })}
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        )}
-        <Box
-              sx={{
-                p: "0 18px",
-                display: "flex",
-                justifyContent: "center",
-                mt: "18px",
-                mb: "9px",
-              }}
-            >
-              <Button size="small" variant="contained">
-                Submit
-              </Button>
-            </Box>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
       </Box>
     </Layout>
   );

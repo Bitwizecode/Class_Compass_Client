@@ -42,7 +42,7 @@ const Home = ({ selected, setSelected }) => {
   console.log("store", store);
   const items = [
     { icon: Attendance3, text: "Student Attendance", path: "/attendance" },
-    { icon: HomeWork3, text: "HomeWork", path: "/attendance" },
+    { icon: HomeWork3, text: "HomeWork", path: "/homework" },
     { icon: Timetable2, text: "Time Table", path: "/time-table" },
     { icon: Todo, text: "Todo", path: "/todo" },
     { icon: Leave3, text: "Student's Leave", path: "/attendance" },
