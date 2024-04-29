@@ -209,6 +209,7 @@ function ExamTimeTable({ selected, setSelected }) {
                       >
                         <Box>
                           <TextField
+                          className="subject-term-textfield"
                             InputLabelProps={{ shrink: true }}
                             required
                             type="date"
@@ -233,6 +234,7 @@ function ExamTimeTable({ selected, setSelected }) {
                         </Box>
                         <Box>
                           <TextField
+                          className="subject-term-textfield"
                             InputLabelProps={{ shrink: true }}
                             required
                             type="time"
