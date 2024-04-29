@@ -200,7 +200,6 @@ function ExamTimeTable({ selected, setSelected }) {
                       overflow={"auto"}
                     >
                       <Box
-                       
                         display={"flex"}
                         flexDirection={"column"}
                         gap={1.2}
@@ -209,13 +208,12 @@ function ExamTimeTable({ selected, setSelected }) {
                       >
                         <Box>
                           <TextField
-                          className="subject-term-textfield"
+                            className="subject-term-textfield"
                             InputLabelProps={{ shrink: true }}
                             required
                             type="date"
                             id="outlined-required"
                             label="Date"
-                            // fullWidth
                           />
                         </Box>
                         <Box>
@@ -234,13 +232,12 @@ function ExamTimeTable({ selected, setSelected }) {
                         </Box>
                         <Box>
                           <TextField
-                          className="subject-term-textfield"
+                            className="subject-term-textfield"
                             InputLabelProps={{ shrink: true }}
                             required
                             type="time"
                             id="outlined-required"
                             label="Time"
-                            // fullWidth
                           />
                         </Box>
                       </Box>

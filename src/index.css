@@ -527,11 +527,14 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .subject-term-textfield {
   min-width: 350px !important;
+  @media (max-width: 500px) {
+    min-width: 260px !important;
+  }
   @media (max-width: 365px) {
     min-width: 240px !important;
   }
   @media (max-width: 335px) {
-    min-width: 240px !important;
+    min-width: 230px !important;
   }
 }
 
