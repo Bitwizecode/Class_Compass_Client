@@ -200,6 +200,7 @@ function ExamTimeTable({ selected, setSelected }) {
                       overflow={"auto"}
                     >
                       <Box
+                       
                         display={"flex"}
                         flexDirection={"column"}
                         gap={1.2}
@@ -213,7 +214,7 @@ function ExamTimeTable({ selected, setSelected }) {
                             type="date"
                             id="outlined-required"
                             label="Date"
-                            fullWidth
+                            // fullWidth
                           />
                         </Box>
                         <Box>
@@ -237,7 +238,7 @@ function ExamTimeTable({ selected, setSelected }) {
                             type="time"
                             id="outlined-required"
                             label="Time"
-                            fullWidth
+                            // fullWidth
                           />
                         </Box>
                       </Box>
