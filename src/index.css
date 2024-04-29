@@ -228,7 +228,7 @@ i {
   justify-content: center;
   padding: 8px;
   @media (max-width: 900px) {
-    height: calc(100vh - 12rem);
+    height: calc(100vh - 12.2rem);
   }
 }
 
