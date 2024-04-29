@@ -12,7 +12,7 @@ const Homework = ({ selected, setSelected }) => {
   };
   return (
     <Layout isBack title={"Homework"} selected={selected} setSelected={setSelected}>
-      <Box mt={8} className="message-main">
+      <Box mt={8} className="homework-message-main">
         <Box className="notification-message-box">
           <Box
             height={"100%"}
