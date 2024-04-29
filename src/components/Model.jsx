@@ -37,7 +37,7 @@ const Model = ({
         </Box>
         {children}
         <Box
-          mt={1}
+          mt={2}
           display={"flex"}
           justifyContent={"right"}
           gap={2}

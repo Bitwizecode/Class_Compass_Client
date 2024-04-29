@@ -9,6 +9,7 @@ import {
   TableContainer,
   TableRow,
   TableHead,
+  MenuItem,
   Tooltip,
   Paper,
   FormGroup,
@@ -22,6 +23,19 @@ import Switch from "@mui/material/Switch";
 import EditIcon from "@mui/icons-material/Edit";
 function ExamTimeTable({ selected, setSelected }) {
   const [state, setState] = useState(false);
+  const [openEditExamTT, setOpenEditExamTT] = React.useState(false);
+  const subject = [
+    { value: "Holiday" },
+    { value: "English" },
+    { value: "Marathi" },
+    { value: "Hindi" },
+    { value: "Maths" },
+    { value: "Science" },
+    { value: "History & PS" },
+    { value: "Geography" },
+    { value: "Sanskrit" },
+    { value: "EVS" },
+  ];
   const rows = [
     {
       day: "23 March 2024",
@@ -158,6 +172,9 @@ function ExamTimeTable({ selected, setSelected }) {
                   })}
                   <TableCell align="center" className="table-name">
                     <Button
+                      onClick={() => {
+                        setOpenEditExamTT(true);
+                      }}
                       size="small"
                       variant="contained"
                       startIcon={<EditIcon />}
@@ -165,6 +182,67 @@ function ExamTimeTable({ selected, setSelected }) {
                       Edit
                     </Button>
                   </TableCell>
+                  <Model
+                    open={openEditExamTT}
+                    setOpen={setOpenEditExamTT}
+                    headerText={"Exam Time Table"}
+                    submitText={"Update"}
+                    subHeaderText={"Update Exam Time Table"}
+                    onSubmit={() => {
+                      setOpenEdit(false);
+                    }}
+                  >
+                    <Box
+                      display={"flex"}
+                      flexDirection={"column"}
+                      gap={1.2}
+                      height={"230px"}
+                      overflow={"auto"}
+                    >
+                      <Box
+                        display={"flex"}
+                        flexDirection={"column"}
+                        gap={1.2}
+                        marginInline={2}
+                        mt={2}
+                      >
+                        <Box>
+                          <TextField
+                            InputLabelProps={{ shrink: true }}
+                            required
+                            type="date"
+                            id="outlined-required"
+                            label="Date"
+                            fullWidth
+                          />
+                        </Box>
+                        <Box>
+                          <TextField
+                            className="subject-term-textfield"
+                            id="select-subject"
+                            select
+                            label="Choose Subjects"
+                          >
+                            {subject.map((option) => (
+                              <MenuItem key={option.value} value={option.value}>
+                                {option.value}
+                              </MenuItem>
+                            ))}
+                          </TextField>
+                        </Box>
+                        <Box>
+                          <TextField
+                            InputLabelProps={{ shrink: true }}
+                            required
+                            type="time"
+                            id="outlined-required"
+                            label="Time"
+                            fullWidth
+                          />
+                        </Box>
+                      </Box>
+                    </Box>
+                  </Model>
                 </TableRow>
               ))}
             </TableBody>

@@ -9,6 +9,7 @@ import {
   TableContainer,
   TableRow,
   TableHead,
+  MenuItem,
   Tooltip,
   Paper,
   FormGroup,
@@ -19,11 +20,23 @@ import { useNavigate } from "react-router-dom";
 import Layout from "../components/Layout";
 import Model from "../components/Model";
 import Switch from "@mui/material/Switch";
-import EditIcon from '@mui/icons-material/Edit';
+import EditIcon from "@mui/icons-material/Edit";
 function TimeTable({ selected, setSelected }) {
   const [state, setState] = useState(false);
   const navigate = useNavigate();
   const [openEditTT, setOpenEditTT] = React.useState(false);
+  const subject = [
+    { value: "Holiday" },
+    { value: "English" },
+    { value: "Marathi" },
+    { value: "Hindi" },
+    { value: "Maths" },
+    { value: "Science" },
+    { value: "History & PS" },
+    { value: "Geography" },
+    { value: "Sanskrit" },
+    { value: "EVS" },
+  ];
   const rows = [
     {
       day: "Monday",
@@ -113,8 +126,8 @@ function TimeTable({ selected, setSelected }) {
   return (
     <Layout isBack title={"Time Table"}>
       <Box
-        // m={"0 auto"}
         display={"flex"}
+        width={"98.8%"}
         mt={"6rem"}
         mb={"2rem"}
         justifyContent={"center"}
@@ -167,7 +180,7 @@ function TimeTable({ selected, setSelected }) {
                         className="table-name"
                         style={{
                           color: sub.name === "Recess" ? "red" : "inherit",
-                          // fontWeight: sub.name === "Recess" ? "550" : "inherit",
+                          fontWeight: sub.name === "Recess" ? "550" : "inherit",
                         }}
                       >
                         <Box>
@@ -217,11 +230,17 @@ function TimeTable({ selected, setSelected }) {
                       >
                         <Box>
                           <TextField
-                            required
-                            id="outlined-required"
+                            className="tt-subject-select-textfield"
+                            id="select-subject"
+                            select
                             label="Subject"
-                            fullWidth
-                          />
+                          >
+                            {subject.map((option) => (
+                              <MenuItem key={option.value} value={option.value}>
+                                {option.value}
+                              </MenuItem>
+                            ))}
+                          </TextField>
                         </Box>
                         <Box>
                           <TextField
@@ -242,18 +261,25 @@ function TimeTable({ selected, setSelected }) {
                       >
                         <Box>
                           <TextField
-                            required
-                            id="outlined-required"
-                            label="Subject"
-                            fullWidth
-                          />
+                            className="tt-subject-select-textfield"
+                            id="select-subject"
+                            select
+                            label="Subjects"
+                          >
+                            {subject.map((option) => (
+                              <MenuItem key={option.value} value={option.value}>
+                                {option.value}
+                              </MenuItem>
+                            ))}
+                          </TextField>
                         </Box>
                         <Box>
                           <TextField
+                            InputLabelProps={{ shrink: true }}
                             required
                             type="time"
                             id="outlined-required"
-                            // label="Password"
+                            label="Time"
                             fullWidth
                           />
                         </Box>
@@ -266,18 +292,25 @@ function TimeTable({ selected, setSelected }) {
                       >
                         <Box>
                           <TextField
-                            required
-                            id="outlined-required"
-                            label="Subject"
-                            fullWidth
-                          />
+                            className="tt-subject-select-textfield"
+                            id="select-subject"
+                            select
+                            label="Subjects"
+                          >
+                            {subject.map((option) => (
+                              <MenuItem key={option.value} value={option.value}>
+                                {option.value}
+                              </MenuItem>
+                            ))}
+                          </TextField>
                         </Box>
                         <Box>
                           <TextField
+                            InputLabelProps={{ shrink: true }}
                             required
                             type="time"
                             id="outlined-required"
-                            // label="Password"
+                            label="Time"
                             fullWidth
                           />
                         </Box>
@@ -290,18 +323,54 @@ function TimeTable({ selected, setSelected }) {
                       >
                         <Box>
                           <TextField
-                            required
-                            id="outlined-required"
-                            label="Subject"
-                            fullWidth
-                          />
+                            className="tt-subject-select-textfield"
+                            id="select-subject"
+                            select
+                            label="Subjects"
+                          >
+                            {subject.map((option) => (
+                              <MenuItem key={option.value} value={option.value}>
+                                {option.value}
+                              </MenuItem>
+                            ))}
+                          </TextField>
                         </Box>
                         <Box>
                           <TextField
+                            InputLabelProps={{ shrink: true }}
                             required
                             type="time"
                             id="outlined-required"
-                            // label="Password"
+                            label="Time"
+                            fullWidth
+                          />
+                        </Box>
+                      </Box>
+                      <Box
+                        display={"flex"}
+                        flexDirection={"row"}
+                        gap={1.2}
+                        marginInline={2}
+                      >
+                        <TextField
+                          className="tt-subject-select-textfield"
+                          id="select-subject"
+                          select
+                          label="Subjects"
+                        >
+                          {subject.map((option) => (
+                            <MenuItem key={option.value} value={option.value}>
+                              {option.value}
+                            </MenuItem>
+                          ))}
+                        </TextField>
+                        <Box>
+                          <TextField
+                            InputLabelProps={{ shrink: true }}
+                            required
+                            type="time"
+                            id="outlined-required"
+                            label="Time"
                             fullWidth
                           />
                         </Box>
@@ -314,18 +383,25 @@ function TimeTable({ selected, setSelected }) {
                       >
                         <Box>
                           <TextField
-                            required
-                            id="outlined-required"
-                            label="Subject"
-                            fullWidth
-                          />
+                            className="tt-subject-select-textfield"
+                            id="select-subject"
+                            select
+                            label="Subjects"
+                          >
+                            {subject.map((option) => (
+                              <MenuItem key={option.value} value={option.value}>
+                                {option.value}
+                              </MenuItem>
+                            ))}
+                          </TextField>
                         </Box>
                         <Box>
                           <TextField
+                            InputLabelProps={{ shrink: true }}
                             required
                             type="time"
                             id="outlined-required"
-                            // label="Password"
+                            label="Time"
                             fullWidth
                           />
                         </Box>
@@ -338,18 +414,25 @@ function TimeTable({ selected, setSelected }) {
                       >
                         <Box>
                           <TextField
-                            required
-                            id="outlined-required"
-                            label="Subject"
-                            fullWidth
-                          />
+                            className="tt-subject-select-textfield"
+                            id="select-subject"
+                            select
+                            label="Subjects"
+                          >
+                            {subject.map((option) => (
+                              <MenuItem key={option.value} value={option.value}>
+                                {option.value}
+                              </MenuItem>
+                            ))}
+                          </TextField>
                         </Box>
                         <Box>
                           <TextField
+                            InputLabelProps={{ shrink: true }}
                             required
                             type="time"
                             id="outlined-required"
-                            // label="Password"
+                            label="Time"
                             fullWidth
                           />
                         </Box>
@@ -362,42 +445,25 @@ function TimeTable({ selected, setSelected }) {
                       >
                         <Box>
                           <TextField
-                            required
-                            id="outlined-required"
-                            label="Subject"
-                            fullWidth
-                          />
+                            className="tt-subject-select-textfield"
+                            id="select-subject"
+                            select
+                            label="Subjects"
+                          >
+                            {subject.map((option) => (
+                              <MenuItem key={option.value} value={option.value}>
+                                {option.value}
+                              </MenuItem>
+                            ))}
+                          </TextField>
                         </Box>
                         <Box>
                           <TextField
+                            InputLabelProps={{ shrink: true }}
                             required
                             type="time"
                             id="outlined-required"
-                            // label="Password"
-                            fullWidth
-                          />
-                        </Box>
-                      </Box>
-                      <Box
-                        display={"flex"}
-                        flexDirection={"row"}
-                        gap={1.2}
-                        marginInline={2}
-                      >
-                        <Box>
-                          <TextField
-                            required
-                            id="outlined-required"
-                            label="Subject"
-                            fullWidth
-                          />
-                        </Box>
-                        <Box>
-                          <TextField
-                            required
-                            type="time"
-                            id="outlined-required"
-                            // label="Password"
+                            label="Time"
                             fullWidth
                           />
                         </Box>
@@ -411,18 +477,25 @@ function TimeTable({ selected, setSelected }) {
                       >
                         <Box>
                           <TextField
-                            required
-                            id="outlined-required"
-                            label="Subject"
-                            fullWidth
-                          />
+                            className="tt-subject-select-textfield"
+                            id="select-subject"
+                            select
+                            label="Subjects"
+                          >
+                            {subject.map((option) => (
+                              <MenuItem key={option.value} value={option.value}>
+                                {option.value}
+                              </MenuItem>
+                            ))}
+                          </TextField>
                         </Box>
                         <Box>
                           <TextField
+                            InputLabelProps={{ shrink: true }}
                             required
                             type="time"
                             id="outlined-required"
-                            // label="Password"
+                            label="Time"
                             fullWidth
                           />
                         </Box>

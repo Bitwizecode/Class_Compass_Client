@@ -24,7 +24,7 @@ import Switch from "@mui/material/Switch";
 
 function Syllabus() {
   const [state, setState] = useState(false);
-  const gender = [
+  const subject = [
     { value: "English" },
     { value: "Marathi" },
     { value: "Hindi" },
@@ -69,11 +69,11 @@ function Syllabus() {
           <Box className={"subject-term-selector"}>
             <TextField
               className="subject-term-textfield"
-              id="select-gender"
+              id="select-subject"
               select
               label="Choose Subjects"
             >
-              {gender.map((option) => (
+              {subject.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
                   {option.value}
                 </MenuItem>
