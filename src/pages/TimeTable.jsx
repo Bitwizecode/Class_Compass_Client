@@ -23,6 +23,7 @@ import EditIcon from '@mui/icons-material/Edit';
 function TimeTable({ selected, setSelected }) {
   const [state, setState] = useState(false);
   const navigate = useNavigate();
+  const [openEditTT, setOpenEditTT] = React.useState(false);
   const rows = [
     {
       day: "Monday",
@@ -128,67 +129,311 @@ function TimeTable({ selected, setSelected }) {
           justifyContent={"center"}
           position={"relative"}
           textAlign={"center"}
-        >
+        ></Box>
 
-        </Box>
-        
-          <TableContainer
-            sx={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px", width: "95%" }}
-            component={Paper}
-          >
-            <Table aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell className="time-table-table-head" align="left">
-                    Day
+        <TableContainer
+          sx={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px", width: "95%" }}
+          component={Paper}
+        >
+          <Table aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell className="time-table-table-head" align="left">
+                  Day
+                </TableCell>
+                <TableCell className="time-table-table-head">1</TableCell>
+                <TableCell className="time-table-table-head">2</TableCell>
+                <TableCell className="time-table-table-head">3</TableCell>
+                <TableCell className="time-table-table-head">4</TableCell>
+                <TableCell className="time-table-table-head">5</TableCell>
+                <TableCell className="time-table-table-head">6</TableCell>
+                <TableCell className="time-table-table-head">7</TableCell>
+                <TableCell className="time-table-table-head">8</TableCell>
+                <TableCell className="time-table-table-head">9</TableCell>
+                <TableCell className="time-table-table-head"></TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows.map((row) => (
+                <TableRow key={row.name}>
+                  <TableCell align="center" className="table-name">
+                    {row.day}
                   </TableCell>
-                  <TableCell className="time-table-table-head">1</TableCell>
-                  <TableCell className="time-table-table-head">2</TableCell>
-                  <TableCell className="time-table-table-head">3</TableCell>
-                  <TableCell className="time-table-table-head">4</TableCell>
-                  <TableCell className="time-table-table-head">5</TableCell>
-                  <TableCell className="time-table-table-head">6</TableCell>
-                  <TableCell className="time-table-table-head">7</TableCell>
-                  <TableCell className="time-table-table-head">8</TableCell>
-                  <TableCell className="time-table-table-head">9</TableCell>
-                  <TableCell className="time-table-table-head"></TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {rows.map((row) => (
-                  <TableRow key={row.name}>
-                    <TableCell align="center" className="table-name">
-                      {row.day}
-                    </TableCell>
-                    {row.subjects.map((sub, i) => {
-                      return (
-                        <TableCell
-                          key={i}
-                          align="center"
-                          className="table-name"
-                          style={{
-                            color: sub.name === "Recess" ? "red" : "inherit",
-                            // fontWeight: sub.name === "Recess" ? "550" : "inherit",
-                          }}
-                        >
-                          <Box>
-                            {sub.name}
+                  {row.subjects.map((sub, i) => {
+                    return (
+                      <TableCell
+                        key={i}
+                        align="center"
+                        className="table-name"
+                        style={{
+                          color: sub.name === "Recess" ? "red" : "inherit",
+                          // fontWeight: sub.name === "Recess" ? "550" : "inherit",
+                        }}
+                      >
+                        <Box>
+                          {sub.name}
                           <Typography fontSize={"11px"}>
                             {sub.timing}
                           </Typography>
-                          </Box>
-                        </TableCell>
-                      );
-                    })}
-                <TableCell>
-                  <Button startIcon={<EditIcon/>} size="small" variant="contained">Edit</Button>
-                </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-
+                        </Box>
+                      </TableCell>
+                    );
+                  })}
+                  <TableCell>
+                    <Button
+                      onClick={() => {
+                        setOpenEditTT(true);
+                      }}
+                      startIcon={<EditIcon />}
+                      size="small"
+                      variant="contained"
+                    >
+                      Edit
+                    </Button>
+                  </TableCell>
+                  <Model
+                    open={openEditTT}
+                    setOpen={setOpenEditTT}
+                    headerText={"Monday"}
+                    submitText={"Update"}
+                    subHeaderText={"Update Time Table"}
+                    onSubmit={() => {
+                      setOpenEdit(false);
+                    }}
+                  >
+                    <Box
+                      display={"flex"}
+                      flexDirection={"column"}
+                      gap={1.2}
+                      height={"400px"}
+                      overflow={"auto"}
+                    >
+                      <Box
+                        display={"flex"}
+                        flexDirection={"row"}
+                        gap={1.2}
+                        marginInline={2}
+                        mt={2}
+                      >
+                        <Box>
+                          <TextField
+                            required
+                            id="outlined-required"
+                            label="Subject"
+                            fullWidth
+                          />
+                        </Box>
+                        <Box>
+                          <TextField
+                            InputLabelProps={{ shrink: true }}
+                            required
+                            type="time"
+                            id="outlined-required"
+                            label="Time"
+                            fullWidth
+                          />
+                        </Box>
+                      </Box>
+                      <Box
+                        display={"flex"}
+                        flexDirection={"row"}
+                        gap={1.2}
+                        marginInline={2}
+                      >
+                        <Box>
+                          <TextField
+                            required
+                            id="outlined-required"
+                            label="Subject"
+                            fullWidth
+                          />
+                        </Box>
+                        <Box>
+                          <TextField
+                            required
+                            type="time"
+                            id="outlined-required"
+                            // label="Password"
+                            fullWidth
+                          />
+                        </Box>
+                      </Box>
+                      <Box
+                        display={"flex"}
+                        flexDirection={"row"}
+                        gap={1.2}
+                        marginInline={2}
+                      >
+                        <Box>
+                          <TextField
+                            required
+                            id="outlined-required"
+                            label="Subject"
+                            fullWidth
+                          />
+                        </Box>
+                        <Box>
+                          <TextField
+                            required
+                            type="time"
+                            id="outlined-required"
+                            // label="Password"
+                            fullWidth
+                          />
+                        </Box>
+                      </Box>
+                      <Box
+                        display={"flex"}
+                        flexDirection={"row"}
+                        gap={1.2}
+                        marginInline={2}
+                      >
+                        <Box>
+                          <TextField
+                            required
+                            id="outlined-required"
+                            label="Subject"
+                            fullWidth
+                          />
+                        </Box>
+                        <Box>
+                          <TextField
+                            required
+                            type="time"
+                            id="outlined-required"
+                            // label="Password"
+                            fullWidth
+                          />
+                        </Box>
+                      </Box>
+                      <Box
+                        display={"flex"}
+                        flexDirection={"row"}
+                        gap={1.2}
+                        marginInline={2}
+                      >
+                        <Box>
+                          <TextField
+                            required
+                            id="outlined-required"
+                            label="Subject"
+                            fullWidth
+                          />
+                        </Box>
+                        <Box>
+                          <TextField
+                            required
+                            type="time"
+                            id="outlined-required"
+                            // label="Password"
+                            fullWidth
+                          />
+                        </Box>
+                      </Box>
+                      <Box
+                        display={"flex"}
+                        flexDirection={"row"}
+                        gap={1.2}
+                        marginInline={2}
+                      >
+                        <Box>
+                          <TextField
+                            required
+                            id="outlined-required"
+                            label="Subject"
+                            fullWidth
+                          />
+                        </Box>
+                        <Box>
+                          <TextField
+                            required
+                            type="time"
+                            id="outlined-required"
+                            // label="Password"
+                            fullWidth
+                          />
+                        </Box>
+                      </Box>
+                      <Box
+                        display={"flex"}
+                        flexDirection={"row"}
+                        gap={1.2}
+                        marginInline={2}
+                      >
+                        <Box>
+                          <TextField
+                            required
+                            id="outlined-required"
+                            label="Subject"
+                            fullWidth
+                          />
+                        </Box>
+                        <Box>
+                          <TextField
+                            required
+                            type="time"
+                            id="outlined-required"
+                            // label="Password"
+                            fullWidth
+                          />
+                        </Box>
+                      </Box>
+                      <Box
+                        display={"flex"}
+                        flexDirection={"row"}
+                        gap={1.2}
+                        marginInline={2}
+                      >
+                        <Box>
+                          <TextField
+                            required
+                            id="outlined-required"
+                            label="Subject"
+                            fullWidth
+                          />
+                        </Box>
+                        <Box>
+                          <TextField
+                            required
+                            type="time"
+                            id="outlined-required"
+                            // label="Password"
+                            fullWidth
+                          />
+                        </Box>
+                      </Box>
+                      <Box
+                        display={"flex"}
+                        flexDirection={"row"}
+                        gap={1.2}
+                        marginInline={2}
+                        mb={2}
+                      >
+                        <Box>
+                          <TextField
+                            required
+                            id="outlined-required"
+                            label="Subject"
+                            fullWidth
+                          />
+                        </Box>
+                        <Box>
+                          <TextField
+                            required
+                            type="time"
+                            id="outlined-required"
+                            // label="Password"
+                            fullWidth
+                          />
+                        </Box>
+                      </Box>
+                    </Box>
+                  </Model>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
       </Box>
     </Layout>
   );

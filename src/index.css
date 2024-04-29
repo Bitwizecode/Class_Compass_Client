@@ -227,7 +227,7 @@ i {
   display: flex;
   justify-content: center;
   padding: 8px;
-  @media (max-width: 900px) {
+  @media (max-width: 600px) {
     height: calc(100vh - 12.2rem);
   }
 }
