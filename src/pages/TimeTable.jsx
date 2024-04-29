@@ -244,12 +244,12 @@ function TimeTable({ selected, setSelected }) {
                         </Box>
                         <Box>
                           <TextField
+                            className="tt-time-select-textfield"
                             InputLabelProps={{ shrink: true }}
                             required
                             type="time"
                             id="outlined-required"
                             label="Time"
-                            fullWidth
                           />
                         </Box>
                       </Box>
@@ -275,12 +275,12 @@ function TimeTable({ selected, setSelected }) {
                         </Box>
                         <Box>
                           <TextField
-                            InputLabelProps={{ shrink: true }}
-                            required
-                            type="time"
-                            id="outlined-required"
-                            label="Time"
-                            fullWidth
+                             className="tt-time-select-textfield"
+                             InputLabelProps={{ shrink: true }}
+                             required
+                             type="time"
+                             id="outlined-required"
+                             label="Time"
                           />
                         </Box>
                       </Box>
@@ -306,12 +306,12 @@ function TimeTable({ selected, setSelected }) {
                         </Box>
                         <Box>
                           <TextField
-                            InputLabelProps={{ shrink: true }}
-                            required
-                            type="time"
-                            id="outlined-required"
-                            label="Time"
-                            fullWidth
+                             className="tt-time-select-textfield"
+                             InputLabelProps={{ shrink: true }}
+                             required
+                             type="time"
+                             id="outlined-required"
+                             label="Time"
                           />
                         </Box>
                       </Box>
@@ -337,12 +337,12 @@ function TimeTable({ selected, setSelected }) {
                         </Box>
                         <Box>
                           <TextField
-                            InputLabelProps={{ shrink: true }}
-                            required
-                            type="time"
-                            id="outlined-required"
-                            label="Time"
-                            fullWidth
+                             className="tt-time-select-textfield"
+                             InputLabelProps={{ shrink: true }}
+                             required
+                             type="time"
+                             id="outlined-required"
+                             label="Time"
                           />
                         </Box>
                       </Box>
@@ -366,12 +366,12 @@ function TimeTable({ selected, setSelected }) {
                         </TextField>
                         <Box>
                           <TextField
-                            InputLabelProps={{ shrink: true }}
-                            required
-                            type="time"
-                            id="outlined-required"
-                            label="Time"
-                            fullWidth
+                             className="tt-time-select-textfield"
+                             InputLabelProps={{ shrink: true }}
+                             required
+                             type="time"
+                             id="outlined-required"
+                             label="Time"
                           />
                         </Box>
                       </Box>
@@ -397,12 +397,12 @@ function TimeTable({ selected, setSelected }) {
                         </Box>
                         <Box>
                           <TextField
-                            InputLabelProps={{ shrink: true }}
-                            required
-                            type="time"
-                            id="outlined-required"
-                            label="Time"
-                            fullWidth
+                             className="tt-time-select-textfield"
+                             InputLabelProps={{ shrink: true }}
+                             required
+                             type="time"
+                             id="outlined-required"
+                             label="Time"
                           />
                         </Box>
                       </Box>
@@ -428,12 +428,12 @@ function TimeTable({ selected, setSelected }) {
                         </Box>
                         <Box>
                           <TextField
-                            InputLabelProps={{ shrink: true }}
-                            required
-                            type="time"
-                            id="outlined-required"
-                            label="Time"
-                            fullWidth
+                             className="tt-time-select-textfield"
+                             InputLabelProps={{ shrink: true }}
+                             required
+                             type="time"
+                             id="outlined-required"
+                             label="Time"
                           />
                         </Box>
                       </Box>
@@ -459,12 +459,12 @@ function TimeTable({ selected, setSelected }) {
                         </Box>
                         <Box>
                           <TextField
-                            InputLabelProps={{ shrink: true }}
-                            required
-                            type="time"
-                            id="outlined-required"
-                            label="Time"
-                            fullWidth
+                             className="tt-time-select-textfield"
+                             InputLabelProps={{ shrink: true }}
+                             required
+                             type="time"
+                             id="outlined-required"
+                             label="Time"
                           />
                         </Box>
                       </Box>
@@ -491,12 +491,12 @@ function TimeTable({ selected, setSelected }) {
                         </Box>
                         <Box>
                           <TextField
-                            InputLabelProps={{ shrink: true }}
-                            required
-                            type="time"
-                            id="outlined-required"
-                            label="Time"
-                            fullWidth
+                             className="tt-time-select-textfield"
+                             InputLabelProps={{ shrink: true }}
+                             required
+                             type="time"
+                             id="outlined-required"
+                             label="Time"
                           />
                         </Box>
                       </Box>
