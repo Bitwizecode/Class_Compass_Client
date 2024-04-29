@@ -222,7 +222,7 @@ i {
 }
 
 .message-main {
-  height: calc(100vh - 6rem);
+  height: calc(100vh - 9rem);
   position: relative;
   display: flex;
   justify-content: center;

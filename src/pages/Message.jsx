@@ -23,7 +23,7 @@ const Message = ({ selected, setSelected }) => {
             display={"flex"}
             justifyContent={"right"}
           >
-            {[0, 0, 0, 0, 0, 0, 0].map( (item, i) => (
+            {[0, 0, 0, 0, 0, 0, 0].map((item, i) => (
               <Box
                 key={i}
                 display={"flex"}
@@ -31,7 +31,14 @@ const Message = ({ selected, setSelected }) => {
                 flexDirection={"column"}
                 alignItems={item == 0 ? "end" : "start"}
               >
-                <Typography fontSize={"10px"}>
+                <Typography
+                  borderRadius={"5px"}
+                  padding={"2px 10px"}
+                  fontSize={"10px"}
+                  mb={"5px"}
+                  color={"#fff"}
+                  bgcolor={"#0000008a"}
+                >
                   09:30 pm 04-April-2024
                 </Typography>
                 <Box
