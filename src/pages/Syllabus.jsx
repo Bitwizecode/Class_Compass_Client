@@ -93,7 +93,7 @@ function Syllabus() {
             </TextField>
           </Box>
         </Box>
-          <Box className="syllabus-toggle-button" display={"flex"} justifyContent={"right"} >
+          <Box className="syllabus-toggle-button" display={"flex"} justifyContent={"right"} width={"75%"}>
             <FormGroup
               
               sx={{ position: "right" }}
@@ -106,7 +106,7 @@ function Syllabus() {
           </Box>
         <Box
           className="syllabus-table-main"
-          
+          width={"75%"}
           display={"flex"}
           // mt={"0px"}
           justifyContent={"center"}
@@ -114,7 +114,7 @@ function Syllabus() {
           alignItems={"center"}
         >
           <TableContainer
-            sx={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }}
+            sx={{ boxShadow: "none" }}
             component={Paper}
           >
             <Table aria-label="simple table">
