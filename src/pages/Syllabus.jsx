@@ -93,7 +93,7 @@ function Syllabus() {
             </TextField>
           </Box>
         </Box>
-          <Box className="syllabus-toggle-button" display={"flex"} justifyContent={"right"} width={"75%"}>
+          <Box className="syllabus-toggle-button" display={"flex"} justifyContent={"right"} >
             <FormGroup
               
               sx={{ position: "right" }}
@@ -106,7 +106,7 @@ function Syllabus() {
           </Box>
         <Box
           className="syllabus-table-main"
-          width={"75%"}
+          
           display={"flex"}
           // mt={"0px"}
           justifyContent={"center"}
