@@ -598,3 +598,17 @@ input[type="number"]::-webkit-outer-spin-button {
     width: 90%;
   }
 }
+
+.student-leave-table {
+  width: 75% !important;
+  @media (max-width: 770px) {
+    width: 92% !important;
+  }
+}
+
+.student-leave-curr-date{
+  width: 75% !important;
+  @media (max-width: 770px) {
+    width: 92% !important;
+  }
+}

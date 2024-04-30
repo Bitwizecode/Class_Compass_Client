@@ -24,6 +24,7 @@ import Loader from "./components/Loader";
 import Todo from "./pages/Todo";
 import Syllabus from "./pages/Syllabus";
 import Homework from "./pages/Homework";
+import StudentLeave from "./pages/StudentLeave";
 function App() {
   const [selected, setSelected] = useState("/");
   return (
@@ -93,6 +94,7 @@ function App() {
         <Route path="/todo" element={<Todo />} />
         <Route path="/syllabus" element={<Syllabus />} />
         <Route path="/homework" element={<Homework />} />
+        <Route path="/student-leave" element={<StudentLeave />} />
       </Routes>
     </>
   );
