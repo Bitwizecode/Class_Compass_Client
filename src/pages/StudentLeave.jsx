@@ -16,7 +16,7 @@ import {
   TextField,
 } from "@mui/material";
 function StudentLeave() {
-  function createData( name, roll, std) {
+  function createData(name, roll, std) {
     return { name, roll, std };
   }
   const [openStudentLeave, setOpenStudentLeave] = React.useState(false);
@@ -24,14 +24,13 @@ function StudentLeave() {
     createData("Rohit Gupta", 21, 6.0),
     createData("Raj Gupta", 19, 9.0),
     createData("Rahul Gupta", 46, 16.0),
-    createData( "Ravi Gupta", 12, 3.7),
+    createData("Ravi Gupta", 12, 3.7),
   ];
   return (
     <Layout isBack title={"Student Leave"}>
       <Box mt={12} width={"100%"} mb={9}>
-        <Box className="student-leave-curr-date"m={"auto"}>
+        <Box className="student-leave-curr-date" m={"auto"}>
           <Typography
-          
             variant="h5"
             sx={{ fontWeight: 550, mb: "-5px", color: "#1976d2" }}
           >
@@ -50,7 +49,7 @@ function StudentLeave() {
           alignItems={"center"}
         >
           <TableContainer
-          className="student-leave-table"
+            className="student-leave-table"
             sx={{
               boxShadow: " rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;",
             }}
@@ -69,7 +68,7 @@ function StudentLeave() {
                   <TableRow key={row.name}>
                     <TableCell>
                       <Box display={"flex"} alignItems={"center"} gap={"10px"}>
-                       {index+1+ ". "} {row.name}
+                        {index + 1 + ". "} {row.name}
                       </Box>
                     </TableCell>
                     <TableCell align="left">{row.roll}</TableCell>
@@ -88,7 +87,12 @@ function StudentLeave() {
                         setOpen={setOpenStudentLeave}
                         headerText={"Leave application"}
                         submitText={"Approve"}
-                        subHeaderText={"Application from " + row.name + " on " + new Date().toLocaleDateString()}
+                        subHeaderText={
+                          "Application from " +
+                          row.name +
+                          " on " +
+                          new Date().toLocaleDateString()
+                        }
                         onSubmit={() => {
                           setOpenEdit(false);
                         }}
@@ -96,6 +100,8 @@ function StudentLeave() {
                         <Box
                           sx={{
                             borderRadius: 3,
+                            height: "150px",
+                            overflow: "auto",
                             padding: 2,
                             backgroundColor: "whitesmoke",
                             boxShadow:
@@ -113,6 +119,13 @@ function StudentLeave() {
                             Dehradun. I would kindly request you grant me leave
                             for the 12th, 13th, and 14th of April 2024. I will
                             be highly obliged.
+                            <br /> <br />I would like to bring to your notice
+                            that I, Ravi Gupta of class 10th-C will not be able
+                            to attend school for the coming 3 days as I have to
+                            go out of the station to attend my cousin’s wedding
+                            in Dehradun. I would kindly request you grant me
+                            leave for the 12th, 13th, and 14th of April 2024. I
+                            will be highly obliged.
                           </Typography>
                         </Box>
                       </Model>

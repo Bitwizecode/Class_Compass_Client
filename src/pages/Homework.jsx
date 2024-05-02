@@ -63,6 +63,8 @@ const Homework = ({ selected, setSelected }) => {
                 sx={{ ml: 1, background: "#fff" }}
                 fullWidth
                 placeholder="Homework"
+                multiline
+                maxRows={4}
               />
               <i
                 className="fa-solid fa-paperclip"
