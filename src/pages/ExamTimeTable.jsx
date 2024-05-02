@@ -19,7 +19,6 @@ import {
 import { useNavigate } from "react-router-dom";
 import Layout from "../components/Layout";
 import Model from "../components/Model";
-import Switch from "@mui/material/Switch";
 import EditIcon from "@mui/icons-material/Edit";
 function ExamTimeTable({ selected, setSelected }) {
   const [state, setState] = useState(false);

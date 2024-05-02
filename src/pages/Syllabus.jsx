@@ -20,10 +20,14 @@ import {
   FormControlLabel,
 } from "@mui/material";
 import Layout from "../components/Layout";
-import Switch from "@mui/material/Switch";
+import EditIcon from "@mui/icons-material/Edit";
+import Model from "../components/Model";
 
 function Syllabus() {
   const [state, setState] = useState(false);
+  const [chapter, setChapter] = useState("");
+  const [weightage, setWeightage] = useState("");
+  const [openEditSyllabus, setOpenEditSyllabus] = React.useState(false);
   const subject = [
     { value: "English" },
     { value: "Marathi" },
@@ -48,12 +52,12 @@ function Syllabus() {
       sr: "1",
       chapter:
         "Law Of Gravity jhygfcvghujikjh huyghjhgtfrghjinb huygtfrtghjihuygftr",
-      weightage: "20 marks",
+      weightage: "20",
     },
-    { sr: "2", chapter: "Law Of Gravity", weightage: "20 marks" },
-    { sr: "3", chapter: "Law Of Gravity", weightage: "20 marks" },
-    { sr: "4", chapter: "Law Of Gravity", weightage: "20 marks" },
-    { sr: "5", chapter: "Law Of Gravity", weightage: "20 marks" },
+    { sr: "2", chapter: "Law Of Gravity", weightage: "20" },
+    { sr: "3", chapter: "Law Of Gravity", weightage: "20" },
+    { sr: "4", chapter: "Law Of Gravity", weightage: "20" },
+    { sr: "5", chapter: "Law Of Gravity", weightage: "20" },
   ];
   return (
     <Layout isBack title={"Syllabus"}>
@@ -93,17 +97,7 @@ function Syllabus() {
             </TextField>
           </Box>
         </Box>
-          <Box className="syllabus-toggle-button" display={"flex"} justifyContent={"right"} width={"75%"}>
-            <FormGroup
-              
-              sx={{ position: "right" }}
-            >
-              <FormControlLabel
-                control={<Switch onChange={() => setState(!state)} />}
-                label={state ? "View" : "Edit"}
-              />
-            </FormGroup>
-          </Box>
+
         <Box
           className="syllabus-table-main"
           width={"75%"}
@@ -112,17 +106,16 @@ function Syllabus() {
           justifyContent={"center"}
           flexDirection={"column"}
           alignItems={"center"}
+          mt={3}
         >
-          <TableContainer
-            sx={{ boxShadow: "none" }}
-            component={Paper}
-          >
+          <TableContainer sx={{ boxShadow: "none" }} component={Paper}>
             <Table aria-label="simple table">
               <TableHead>
                 <TableRow>
                   <TableCell sx={{ pl: "10px" }}>Sr.No</TableCell>
                   <TableCell align="left">Chapter</TableCell>
                   <TableCell align="center">Weightage</TableCell>
+                  <TableCell align="center">Edit</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -133,16 +126,93 @@ function Syllabus() {
                         {row.sr}
                       </Box>
                     </TableCell>
-                    <TableCell align="left">
-                      {row.chapter}
-                    </TableCell>
+                    <TableCell align="left">{row.chapter}</TableCell>
 
-                    <TableCell align="center">{row.weightage}</TableCell>
+                    <TableCell align="center">
+                      {row.weightage + " marks"}
+                    </TableCell>
+                    <TableCell align="center" className="table-name">
+                      <Button
+                        onClick={() => {
+                          setWeightage(row.weightage);
+                          setChapter(row.chapter);
+                          setOpenEditSyllabus(true);
+                        }}
+                        size="small"
+                        variant="contained"
+                        startIcon={<EditIcon />}
+                      >
+                        Edit
+                      </Button>
+                    </TableCell>
+                    <Model
+                      open={openEditSyllabus}
+                      setOpen={setOpenEditSyllabus}
+                      headerText={"Syllabus Details"}
+                      submitText={"Add"}
+                      subHeaderText={"Add Chapter and Weightage"}
+                      onSubmit={() => {
+                        setOpenEditSyllabus(false);
+                      }}
+                    >
+                      <Box
+                        display={"flex"}
+                        flexDirection={"column"}
+                        gap={1.2}
+                        // height={"230px"}
+                        // overflow={"auto"}
+                      >
+                        <Box
+                          display={"flex"}
+                          flexDirection={"column"}
+                          gap={1.2}
+                          marginInline={2}
+                          mt={2}
+                        >
+                          <Box>
+                            <TextField
+                              className="subject-term-textfield"
+                              required
+                              type="text"
+                              id="outlined-required"
+                              label="Chapter Name"
+                              multiline
+                              maxRows={2}
+                              value={chapter}
+                              onChange={(e) => setChapter(e.target.value)}
+                            />
+                          </Box>
+                          <Box>
+                            <TextField
+                              className="subject-term-textfield"
+                              required
+                              type="number"
+                              id="outlined-required"
+                              label="Weightage"
+                              value={weightage}
+                              onChange={(e) => setWeightage(e.target.value)}
+                            />
+                          </Box>
+                        </Box>
+                      </Box>
+                    </Model>
                   </TableRow>
                 ))}
               </TableBody>
             </Table>
           </TableContainer>
+          <Box className="login-submit">
+            <Button
+              type="submit"
+              variant="outlined"
+              size="small"
+              onClick={() => {
+                setOpenEditSyllabus(true);
+              }}
+            >
+              Add
+            </Button>
+          </Box>
         </Box>
       </Box>
     </Layout>
