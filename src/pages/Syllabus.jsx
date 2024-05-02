@@ -133,7 +133,7 @@ function Syllabus() {
                         {row.sr}
                       </Box>
                     </TableCell>
-                    <TableCell contentEditable align="left">
+                    <TableCell align="left">
                       {row.chapter}
                     </TableCell>
 

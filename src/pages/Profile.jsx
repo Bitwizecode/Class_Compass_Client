@@ -104,7 +104,8 @@ const Profile = ({ selected, setSelected }) => {
                         fullWidth
                       />
                     </Grid>
-                    <Grid mb={1} xs={12} md={12} sm={12}>
+                    <Grid mb={1} xs={12} md={12} sm={12kk
+                    g }>
                       <TextField
                         required
                         id="outlined-required"
