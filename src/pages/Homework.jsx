@@ -1,5 +1,11 @@
 import Layout from "../components/Layout";
-import { Box, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  TextField,
+  Typography,
+  InputAdornment,
+  IconButton,
+} from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import BgImage from "../assets/icon/message_bg.jpg";
 import { useRef } from "react";
@@ -11,7 +17,12 @@ const Homework = ({ selected, setSelected }) => {
     fileInputRef.current.click();
   };
   return (
-    <Layout isBack title={"Homework"} selected={selected} setSelected={setSelected}>
+    <Layout
+      isBack
+      title={"Homework"}
+      selected={selected}
+      setSelected={setSelected}
+    >
       <Box mt={8} className="homework-message-main">
         <Box className="notification-message-box">
           <Box
@@ -65,19 +76,19 @@ const Homework = ({ selected, setSelected }) => {
                 placeholder="Homework"
                 multiline
                 maxRows={4}
-              />
-              <i
-                className="fa-solid fa-paperclip"
-                onClick={handleOpenFile}
-                style={{
-                  position: "absolute",
-                  right: "1.5%",
-                  top: "20px",
-                  fontSize: "20px",
-                  cursor: "pointer",
-                  color: "gray",
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton>
+                        <i
+                          className="fa-solid fa-paperclip"
+                          onClick={handleOpenFile}
+                        ></i>
+                      </IconButton>
+                    </InputAdornment>
+                  ),
                 }}
-              ></i>
+              />
               <input
                 type="file"
                 ref={fileInputRef}
