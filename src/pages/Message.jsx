@@ -66,7 +66,7 @@ const Message = ({ selected, setSelected }) => {
           <Box className="notification-field-send-btn-box">
             <Box sx={{ width: "100%", position: "relative" }}>
               <TextField
-                sx={{ ml: 1, background: "#fff", border: "1px solid red" }}
+                sx={{ ml: 1, background: "#fff" }}
                 fullWidth
                 placeholder="Message"
                 multiline
