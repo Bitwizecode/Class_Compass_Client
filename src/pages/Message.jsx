@@ -1,5 +1,11 @@
 import Layout from "../components/Layout";
-import { Box, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  TextField,
+  Typography,
+  InputAdornment,
+  IconButton,
+} from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import BgImage from "../assets/icon/message_bg.jpg";
 import { useRef } from "react";
@@ -60,24 +66,25 @@ const Message = ({ selected, setSelected }) => {
           <Box className="notification-field-send-btn-box">
             <Box sx={{ width: "100%", position: "relative" }}>
               <TextField
-                sx={{ ml: 1, background: "#fff" }}
+                sx={{ ml: 1, background: "#fff", border: "1px solid red" }}
                 fullWidth
                 placeholder="Message"
                 multiline
                 maxRows={4}
-              />
-              <i
-                className="fa-solid fa-paperclip"
-                onClick={handleOpenFile}
-                style={{
-                  position: "absolute",
-                  right: "1.5%",
-                  top: "20px",
-                  fontSize: "20px",
-                  cursor: "pointer",
-                  color: "gray",
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton>
+                        <i
+                          className="fa-solid fa-paperclip"
+                          onClick={handleOpenFile}
+                        ></i>
+                      </IconButton>
+                    </InputAdornment>
+                  ),
                 }}
-              ></i>
+              />
+
               <input
                 type="file"
                 ref={fileInputRef}
