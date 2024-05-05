@@ -32,7 +32,7 @@ const Login = () => {
       toast.success("Login successfully!");
       setTimeout(() => {
         navigate("/");
-      }, [2000]);
+      }, [1000]);
     } catch (error) {
       console.log(error);
       toast.error("Invalid username or password");
@@ -78,8 +78,9 @@ const Login = () => {
                   <TextField
                     required
                     id="outlined-required"
-                    label="Phone/Email"
+                    label="Email"
                     fullWidth
+                    type="email"
                     onChange={(e) => setLoginInput(e.target.value)}
                   />
                 </Box>

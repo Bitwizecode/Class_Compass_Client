@@ -4,14 +4,18 @@ import { useNavigate } from "react-router-dom";
 import SchoolLogo from "../assets/icon/school_logo.jpg";
 import { authApiService } from "../api-services/authApiService";
 import { ToastContainer, toast } from "react-toastify";
+import Loader from "../components/Loader";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [isOtpSubmit, setIsOtpSubmit] = useState(false);
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [otp, setOtp] = useState(new Array(4).fill(""));
   const [inputData, setInputData] = useState("");
-  const { forgotPassword, verifyOtp } = authApiService();
+  const [loading, setLoading] = useState(false);
+  const { forgotPassword, verifyOtp, changePassword } = authApiService();
 
   const handleInputChange = (e, index) => {
     const value = e.target.value;
@@ -28,6 +32,7 @@ const ForgotPassword = () => {
 
   const handleForgotPassword = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       await forgotPassword({ inputData });
       toast.success("Otp sent to the provided input detail");
@@ -35,11 +40,14 @@ const ForgotPassword = () => {
     } catch (error) {
       toast.error("Something went wrong");
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleVerifyOtp = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const jointOTP = otp.join("");
       const res = await verifyOtp({ otp: jointOTP });
@@ -48,11 +56,39 @@ const ForgotPassword = () => {
     } catch (error) {
       toast.error("Wrong OTP!");
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
+
+  const handleChangePassword = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      if (password != confirmPassword) {
+        toast.error("Confirm password does not match!");
+        return;
+      }
+      const res = await changePassword({
+        email: "guptaraj1946@gmail.com",
+        password: password,
+      });
+      toast.success("Password Changes Successfully");
+      setTimeout(() => {
+        navigate("/login");
+      }, 1000);
+    } catch (error) {
+      toast.error("Something went wrong!");
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <Box className="forgot-pass-main">
       <ToastContainer />
+      {loading && <Loader />}
       <Box>
         <Box
           className="forgotPass-page-main"
@@ -78,7 +114,15 @@ const ForgotPassword = () => {
             </Typography>
             <hr className="hr-line" />
           </Box>
-          <form onSubmit={isOtpSent ? handleVerifyOtp : handleForgotPassword}>
+          <form
+            onSubmit={
+              isOtpSent && !isOtpSubmit
+                ? handleVerifyOtp
+                : isOtpSubmit
+                ? handleChangePassword
+                : handleForgotPassword
+            }
+          >
             <Box
               display={"flex"}
               flexDirection={"column"}
@@ -170,6 +214,8 @@ const ForgotPassword = () => {
                           id="outlined-required"
                           label="New Password"
                           fullWidth
+                          onChange={(e) => setPassword(e.target.value)}
+                          value={password}
                         />
                       </Box>
                       <Box>
@@ -178,6 +224,8 @@ const ForgotPassword = () => {
                           id="outlined-required"
                           label="Confirm Password"
                           fullWidth
+                          onChange={(e) => setConfirmPassword(e.target.value)}
+                          value={confirmPassword}
                         />
                       </Box>
                     </>
@@ -200,13 +248,7 @@ const ForgotPassword = () => {
                 >
                   {isOtpSent ? "Back" : "Cancel"}
                 </Button>
-                <Button
-                  // onClick={() => {
-                  //   isOtpSent ? navigate("/login") : setIsOtpSent(true);
-                  // }}
-                  type="submit"
-                  variant="contained"
-                >
+                <Button type="submit" variant="contained">
                   {isOtpSent ? "Reset" : "Send OTP"}
                 </Button>
               </Box>
