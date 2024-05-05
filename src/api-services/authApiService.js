@@ -13,8 +13,24 @@ export const authApiService = () => {
       userData
     );
   };
+
+  const forgotPassword = async (userData) => {
+    return await axios.post(
+      "https://tiny-gray-salmon-toga.cyclic.app/auth/forgot-password",
+      userData
+    );
+  };
+
+  const verifyOtp = async (userData) => {
+    return await axios.post(
+      "https://tiny-gray-salmon-toga.cyclic.app/auth/verify-otp",
+      userData
+    );
+  };
   return {
     login,
     register,
+    forgotPassword,
+    verifyOtp,
   };
 };
