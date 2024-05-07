@@ -25,6 +25,8 @@ import Todo from "./pages/Todo";
 import Syllabus from "./pages/Syllabus";
 import Homework from "./pages/Homework";
 import StudentLeave from "./pages/StudentLeave";
+import ExamResult from "./pages/ExamResult";
+import ViewResult from "./pages/ViewResult";
 function App() {
   const [selected, setSelected] = useState("/");
   return (
@@ -95,6 +97,8 @@ function App() {
         <Route path="/syllabus" element={<Syllabus />} />
         <Route path="/homework" element={<Homework />} />
         <Route path="/student-leave" element={<StudentLeave />} />
+        <Route path="/exam-result" element={<ExamResult />} />
+        <Route path="/view-result" element={<ViewResult />} />
       </Routes>
     </>
   );

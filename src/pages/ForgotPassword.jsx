@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Box, Typography, TextField, Button, Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import SchoolLogo from "../assets/icon/school_logo.jpg";
@@ -8,6 +8,33 @@ const ForgotPassword = () => {
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [isOtpSubmit, setIsOtpSubmit] = useState(false);
   const [otp, setOtp] = useState(new Array(4).fill(""));
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(30);
+
+  const resendOTP = () => {
+    setMinutes(0);
+    setSeconds(59);
+  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (seconds > 0) {
+        setSeconds(seconds - 1);
+      }
+
+      if (seconds === 0) {
+        if (minutes === 0) {
+          clearInterval(interval);
+        } else {
+          setSeconds(59);
+          setMinutes(minutes - 1);
+        }
+      }
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [seconds]);
 
   const handleInputChange = (e, index) => {
     const value = e.target.value;
@@ -83,21 +110,37 @@ const ForgotPassword = () => {
                     </div>
                     <Box display={"flex"} justifyContent={"start"} mt={"-12px"}>
                       <Typography
-                        sx={{ fontSize: "13px", color: "grey" }}
-                        mt={0.7}
+                        sx={{
+                          fontSize: "13px",
+                          color: "grey",
+                        }}
+                        mt={1}
                         mb={-0.8}
                       >
-                        Didn't receive OTP? &nbsp;
+                        {seconds > 0 || minutes > 0 ? (
+                          <p>
+                            Time for Resend OTP - {" "}
+                            {minutes < 10 ? `0${minutes}` : minutes}:
+                            {seconds < 10 ? `0${seconds}` : seconds} Seconds
+                          </p>
+                        ) : (
+                          <p>Didn't receive code? &nbsp;</p>
+                        )}
                       </Typography>
-                      <Typography
-                        onClick={() => navigate("/forgot-password")}
-                        className="forgot-password"
-                        mt={0.7}
-                        mb={-0.8}
-                        sx={{ cursor: "pointer" }}
-                      >
-                        Resend
-                      </Typography>
+                      {seconds === 0 && minutes === 0 && (
+                        <Typography
+                          onClick={resendOTP}
+                          className="forgot-password"
+                          mt={1}
+                          mb={-0.8}
+                          sx={{
+                            cursor: "pointer",
+                            color: "#1976d2",
+                          }}
+                        >
+                          Resend OTP
+                        </Typography>
+                      )}
                     </Box>
                     <Box className="send-otp-buttons">
                       <Button
