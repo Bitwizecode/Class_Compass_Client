@@ -201,7 +201,7 @@ const ForgotPassword = () => {
                         >
                           {seconds > 0 || minutes > 0 ? (
                             <p>
-                              Time for Resend OTP -{" "}
+                              Resend OTP in -{" "}
                               {minutes < 10 ? `0${minutes}` : minutes}:
                               {seconds < 10 ? `0${seconds}` : seconds} Seconds
                             </p>
