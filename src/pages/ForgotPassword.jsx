@@ -70,7 +70,7 @@ const ForgotPassword = () => {
         return;
       }
       const res = await changePassword({
-        email: "guptaraj1946@gmail.com",
+        email: inputData,
         password: password,
       });
       toast.success("Password Changes Successfully");
