@@ -26,6 +26,8 @@ import Homework from "./pages/Homework";
 import StudentLeave from "./pages/StudentLeave";
 import PrivateRoute from "./components/PrivateRoute";
 
+import ExamResult from "./pages/ExamResult";
+import ViewResult from "./pages/ViewResult";
 function App() {
   const [selected, setSelected] = useState("/");
   return (
@@ -91,6 +93,12 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<Signup />} />
+        <Route path="/todo" element={<Todo />} />
+        <Route path="/syllabus" element={<Syllabus />} />
+        <Route path="/homework" element={<Homework />} />
+        <Route path="/student-leave" element={<StudentLeave />} />
+        <Route path="/exam-result" element={<ExamResult />} />
+        <Route path="/view-result" element={<ViewResult />} />
       </Routes>
     </>
   );
