@@ -56,7 +56,7 @@ const Signup = () => {
       toast.success("Teacher registered successfully!");
       setTimeout(() => {
         navigate("/login");
-      }, [2000]);
+      }, [1000]);
     } catch (error) {
       console.log(error);
       toast.error(error?.response?.data?.message || "something went wrong!");

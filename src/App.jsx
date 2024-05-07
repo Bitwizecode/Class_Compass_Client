@@ -20,78 +20,78 @@ import SchoolGallery from "./pages/SchoolGallery";
 import ExamTimeTable from "./pages/ExamTimeTable";
 import TimeTable from "./pages/TimeTable";
 import Drivers from "./pages/Drivers";
-import Loader from "./components/Loader";
 import Todo from "./pages/Todo";
 import Syllabus from "./pages/Syllabus";
 import Homework from "./pages/Homework";
 import StudentLeave from "./pages/StudentLeave";
+import PrivateRoute from "./components/PrivateRoute";
+
 import ExamResult from "./pages/ExamResult";
 import ViewResult from "./pages/ViewResult";
 function App() {
   const [selected, setSelected] = useState("/");
   return (
     <>
-      {/* {true && <Loader />} */}
-
       <Routes>
-        <Route
-          path="*"
-          element={<Home selected={selected} setSelected={setSelected} />}
-        />
-        <Route
-          path="/map"
-          element={<Map selected={selected} setSelected={setSelected} />}
-        />
+        <Route path="*" element={<PrivateRoute component={Home} />} />
+        <Route path="/map" element={<PrivateRoute component={Map} />} />
         <Route
           path="/students"
-          element={<Students selected={selected} setSelected={setSelected} />}
+          element={<PrivateRoute component={Students} />}
         />
-        <Route
-          path="/class"
-          element={<Class selected={selected} setSelected={setSelected} />}
-        />
+        <Route path="/class" element={<PrivateRoute component={Class} />} />
         <Route
           path="/division"
-          element={<Division selected={selected} setSelected={setSelected} />}
+          element={<PrivateRoute component={Division} />}
         />
         <Route
           path="/teachers"
-          element={<Teachers selected={selected} setSelected={setSelected} />}
+          element={<PrivateRoute component={Teachers} />}
         />
         <Route
           path="/attendance"
-          element={<Attendance selected={selected} setSelected={setSelected} />}
+          element={<PrivateRoute component={Attendance} />}
         />
-        <Route
-          path="/message"
-          element={<Message selected={selected} setSelected={setSelected} />}
-        />
-        <Route
-          path="/digest"
-          element={<Digest selected={selected} setSelected={setSelected} />}
-        />
+        <Route path="/message" element={<PrivateRoute component={Message} />} />
+        <Route path="/digest" element={<PrivateRoute component={Digest} />} />
         <Route
           path="/help-support"
-          element={
-            <HelpSupport selected={selected} setSelected={setSelected} />
-          }
+          element={<PrivateRoute component={HelpSupport} />}
         />
         <Route
           path="/notification"
-          element={
-            <Notification selected={selected} setSelected={setSelected} />
-          }
+          element={<PrivateRoute component={Notification} />}
+        />
+        <Route path="/profile" element={<PrivateRoute component={Profile} />} />
+        <Route
+          path="/school-gallery"
+          element={<PrivateRoute component={SchoolGallery} />}
         />
         <Route
-          path="/profile"
-          element={<Profile selected={selected} setSelected={setSelected} />}
+          path="/exam-time-table"
+          element={<PrivateRoute component={ExamTimeTable} />}
         />
+        <Route
+          path="/time-table"
+          element={<PrivateRoute component={TimeTable} />}
+        />
+        <Route path="/drivers" element={<PrivateRoute component={Drivers} />} />
+        <Route path="/todo" element={<PrivateRoute component={Todo} />} />
+        <Route
+          path="/syllabus"
+          element={<PrivateRoute component={Syllabus} />}
+        />
+        <Route
+          path="/homework"
+          element={<PrivateRoute component={Homework} />}
+        />
+        <Route
+          path="/student-leave"
+          element={<PrivateRoute component={StudentLeave} />}
+        />
+
         <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/school-gallery" element={<SchoolGallery />} />
-        <Route path="/exam-time-table" element={<ExamTimeTable />} />
-        <Route path="/time-table" element={<TimeTable />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/drivers" element={<Drivers />} />
         <Route path="/sign-up" element={<Signup />} />
         <Route path="/todo" element={<Todo />} />
         <Route path="/syllabus" element={<Syllabus />} />
