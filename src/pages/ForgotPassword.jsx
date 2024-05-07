@@ -13,7 +13,6 @@ const ForgotPassword = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [otp, setOtp] = useState(new Array(4).fill(""));
-<<<<<<< HEAD
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(30);
 
@@ -41,11 +40,9 @@ const ForgotPassword = () => {
       clearInterval(interval);
     };
   }, [seconds]);
-=======
   const [inputData, setInputData] = useState("");
   const [loading, setLoading] = useState(false);
   const { forgotPassword, verifyOtp, changePassword } = authApiService();
->>>>>>> 45a2d58e4c6e02da7e3d66ade4cc64f99cdc6065
 
   const handleInputChange = (e, index) => {
     const value = e.target.value;
@@ -195,21 +192,37 @@ const ForgotPassword = () => {
                         mt={"-12px"}
                       >
                         <Typography
-                          sx={{ fontSize: "13px", color: "grey" }}
-                          mt={0.7}
+                          sx={{
+                            fontSize: "13px",
+                            color: "grey",
+                          }}
+                          mt={1}
                           mb={-0.8}
                         >
-                          Didn't receive OTP? &nbsp;
+                          {seconds > 0 || minutes > 0 ? (
+                            <p>
+                              Time for Resend OTP -{" "}
+                              {minutes < 10 ? `0${minutes}` : minutes}:
+                              {seconds < 10 ? `0${seconds}` : seconds} Seconds
+                            </p>
+                          ) : (
+                            <p>Didn't receive code? &nbsp;</p>
+                          )}
                         </Typography>
-                        <Typography
-                          onClick={() => navigate("/forgot-password")}
-                          className="forgot-password"
-                          mt={0.7}
-                          mb={-0.8}
-                          sx={{ cursor: "pointer" }}
-                        >
-                          Resend
-                        </Typography>
+                        {seconds === 0 && minutes === 0 && (
+                          <Typography
+                            onClick={resendOTP}
+                            className="forgot-password"
+                            mt={1}
+                            mb={-0.8}
+                            sx={{
+                              cursor: "pointer",
+                              color: "#1976d2",
+                            }}
+                          >
+                            Resend OTP
+                          </Typography>
+                        )}
                       </Box>
                       <Box className="send-otp-buttons">
                         <Button
@@ -283,82 +296,9 @@ const ForgotPassword = () => {
                 </Button>
               </Box>
             ) : (
-<<<<<<< HEAD
               <>
                 {!isOtpSubmit ? (
-                  <>
-                    <div className="otp-area">
-                      {otp.map((data, i) => {
-                        return (
-                          <input
-                            className="otp-input"
-                            type="text"
-                            value={data}
-                            maxLength={1}
-                            onChange={(e) => handleInputChange(e, i)}
-                            onFocus={(e) => e.target.select()}
-                          />
-                        );
-                      })}
-                    </div>
-                    <Box display={"flex"} justifyContent={"start"} mt={"-12px"}>
-                      <Typography
-                        sx={{
-                          fontSize: "13px",
-                          color: "grey",
-                        }}
-                        mt={1}
-                        mb={-0.8}
-                      >
-                        {seconds > 0 || minutes > 0 ? (
-                          <p>
-                            Time for Resend OTP - {" "}
-                            {minutes < 10 ? `0${minutes}` : minutes}:
-                            {seconds < 10 ? `0${seconds}` : seconds} Seconds
-                          </p>
-                        ) : (
-                          <p>Didn't receive code? &nbsp;</p>
-                        )}
-                      </Typography>
-                      {seconds === 0 && minutes === 0 && (
-                        <Typography
-                          onClick={resendOTP}
-                          className="forgot-password"
-                          mt={1}
-                          mb={-0.8}
-                          sx={{
-                            cursor: "pointer",
-                            color: "#1976d2",
-                          }}
-                        >
-                          Resend OTP
-                        </Typography>
-                      )}
-                    </Box>
-                    <Box className="send-otp-buttons">
-                      <Button
-                        onClick={(e) => {
-                          if (otp.filter((num) => num != 0).length > 0) {
-                            setOtp([...otp.map((e) => "")]);
-                          } else {
-                            setIsOtpSent(false);
-                            setIsOtpSubmit(false);
-                          }
-                        }}
-                        variant="outlined"
-                      >
-                        {otp.filter((num) => num != 0).length > 0
-                          ? "Clear"
-                          : "Back"}
-                      </Button>
-                      <Button
-                        onClick={() => setIsOtpSubmit(true)}
-                        variant="contained"
-                      >
-                        Submit
-                      </Button>
-                    </Box>
-                  </>
+                  <></>
                 ) : (
                   <>
                     <Box>
@@ -380,9 +320,6 @@ const ForgotPassword = () => {
                   </>
                 )}
               </>
-=======
-              ""
->>>>>>> 45a2d58e4c6e02da7e3d66ade4cc64f99cdc6065
             )}
           </form>
         </Box>
