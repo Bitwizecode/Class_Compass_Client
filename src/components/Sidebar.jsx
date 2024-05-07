@@ -38,22 +38,22 @@ const Sidebar = ({ open, onClose }) => {
         navigate("/login");
       },
     },
-    {
-      title: "Log In",
-      icon: "fa-arrow-right-from-bracket",
-      path: "/login",
-      onClick: () => {
-        navigate("/login");
-      },
-    },
-    {
-      title: "Sign Up",
-      icon: "fa-arrow-right-from-bracket",
-      path: "/sign-up",
-      onClick: () => {
-        navigate("/sign-up");
-      },
-    },
+    // {
+    //   title: "Log In",
+    //   icon: "fa-arrow-right-from-bracket",
+    //   path: "/login",
+    //   onClick: () => {
+    //     navigate("/login");
+    //   },
+    // },
+    // {
+    //   title: "Sign Up",
+    //   icon: "fa-arrow-right-from-bracket",
+    //   path: "/sign-up",
+    //   onClick: () => {
+    //     navigate("/sign-up");
+    //   },
+    // },
   ];
   return (
     <>
