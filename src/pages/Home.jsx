@@ -102,12 +102,10 @@ const Home = ({ selected, setSelected }) => {
             />
           </Box>
           <Box sx={{ color: "#fff" }}>
-            <h2>Prathamesh Chavan</h2>
+            <h3>Prathamesh Chavan</h3>
             <p>Class : 10th-B</p>
             <p> Roll No :78</p>
             <p> DOB :10th-July-2002</p>
-            <p> Email : prathamesh@gmail.com</p>
-            <p> Number : 8960573462</p>
           </Box>
         </Box>
 
