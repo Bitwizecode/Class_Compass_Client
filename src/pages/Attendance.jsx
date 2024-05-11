@@ -67,8 +67,8 @@ const Attendance = ({ selected, setSelected }) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map((row) => (
-                  <TableRow key={row.name}>
+                {rows.map((row, i) => (
+                  <TableRow key={i}>
                     <TableCell>
                       <Box display={"flex"} alignItems={"center"} gap={"10px"}>
                         <img

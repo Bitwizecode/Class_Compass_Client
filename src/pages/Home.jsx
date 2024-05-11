@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Layout from "../components/Layout";
 import Results from "../assets/icon/result.gif";
 import ExamTT2 from "../assets/icon/exam_time_table.gif";
@@ -20,7 +20,6 @@ import {
   FormControl,
   Grid,
 } from "@mui/material";
-
 const Home = ({ selected, setSelected }) => {
   const navigate = useNavigate();
   // const items = [
@@ -39,7 +38,6 @@ const Home = ({ selected, setSelected }) => {
     return store;
   });
 
-  console.log("store", store);
   const items = [
     { icon: Attendance3, text: "Student Attendance", path: "/attendance" },
     { icon: HomeWork3, text: "HomeWork", path: "/homework" },

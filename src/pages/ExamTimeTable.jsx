@@ -138,7 +138,6 @@ function ExamTimeTable({ selected, setSelected }) {
                     {row.day}
                   </TableCell>
                   {row.subjects.map((sub) => {
-                    console.log(sub);
                     return (
                       <TableCell
                         align="center"
@@ -153,10 +152,10 @@ function ExamTimeTable({ selected, setSelected }) {
                       </TableCell>
                     );
                   })}
-                  {row.subjects.map((sub) => {
-                    console.log(sub);
+                  {row.subjects.map((sub, i) => {
                     return (
                       <TableCell
+                        key={i}
                         align="center"
                         className="table-name"
                         style={{

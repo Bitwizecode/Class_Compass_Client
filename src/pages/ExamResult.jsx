@@ -75,8 +75,8 @@ const ExamResult = ({ selected, setSelected }) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map((row) => (
-                  <TableRow key={row.name}>
+                {rows.map((row, i) => (
+                  <TableRow key={i}>
                     <TableCell>
                       <Box
                         display={"flex"}
@@ -87,7 +87,7 @@ const ExamResult = ({ selected, setSelected }) => {
                         {row.name}
                       </Box>
                     </TableCell>
-                    <TableCell contentEditable align="left">
+                    <TableCell align="left">
                       {row.class}
                     </TableCell>
 

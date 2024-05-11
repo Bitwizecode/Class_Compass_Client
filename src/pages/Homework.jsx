@@ -98,7 +98,6 @@ const Homework = ({ selected, setSelected }) => {
             </Box>
 
             <Box
-              onClick={() => console.log("object")}
               className="notification-send-btn"
             >
               <SendIcon sx={{ fontSize: "26px" }} />

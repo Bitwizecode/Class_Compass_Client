@@ -29,7 +29,6 @@ import PrivateRoute from "./components/PrivateRoute";
 import ExamResult from "./pages/ExamResult";
 import ViewResult from "./pages/ViewResult";
 function App() {
-  const [selected, setSelected] = useState("/");
   return (
     <>
       <Routes>

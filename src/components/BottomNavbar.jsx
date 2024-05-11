@@ -1,11 +1,13 @@
-import { useState } from "react";
+import React from "react";
 import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import { Box } from "@mui/system";
 import { useNavigate } from "react-router-dom";
-const BottomNavbar = ({ selected, setSelected }) => {
+import { BottomNavbarContext, useBottomNavbarContext } from "../contexts/contexts";
+const BottomNavbar = () => {
+  const {bottomNavbar, setBottomNavbar}=useBottomNavbarContext();
   const navigate = useNavigate();
   const handleOnClick = (e, value) => {
-    setSelected(value);
+    setBottomNavbar((prev) =>value);
     navigate(value);
   };
   return (
@@ -17,7 +19,7 @@ const BottomNavbar = ({ selected, setSelected }) => {
         "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px"
       }
     >
-      <BottomNavigation value={selected} onChange={handleOnClick}>
+      <BottomNavigation value={bottomNavbar} onChange={handleOnClick}>
         <BottomNavigationAction
           label="Home"
           value="/"

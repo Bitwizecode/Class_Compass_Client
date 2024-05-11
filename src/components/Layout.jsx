@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import BottomNavbar from "../components/BottomNavbar";
 import TopNavbar from "../components/TopNavbar";
+import BottomNavbarContextProvider from "../contexts/contexts";
 
 const Layout = ({
   isBack,
@@ -25,7 +26,10 @@ const Layout = ({
         onClose={() => setOpenSidebar(!openSidebar)}
       />
       {children}
-      {/* {isBottomNavbar && <BottomNavbar selected={selected} setSelected={setSelected}/>} */}
+
+        {isBottomNavbar && (
+          <BottomNavbar selected={selected} setSelected={setSelected} />
+        )}
     </>
   );
 };

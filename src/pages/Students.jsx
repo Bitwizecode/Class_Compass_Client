@@ -80,13 +80,13 @@ const Students = ({ selected, setSelected }) => {
                 alt=""
                 onClick={handleOpenFile}
               />
+            </Tooltip>
               <input
                 type="file"
                 ref={fileInputRef}
                 style={{ display: "none" }}
                 onChange={() => {}}
               />
-            </Tooltip>
           </Box>
           <Box display={"flex"} flexDirection={"column"} gap={1.2} mb={2}>
             <Box>
@@ -137,8 +137,8 @@ const Students = ({ selected, setSelected }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row) => (
-                <TableRow key={row.name}>
+              {rows.map((row, i) => (
+                <TableRow key={i}>
                   <TableCell>
                     <Box display={"flex"} alignItems={"center"} gap={"10px"}>
                       <img
@@ -149,7 +149,7 @@ const Students = ({ selected, setSelected }) => {
                       {row.name}
                     </Box>
                   </TableCell>
-                  <TableCell contentEditable align="left">
+                  <TableCell align="left">
                     {row.class}
                   </TableCell>
 

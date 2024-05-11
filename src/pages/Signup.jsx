@@ -52,7 +52,6 @@ const Signup = () => {
         return;
       }
       const res = await register(signUpData);
-      console.log(res);
       toast.success("Teacher registered successfully!");
       setTimeout(() => {
         navigate("/login");
