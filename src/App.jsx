@@ -28,6 +28,7 @@ import PrivateRoute from "./components/PrivateRoute";
 
 import ExamResult from "./pages/ExamResult";
 import ViewResult from "./pages/ViewResult";
+import SetResult from "./pages/SetResult";
 function App() {
   return (
     <>
@@ -98,6 +99,7 @@ function App() {
         <Route path="/student-leave" element={<StudentLeave />} />
         <Route path="/exam-result" element={<ExamResult />} />
         <Route path="/view-result" element={<ViewResult />} />
+        <Route path="/set-result" element={<SetResult />} />
       </Routes>
     </>
   );

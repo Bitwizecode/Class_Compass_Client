@@ -48,7 +48,7 @@ const Home = ({ selected, setSelected }) => {
     { icon: Syllabus, text: "Syllabus", path: "/syllabus" },
     { icon: Results, text: "Exam Results", path: "/exam-result" },
     { icon: ExamTT2, text: "Exam Time Table", path: "/exam-time-table" },
-    { icon: SchoolGallery, text: "School Gallery", path: "/school-gallery" },
+    { icon: SchoolGallery, text: "School Gallery", path: "/set-result" },
     { icon: Attendance3, text: "Class", path: "/class" },
     { icon: HomeWork3, text: "Teachers", path: "/teachers" },
     { icon: Timetable2, text: "Drivers", path: "/drivers" },
