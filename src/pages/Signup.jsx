@@ -49,7 +49,7 @@ const Signup = () => {
     try {
       if (signUpData.password !== signUpData.confirmPassword) {
         toast.error("Password does not match!");
-        return;
+        return; 
       }
       const res = await register(signUpData);
       toast.success("Teacher registered successfully!");
