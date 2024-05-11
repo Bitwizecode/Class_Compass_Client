@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import Layout from "../components/Layout";
 import Results from "../assets/icon/result.gif";
+import student from "../assets/icon/student.jpg";
 import ExamTT2 from "../assets/icon/exam_time_table.gif";
 import Leave3 from "../assets/icon/leave3.png";
 import Syllabus from "../assets/icon/syllabus.gif";
@@ -76,45 +77,36 @@ const Home = ({ selected, setSelected }) => {
             Change class
           </Typography>
         </Box>
+
         <Box
-          p={"8px 15px"}
-          bgcolor={"#fff"}
-          m={"0 10px"}
+          m={"0 15px"}
           borderRadius={"10px"}
+          p={"10px 0 5px 10px"}
+          display={"flex"}
+          gap={"5%"}
           boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"}
+          bgcolor={"#1976d2"}
         >
-          <Typography variant="h6">Greetings, Nisha mam</Typography>
-          <Box
-            m={"10px 0"}
-            bgcolor={"#1976d2"}
-            boxShadow={
-              "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px"
-            }
-            p={1}
-            borderRadius={"10px"}
-            color={"#fff"}
-          >
-            <Typography variant="p">
-              “Just believe in yourself. Even if you don't pretend that you do
-              and, at some point, you will.” <br />
-            </Typography>
-            <Typography style={{ textAlign: "right", width: "100%" }}>
-              -Venus Williams.
-            </Typography>
-          </Box>
-          <Box width={"100%"} textAlign={"right"}>
-            <Button
-              onClick={() => {
-                navigate("/attendance");
-                setSelected("/attendance");
+          <Box color={"#fff"}>
+            <img
+              style={{
+                width: "100px",
+                height: "150px",
+                objectFit: "cover",
+                borderRadius: "5px",
               }}
-              variant="outlined"
-              size="small"
-            >
-              Take Attendance
-            </Button>
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPHLThNbz89WvCrB-YCLz7_2HrxW-wcG5jzA&s"
+              alt=""
+            />
+          </Box>
+          <Box sx={{ color: "#fff" }}>
+            <h3>Prathamesh Chavan</h3>
+            <p>Class : 10th-B</p>
+            <p> Roll No :78</p>
+            <p> DOB :10th-July-2002</p>
           </Box>
         </Box>
+
         <Box display={"flex"} justifyContent={"center"}>
           <Grid
             width={["100%", "50%", "50%"]}
