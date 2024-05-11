@@ -58,13 +58,13 @@ const ForgotPassword = () => {
   };
 
   const handleKeyDown = (e, index) => {
-    if(e.key === "Backspace" && index > 0 && !otp[index]) {
+    if (e.key === "Backspace" && index > 0 && !otp[index]) {
       const newOtp = [...otp];
-      newOtp[index-1] = "";
+      newOtp[index - 1] = "";
       e.target.previousSibling.focus();
       setOtp(newOtp);
     }
-  }
+  };
 
   const handleForgotPassword = async (e) => {
     e.preventDefault();
@@ -221,7 +221,10 @@ const ForgotPassword = () => {
                         </Typography>
                         {seconds === 0 && minutes === 0 && (
                           <Typography
-                            onClick={resendOTP}
+                            onClick={(e) => {
+                              handleForgotPassword(e);
+                              resendOTP();
+                            }}
                             className="forgot-password"
                             mt={1}
                             mb={-0.8}
