@@ -57,6 +57,15 @@ const ForgotPassword = () => {
     }
   };
 
+  const handleKeyDown = (e, index) => {
+    if(e.key === "Backspace" && index > 0 && !otp[index]) {
+      const newOtp = [...otp];
+      newOtp[index-1] = "";
+      e.target.previousSibling.focus();
+      setOtp(newOtp);
+    }
+  }
+
   const handleForgotPassword = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -182,6 +191,7 @@ const ForgotPassword = () => {
                               maxLength={1}
                               onChange={(e) => handleInputChange(e, i)}
                               onFocus={(e) => e.target.select()}
+                              onKeyDown={(e) => handleKeyDown(e, i)}
                             />
                           );
                         })}
