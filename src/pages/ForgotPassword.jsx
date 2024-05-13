@@ -86,7 +86,7 @@ const ForgotPassword = () => {
     setLoading(true);
     try {
       const jointOTP = otp.join("");
-      const res = await verifyOtp({ otp: jointOTP });
+      const res = await verifyOtp({ otp: jointOTP, email: inputData });
       toast.success("Otp verified successfully");
       setIsOtpSubmit(true);
     } catch (error) {
