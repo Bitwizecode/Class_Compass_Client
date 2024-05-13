@@ -538,6 +538,7 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 }
 
+
 .subject-term-selector {
   display: flex;
   gap: 18px;
