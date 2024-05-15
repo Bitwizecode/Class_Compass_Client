@@ -148,7 +148,7 @@ const ForgotPassword = () => {
             >
               {!isOtpSent ? (
                 <>
-                  Please enter the Phone/Email <br /> linked with your account
+                  Please enter the Email <br /> linked with your account
                 </>
               ) : isOtpSubmit ? (
                 <>Create your new password</>
