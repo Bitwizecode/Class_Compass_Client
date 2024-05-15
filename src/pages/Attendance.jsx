@@ -33,11 +33,23 @@ const Attendance = ({ selected, setSelected }) => {
   ];
 
   return (
-    <Layout isBottomNavbar selected={selected} setSelected={setSelected}>
+    <Layout
+      isBack
+      title={"Attendance"}
+      isBottomNavbar
+      selected={selected}
+      setSelected={setSelected}
+    >
       <Box mt={9} width={"100%"} mb={9}>
-        <Box width={"95%"} m={"auto"} >
-          <Typography variant="h5"  sx={{fontWeight: 550, mb:"-10px", color: "#1976d2"}}>
-            Monday, <span style={{fontSize:"13px", color: "black", fontWeight: 450}}>1<sup>st</sup> July 2024</span>
+        <Box width={"95%"} m={"auto"}>
+          <Typography
+            variant="h5"
+            sx={{ fontWeight: 550, mb: "-10px", color: "#1976d2" }}
+          >
+            Monday,{" "}
+            <span style={{ fontSize: "13px", color: "black", fontWeight: 450 }}>
+              1<sup>st</sup> July 2024
+            </span>
           </Typography>
         </Box>
         <Box
@@ -55,15 +67,9 @@ const Attendance = ({ selected, setSelected }) => {
             <Table aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell sx={{ pl: "25px" }}>
-                  Name
-                  </TableCell>
-                  <TableCell align="left">
-                     Roll No 
-                  </TableCell>
-                  <TableCell align="center">
-                     Attendance 
-                  </TableCell>
+                  <TableCell sx={{ pl: "25px" }}>Name</TableCell>
+                  <TableCell align="left">Roll No</TableCell>
+                  <TableCell align="center">Attendance</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -76,7 +82,7 @@ const Attendance = ({ selected, setSelected }) => {
                           src="https://cdn-icons-png.flaticon.com/128/2641/2641333.png"
                           alt=""
                         />
-                         {row.name} 
+                        {row.name}
                       </Box>
                     </TableCell>
                     <TableCell align="left">{row.calories}</TableCell>
@@ -88,15 +94,17 @@ const Attendance = ({ selected, setSelected }) => {
               </TableBody>
             </Table>
           </TableContainer>
-        <Box
-          display={"flex"}
-          mt={3}
-          mb={11}
-          width="95%"
-          justifyContent={"right"}
-        >
-          <Button variant="contained" size="large">Submit</Button>
-        </Box>
+          <Box
+            display={"flex"}
+            mt={3}
+            mb={11}
+            width="95%"
+            justifyContent={"right"}
+          >
+            <Button variant="contained" size="large">
+              Submit
+            </Button>
+          </Box>
         </Box>
       </Box>
     </Layout>

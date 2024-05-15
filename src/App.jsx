@@ -29,6 +29,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import ExamResult from "./pages/ExamResult";
 import ViewResult from "./pages/ViewResult";
 import SetResult from "./pages/SetResult";
+import UpcomingPage from "./pages/UpcomingPage";
 function App() {
   return (
     <>

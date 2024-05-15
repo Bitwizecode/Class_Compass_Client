@@ -39,7 +39,7 @@ const ExamResult = ({ selected, setSelected }) => {
   ];
 
   return (
-    <Layout>
+    <Layout isBack title={"Exam Results"}>
       <Box m={"0 auto"} mt={9} width={"100%"} mb={9}>
         <Box width={"95%"} m={"auto"}>
           <Typography variant="h6" sx={{ fontWeight: 550, mb: "7px" }}>
@@ -87,9 +87,7 @@ const ExamResult = ({ selected, setSelected }) => {
                         {row.name}
                       </Box>
                     </TableCell>
-                    <TableCell align="left">
-                      {row.class}
-                    </TableCell>
+                    <TableCell align="left">{row.class}</TableCell>
 
                     <TableCell align="center">
                       <Button
