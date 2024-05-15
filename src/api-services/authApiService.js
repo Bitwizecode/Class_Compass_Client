@@ -1,6 +1,6 @@
 import axios from "axios";
 export const authApiService = () => {
-  const BASE_URL = "https://zany-jade-sockeye-suit.cyclic.app";
+  const BASE_URL = "https://class-compass-server.onrender.com";
   // const BASE_URL = "http://localhost:8000";
   const login = async (user) => {
     return await axios.post(`${BASE_URL}/auth/login`, user);
