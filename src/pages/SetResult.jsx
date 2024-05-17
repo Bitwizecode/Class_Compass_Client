@@ -12,6 +12,9 @@ import {
   TableHead,
   Paper,
   Typography,
+  Select,
+  MenuItem,
+  FormControl
 } from "@mui/material";
 import Model from "../components/Model";
 import TripleDotMenu from "../components/TripleDotMenu";
@@ -21,13 +24,14 @@ function SetResult() {
     JSON.parse(localStorage.getItem("editResult")) || []
   );
   const [data, setData] = useState({
+    termName: "",
     subject: "",
     marks_obtained: "",
     total_marks: "",
     grade: "",
   });
   useEffect(() => {
-    const storedData = localStorage.getItem("subject");
+    const storedData = localStorage.getItem("subjects");
     if (storedData) {
       setEditResult(JSON.parse(storedData));
     }
@@ -36,6 +40,18 @@ function SetResult() {
   useEffect(() => {
     localStorage.setItem("editResult", JSON.stringify(editResult));
   }, [editResult]);
+
+  const handleDelete = (index) => {
+    const updatedResults = [...editResult];
+    updatedResults.splice(index, 1);
+    setEditResult(updatedResults);
+  };
+
+  const [selectedValue, setSelectedValue] = useState(0);
+
+  const handleSelectChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
 
   const rows = [
     {
@@ -96,10 +112,6 @@ function SetResult() {
         justifyContent={"center"}
         flexDirection={"column"}
         alignItems={"center"}
-        sx={{
-          boxShadow:
-            "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;",
-        }}
       >
         <Box
           sx={{
@@ -117,9 +129,29 @@ function SetResult() {
           <Typography color={"gray"} fontSize={14}>
             Name : {rows[0].name}
           </Typography>
-          <Typography color={"gray"} marginBottom={"12px"} fontSize={14}>
+          <Typography color={"gray"} fontSize={14}>
             Class : {rows[0].class}/{rows[0].div}
           </Typography>
+          <Box display={"flex"} alignItems={"center"}>
+            <Typography color={"gray"} fontSize={14}>
+              Term : &nbsp;
+            </Typography>
+            <FormControl variant="standard" sx={{ minWidth: 100 }}>
+              <Select
+                labelId="demo-simple-select-standard-label"
+                id="demo-simple-select-standard"
+                value={selectedValue}
+                onChange={handleSelectChange}
+                label="Age"
+                style={{ textAlign: "center", fontSize: "13px"}}
+              >
+                <MenuItem value={0}>1st Term</MenuItem>
+                <MenuItem value={1}>2nd Term</MenuItem>
+                <MenuItem value={2}>3rd Term</MenuItem>
+                <MenuItem value={2}>4th Term</MenuItem>
+              </Select>
+            </FormControl>
+          </Box>
         </Box>
         <TableContainer
           component={Paper}
@@ -144,25 +176,47 @@ function SetResult() {
                 </TableCell>
               </TableRow>
             </TableHead>
+
             <TableBody>
               {editResult.map((sub, i) => (
                 <TableRow key={i} sx={{ fontSize: "10px" }}>
                   <TableCell
-                    className="result-inside-text result-edit-menu"
-                    sx={{ pl: "20px", cursor: "pointer",}}
+                    className="result-inside-text"
+                    sx={{ pl: "20px", cursor: "pointer" }}
                   >
-                    <TripleDotMenu menuItems={['Edit']}/>
+                    <TripleDotMenu
+                      menuItems={["Delete"]}
+                      handleActions={({ open, setOpen }) => {
+                        setOpen(false);
+                        handleDelete();
+                      }}
+                    />
                   </TableCell>
-                  <TableCell className="result-inside-text" style={{textTransform: "capitalize"}}>
+                  <TableCell
+                    className="result-inside-text"
+                    style={{ textTransform: "capitalize" }}
+                  >
                     {sub.subject}
                   </TableCell>
-                  <TableCell className="result-inside-text" align="center" style={{textTransform: "capitalize"}}>
+                  <TableCell
+                    className="result-inside-text"
+                    align="center"
+                    style={{ textTransform: "capitalize" }}
+                  >
                     {sub.marks_obtained}
                   </TableCell>
-                  <TableCell className="result-inside-text" align="center" style={{textTransform: "capitalize"}}>
+                  <TableCell
+                    className="result-inside-text"
+                    align="center"
+                    style={{ textTransform: "capitalize" }}
+                  >
                     {sub.total_marks}
                   </TableCell>
-                  <TableCell className="result-inside-text" align="center" style={{textTransform: "capitalize"}}>
+                  <TableCell
+                    className="result-inside-text"
+                    align="center"
+                    style={{ textTransform: "capitalize" }}
+                  >
                     {sub.grade}
                   </TableCell>
                 </TableRow>
@@ -170,14 +224,23 @@ function SetResult() {
             </TableBody>
           </Table>
         </TableContainer>
-        <Button
-          variant="contained"
-          onClick={() => {
-            setOpenEditExamTT(true);
-          }}
+        <Box
+          display={"flex"}
+          justifyContent={"center"}
+          alignItems={"center"}
+          mt={"30px"}
+          mb={"15px"}
         >
-          Add
-        </Button>
+          <Button
+            size="small"
+            variant="contained"
+            onClick={() => {
+              setOpenEditExamTT(true);
+            }}
+          >
+            Add
+          </Button>
+        </Box>
         <Model
           open={openEditExamTT}
           setOpen={setOpenEditExamTT}
@@ -210,20 +273,26 @@ function SetResult() {
                   onChange={(e) =>
                     setData({ ...data, subject: e.target.value })
                   }
+                  inputProps={{
+                    style: {
+                      textTransform: "capitalize",
+                    },
+                  }}
                 />
               </Box>
-              <Box
-                display={"flex"}
-                flexDirection={"row"}
-                gap={1.2}
-              >
+              <Box display={"flex"} flexDirection={"row"} gap={1.2}>
                 <TextField
                   InputLabelProps={{ shrink: true }}
                   required
                   type="text"
-                  inputProps={{ maxLength: 3 }}
+                  inputProps={{
+                    style: {
+                      textTransform: "capitalize",
+                    },
+                    maxLength: 3,
+                  }}
                   id="outlined-required"
-                  label="Subject"
+                  label="Marks Obtained"
                   onChange={(e) =>
                     setData({ ...data, marks_obtained: e.target.value })
                   }
@@ -232,9 +301,14 @@ function SetResult() {
                   InputLabelProps={{ shrink: true }}
                   required
                   type="text"
-                  inputProps={{ maxLength: 3 }}
+                  inputProps={{
+                    style: {
+                      textTransform: "capitalize",
+                    },
+                    maxLength: 3,
+                  }}
                   id="outlined-required"
-                  label="Subject"
+                  label="Total Marks"
                   onChange={(e) =>
                     setData({ ...data, total_marks: e.target.value })
                   }
@@ -249,10 +323,13 @@ function SetResult() {
                   type="text"
                   id="outlined-required"
                   label="Grade"
-                  onChange={(e) =>
-                    
-                    setData({ ...data, grade: e.target.value })
-                  }
+                  onChange={(e) => setData({ ...data, grade: e.target.value })}
+                  inputProps={{
+                    style: {
+                      textTransform: "capitalize",
+                    },
+                    maxLength: 2,
+                  }}
                 />
               </Box>
             </Box>

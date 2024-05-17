@@ -36,12 +36,11 @@ const TripleDotMenu = ({menuItems=[], handleActions, find_details}) => {
       >
         {menuItems.map((option) => (
           <MenuItem
-          // className= "result-inside-text"
-          style={{height: "20px"}}
+          style={{height: "20px", fontSize: "12px"}}
             key={option}
             selected={option === 'Pyxis'}
             onClick={() => {
-              handleActions({ find_details, option, open, setOpen });
+              handleActions({ open, setOpen });
             }}
           >
             {option}

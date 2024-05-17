@@ -397,16 +397,21 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .time-table-table-head {
   font-size: 16px !important;
-  background-color: #1976d2;
-  color: #fff !important;
+  /* background-color: #1976d2; */
+  /* color: #fff !important; */
   text-align: center !important;
+}
+
+.time-table-table-head:nth-child(1){
+  border-right: 2px solid rgb(231, 229, 229);
 }
 
 .table-name {
   font-size: 17px !important;
 }
 .table-name:nth-child(1) {
-  background-color: rgb(231, 229, 229) !important;
+  border-right: 2px solid rgb(231, 229, 229);
+  /* background-color: rgb(231, 229, 229) !important; */
 }
 
 .exam-time-table-head {
@@ -537,7 +542,6 @@ input[type="number"]::-webkit-outer-spin-button {
     min-width: 230px !important;
   }
 }
-
 
 .subject-term-selector {
   display: flex;
@@ -887,4 +891,45 @@ input[type="number"]::-webkit-outer-spin-button {
     height: 24px;
     font-size: 10px !important;
   }
+}
+
+.css-6hp17o-MuiList-root-MuiMenu-list {
+  padding: 0 !important;
+}
+
+.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
+  min-height: 32px !important;
+}
+
+.css-i4bv87-MuiSvgIcon-root {
+  width: 0.9em !important;
+  height: 0.9em !important;
+  @media (max-width: 500px) {
+    width: 0.7em !important;
+    height: 0.7em !important;
+  }
+}
+
+.home_profile_name {
+  font-size: clamp(12px, 4.4vw, 26px);
+  font-weight: 580;
+}
+
+.home-profile-text {
+  gap: 2px;
+}
+
+.home-profile-text p {
+  font-size: clamp(11px, 3.2vw, 15px);
+  color: #7a7373;
+}
+
+.home-profile-main {
+  @media (max-width: 800px) {
+    margin: 0 10px !important;
+  }
+}
+
+.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
+  font-size: 14px !important;
 }

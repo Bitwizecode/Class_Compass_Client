@@ -1,13 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
-  Typography,
   TextField,
   Button,
-  InputLabel,
   MenuItem,
-  FormControl,
-  Select,
   Table,
   TableBody,
   TableCell,
@@ -15,18 +11,12 @@ import {
   TableRow,
   TableHead,
   Paper,
-  Tooltip,
-  FormGroup,
-  FormControlLabel,
 } from "@mui/material";
 import Layout from "../components/Layout";
 import EditIcon from "@mui/icons-material/Edit";
 import Model from "../components/Model";
 
 function Syllabus() {
-  const [state, setState] = useState(false);
-  const [chapter, setChapter] = useState("");
-  const [weightage, setWeightage] = useState("");
   const [openEditSyllabus, setOpenEditSyllabus] = React.useState(false);
   const subject = [
     { value: "English" },
@@ -47,18 +37,34 @@ function Syllabus() {
     { value: "4th Term" },
   ];
 
-  const rows = [
-    {
-      sr: "1",
-      chapter:
-        "Law Of Gravity jhygfcvghujikjh huyghjhgtfrghjinb huygtfrtghjihuygftr",
-      weightage: "20",
-    },
-    { sr: "2", chapter: "Law Of Gravity", weightage: "20" },
-    { sr: "3", chapter: "Law Of Gravity", weightage: "20" },
-    { sr: "4", chapter: "Law Of Gravity", weightage: "20" },
-    { sr: "5", chapter: "Law Of Gravity", weightage: "20" },
-  ];
+  const [editSyllabus, setEditSyllabus] = useState(
+    JSON.parse(localStorage.getItem("syllabus")) || []
+  );
+
+  const [data, setData] = useState({
+    chapter: "",
+    weightage_marks: "",
+  });
+
+  const [editIndex, setEditIndex] = useState(null); // Track the index of the row being edited
+
+  useEffect(() => {
+    const storedData = localStorage.getItem("syllabus");
+    if (storedData) {
+      setEditSyllabus(JSON.parse(storedData));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("editSyllabus", JSON.stringify(editSyllabus));
+  }, [editSyllabus]);
+
+  const handleEdit = (index) => {
+    const { chapter, weightage_marks } = editSyllabus[index]; // Get the data of the row being edited
+    setData({ chapter, weightage_marks }); // Populate the form fields with the data
+    setEditIndex(index); // Set the index of the row being edited
+    setOpenEditSyllabus(true); // Open the edit modal
+  };
   return (
     <Layout isBack title={"Syllabus"}>
       <Box
@@ -102,7 +108,6 @@ function Syllabus() {
           className="syllabus-table-main"
           width={"75%"}
           display={"flex"}
-          // mt={"0px"}
           justifyContent={"center"}
           flexDirection={"column"}
           alignItems={"center"}
@@ -119,83 +124,27 @@ function Syllabus() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map((row) => (
-                  <TableRow key={row.sr}>
+                {editSyllabus.map((syb, i) => (
+                  <TableRow key={syb.sr}>
                     <TableCell>
                       <Box display={"flex"} alignItems={"center"} gap={"10px"}>
-                        {row.sr}
+                        {i + 1 + "."}
                       </Box>
                     </TableCell>
-                    <TableCell align="left">{row.chapter}</TableCell>
-
+                    <TableCell align="left">{syb.chapter}</TableCell>
                     <TableCell align="center">
-                      {row.weightage + " marks"}
+                      {syb.weightage_marks + " marks"}
                     </TableCell>
                     <TableCell align="center" className="table-name">
                       <Button
-                        onClick={() => {
-                          setWeightage(row.weightage);
-                          setChapter(row.chapter);
-                          setOpenEditSyllabus(true);
-                        }}
                         size="small"
                         variant="contained"
                         startIcon={<EditIcon />}
+                        onClick={() => handleEdit(i)}
                       >
                         Edit
                       </Button>
                     </TableCell>
-                    <Model
-                      open={openEditSyllabus}
-                      setOpen={setOpenEditSyllabus}
-                      headerText={"Syllabus Details"}
-                      submitText={"Add"}
-                      subHeaderText={"Add Chapter and Weightage"}
-                      onSubmit={() => {
-                        setOpenEditSyllabus(false);
-                      }}
-                    >
-                      <Box
-                        display={"flex"}
-                        flexDirection={"column"}
-                        gap={1.2}
-                        // height={"230px"}
-                        // overflow={"auto"}
-                      >
-                        <Box
-                          display={"flex"}
-                          flexDirection={"column"}
-                          gap={1.2}
-                          marginInline={2}
-                          mt={2}
-                        >
-                          <Box>
-                            <TextField
-                              className="subject-term-textfield"
-                              required
-                              type="text"
-                              id="outlined-required"
-                              label="Chapter Name"
-                              multiline
-                              maxRows={2}
-                              value={chapter}
-                              onChange={(e) => setChapter(e.target.value)}
-                            />
-                          </Box>
-                          <Box>
-                            <TextField
-                              className="subject-term-textfield"
-                              required
-                              type="number"
-                              id="outlined-required"
-                              label="Weightage"
-                              value={weightage}
-                              onChange={(e) => setWeightage(e.target.value)}
-                            />
-                          </Box>
-                        </Box>
-                      </Box>
-                    </Model>
                   </TableRow>
                 ))}
               </TableBody>
@@ -207,12 +156,83 @@ function Syllabus() {
               variant="outlined"
               size="small"
               onClick={() => {
+                setEditIndex(null);
+                setData({chapter: "", weightage_marks: ""})
                 setOpenEditSyllabus(true);
               }}
             >
               Add
             </Button>
           </Box>
+          <Model
+            open={openEditSyllabus}
+            setOpen={setOpenEditSyllabus}
+            headerText={"Syllabus Details"}
+            submitText={editIndex !== null ? "Update" : "Add"}
+            subHeaderText={
+              editIndex !== null
+                ? "Edit Chapter and Weightage"
+                : "Add Chapter and Weightage"
+            }
+            onSubmit={() => {
+              if (editIndex !== null) {
+                const updatedSyllabus = [...editSyllabus];
+                updatedSyllabus[editIndex] = data; // Update the data of the edited row
+                setEditSyllabus(updatedSyllabus);
+              } else {
+                setEditSyllabus([...editSyllabus, data]);
+              }
+              setOpenEditSyllabus(false);
+              setEditIndex(null);
+            }}
+          >
+            <Box
+              display={"flex"}
+              flexDirection={"column"}
+              gap={1.2}
+              
+            >
+              <Box
+                display={"flex"}
+                flexDirection={"column"}
+                gap={1.2}
+                marginInline={2}
+                mt={2}
+              >
+                <Box>
+                  <TextField
+                    className="subject-term-textfield"
+                    required
+                    type="text"
+                    id="outlined-required"
+                    label="Chapter Name"
+                    multiline
+                    maxRows={2}
+                    value={data.chapter}
+                    onChange={(e) =>
+                      setData({ ...data, chapter: e.target.value })
+                    }
+                  />
+                </Box>
+                <Box>
+                  <TextField
+                    className="subject-term-textfield"
+                    required
+                    type="number"
+                    id="outlined-required"
+                    label="Weightage"
+                    value={data.weightage_marks}
+                    onChange={(e) =>
+                      setData({
+                        ...data,
+                        weightage_marks: e.target.value,
+                      })
+                    }
+                  />
+                </Box>
+              </Box>
+            </Box>
+          </Model>
         </Box>
       </Box>
     </Layout>

@@ -35,6 +35,10 @@ const Model = ({
             {subHeaderText}
           </Typography>
         </Box>
+        <form onSubmit={(e) => {
+          e.preventDefault();
+          onSubmit();
+        }}>
         {children}
         <Box
           mt={2}
@@ -46,8 +50,9 @@ const Model = ({
           <Button variant="outlined" onClick={() => setOpen(false)}>
             Cancel
           </Button>
-          <Button onClick={onSubmit} variant="contained">{submitText}</Button>
+          <Button type="submit" variant="contained">{submitText}</Button>
         </Box>
+        </form>
       </Box>
     </Modal>
   );

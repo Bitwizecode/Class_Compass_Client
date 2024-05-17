@@ -72,6 +72,7 @@ const ExamResult = ({ selected, setSelected }) => {
                   <TableCell sx={{ pl: "25px" }}>Name</TableCell>
                   <TableCell align="left">Roll No</TableCell>
                   <TableCell align="center">View Result</TableCell>
+                  <TableCell align="center">Set Result</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -99,6 +100,16 @@ const ExamResult = ({ selected, setSelected }) => {
                         onClick={() => navigate("/view-result")}
                       >
                         View Result
+                      </Button>
+                    </TableCell>
+                    <TableCell align="center">
+                      <Button
+                        variant="contained"
+                        size="small"
+                        sx={{ fontSize: "11px" }}
+                        onClick={() => navigate("/set-result")}
+                      >
+                        Set Result
                       </Button>
                     </TableCell>
                   </TableRow>
