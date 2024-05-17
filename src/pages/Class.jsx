@@ -45,7 +45,13 @@ const Class = ({ selected, setSelected }) => {
     "X",
   ];
   return (
-    <Layout isBottomNavbar selected={selected} setSelected={setSelected}>
+    <Layout
+      isBack
+      title={"Class"}
+      isBottomNavbar
+      selected={selected}
+      setSelected={setSelected}
+    >
       <Box mt={9} width={"100%"} mb={9}>
         <Box
           width={"95%"}

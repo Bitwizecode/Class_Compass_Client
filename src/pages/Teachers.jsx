@@ -42,7 +42,13 @@ const Teachers = ({ selected, setSelected }) => {
     createData("Gingerbread", 356),
   ];
   return (
-    <Layout isBottomNavbar selected={selected} setSelected={setSelected}>
+    <Layout
+      isBack
+      title={"Teachers"}
+      isBottomNavbar
+      selected={selected}
+      setSelected={setSelected}
+    >
       <Box mt={10} width={"100%"} mb={9}>
         <Box
           width={"95%"}

@@ -86,7 +86,7 @@ const ForgotPassword = () => {
     setLoading(true);
     try {
       const jointOTP = otp.join("");
-      const res = await verifyOtp({ otp: jointOTP });
+      const res = await verifyOtp({ otp: jointOTP, email: inputData });
       toast.success("Otp verified successfully");
       setIsOtpSubmit(true);
     } catch (error) {
@@ -120,7 +120,7 @@ const ForgotPassword = () => {
       setLoading(false);
     }
   };
-
+  console.log(isOtpSent, isOtpSubmit);
   return (
     <Box className="forgot-pass-main">
       <ToastContainer />
@@ -146,7 +146,17 @@ const ForgotPassword = () => {
               marginBottom={"11px"}
               fontSize={14}
             >
-              Please enter the Phone/Email <br /> linked with your account
+              {!isOtpSent ? (
+                <>
+                  Please enter the Email <br /> linked with your account
+                </>
+              ) : isOtpSubmit ? (
+                <>Create your new password</>
+              ) : (
+                <>
+                  We have sent OTP on your email <br /> {inputData}
+                </>
+              )}
             </Typography>
             <hr className="hr-line" />
           </Box>
@@ -170,8 +180,9 @@ const ForgotPassword = () => {
                   <TextField
                     required
                     id="outlined-required"
-                    label="Phone/Email"
+                    label="Email"
                     fullWidth
+                    type="email"
                     onChange={(e) => setInputData(e.target.value)}
                     value={inputData}
                   />
