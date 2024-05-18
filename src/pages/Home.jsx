@@ -113,6 +113,10 @@ const Home = ({ selected, setSelected }) => {
             display={"flex"}
             justifyContent={"center"}
             alignItems={"center"}
+            sx={{ cursor: "pointer" }}
+            onClick={() => {
+              navigate("/profile");
+            }}
           >
             <img
               style={{
