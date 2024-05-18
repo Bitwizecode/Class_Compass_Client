@@ -15,6 +15,7 @@ import {
 import Model from "../components/Model";
 import { useNavigate } from "react-router-dom";
 import Edit from "../assets/icon/edit.png";
+import { useExamResultContext } from "../contexts/ExamResultContextProvider";
 
 const ExamResult = ({ selected, setSelected }) => {
   const fileInputRef = useRef(null);
@@ -22,14 +23,15 @@ const ExamResult = ({ selected, setSelected }) => {
     fileInputRef.current.click();
   };
   const navigate = useNavigate();
-
+  const { setSelectedStudent, selectedStudent } = useExamResultContext();
+  console.log(selectedStudent);
   const rows = [
-    { name: "Ravi Gupta", class: "1-A" },
-    { name: "Ravi Gupta", class: "1-A" },
-    { name: "Ravi Gupta", class: "1-A" },
-    { name: "Ravi Gupta", class: "1-A" },
-    { name: "Ravi Gupta", class: "1-A" },
-    { name: "Ravi Gupta", class: "1-A" },
+    { name: "Ravi Gupta", class: "1-A", marks: true },
+    { name: "Rahul Gupta", class: "1-A", marks: false },
+    { name: "Raj Gupta", class: "1-A", marks: true },
+    { name: "Prathamesh Gupta", class: "1-A", marks: true },
+    { name: "Siddhu Gupta", class: "1-A", marks: false },
+    { name: "Rohit Gupta", class: "1-A", marks: true },
   ];
   const term = [
     { value: "1st Term" },
@@ -72,7 +74,6 @@ const ExamResult = ({ selected, setSelected }) => {
                   <TableCell sx={{ pl: "25px" }}>Name</TableCell>
                   <TableCell align="left">Roll No</TableCell>
                   <TableCell align="center">View Result</TableCell>
-                  <TableCell align="center">Set Result</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -95,12 +96,17 @@ const ExamResult = ({ selected, setSelected }) => {
                         variant="contained"
                         size="small"
                         sx={{ fontSize: "11px" }}
-                        onClick={() => navigate("/view-result")}
+                        onClick={() => {
+                          setSelectedStudent(row);
+                          navigate(
+                            row.marks == true ? "/view-result" : "/set-result"
+                          );
+                        }}
                       >
-                        View Result
+                        {row.marks == true ? "View Result" : "Set Result"}
                       </Button>
                     </TableCell>
-                    <TableCell align="center">
+                    {/* <TableCell align="center">
                       <Button
                         variant="contained"
                         size="small"
@@ -109,7 +115,7 @@ const ExamResult = ({ selected, setSelected }) => {
                       >
                         Set Result
                       </Button>
-                    </TableCell>
+                    </TableCell> */}
                   </TableRow>
                 ))}
               </TableBody>

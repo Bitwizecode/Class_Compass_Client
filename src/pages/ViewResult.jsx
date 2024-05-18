@@ -12,8 +12,11 @@ import {
   Typography,
 } from "@mui/material";
 import SchoolLogo from "../assets/icon/school_logo.jpg";
+import { useNavigate } from "react-router-dom";
+import { useExamResultContext } from "../contexts/ExamResultContextProvider";
 
 const ViewResult = () => {
+  const navigate = useNavigate();
   const rows = [
     {
       name: "Ravi Gupta",
@@ -48,6 +51,8 @@ const ViewResult = () => {
       dob: "12-12-2005",
     },
   ];
+
+  const {selectedStudent} = useExamResultContext();
 
   const marks = [
     { sub: "English", markobt: 95, marktottal: 100, grade: "A" },
@@ -92,6 +97,16 @@ const ViewResult = () => {
         flexDirection={"column"}
         alignItems={"center"}
       >
+        <Box mb={"10px"} display={"flex"} justifyContent={"right"} width={"60%"}>
+          <Button
+            variant="contained"
+            size="small"
+            sx={{ fontSize: "11px"}}
+            onClick={() => navigate("/set-result")}
+          >
+            Edit Result
+          </Button>
+        </Box>
         <Box
           className="result-main-container"
           sx={{
@@ -132,7 +147,7 @@ const ViewResult = () => {
             <div className="name-father-name">
               <div className="name-result">
                 Student Name :
-                <span className="text-result"> {rows[0].name}</span>
+                <span className="text-result"> {selectedStudent?.name}</span>
               </div>
               <div className="name-result">
                 Father Name :{" "}
@@ -167,7 +182,7 @@ const ViewResult = () => {
         >
           <Table aria-label="simple table">
             <TableHead>
-              <TableRow style={{backgroundColor : "whitesmoke"}}>
+              <TableRow style={{ backgroundColor: "whitesmoke" }}>
                 <TableCell className="result-table-text" sx={{ pl: "20px" }}>
                   Subject
                 </TableCell>
@@ -213,14 +228,31 @@ const ViewResult = () => {
           <div className="percentage-box">
             <div className="up-content">
               <div className="marks-obtained">
-                Marks Obtained : <span className="text-result" style={{color : "#1976d2"}}>  {totalMarksObtained} / {totalMaxMarks}</span>
+                Marks Obtained :{" "}
+                <span className="text-result" style={{ color: "#1976d2" }}>
+                  {" "}
+                  {totalMarksObtained} / {totalMaxMarks}
+                </span>
               </div>
               <div className="percentage-calculate">
-                Percentage :  <span className="text-result" style={{color : "#1976d2"}}> {percentage}%</span>
+                Percentage :{" "}
+                <span className="text-result" style={{ color: "#1976d2" }}>
+                  {" "}
+                  {percentage}%
+                </span>
               </div>
             </div>
             <div className="down-content">
-              <div className="status-pass-fail">Status : <span className="text-result" style={{ color: status === "Pass" ? "green" : "red" }}> {status}</span></div>
+              <div className="status-pass-fail">
+                Status :{" "}
+                <span
+                  className="text-result"
+                  style={{ color: status === "Pass" ? "green" : "red" }}
+                >
+                  {" "}
+                  {status}
+                </span>
+              </div>
             </div>
           </div>
         </Box>

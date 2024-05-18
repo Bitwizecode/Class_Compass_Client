@@ -14,11 +14,13 @@ import {
   Typography,
   Select,
   MenuItem,
-  FormControl
+  FormControl,
 } from "@mui/material";
 import Model from "../components/Model";
+import { useNavigate } from "react-router-dom";
 import TripleDotMenu from "../components/TripleDotMenu";
 function SetResult() {
+  const navigate = useNavigate();
   const [openEditExamTT, setOpenEditExamTT] = React.useState(false);
   const [editResult, setEditResult] = useState(
     JSON.parse(localStorage.getItem("editResult")) || []
@@ -132,25 +134,42 @@ function SetResult() {
           <Typography color={"gray"} fontSize={14}>
             Class : {rows[0].class}/{rows[0].div}
           </Typography>
-          <Box display={"flex"} alignItems={"center"}>
-            <Typography color={"gray"} fontSize={14}>
-              Term : &nbsp;
-            </Typography>
-            <FormControl variant="standard" sx={{ minWidth: 100 }}>
-              <Select
-                labelId="demo-simple-select-standard-label"
-                id="demo-simple-select-standard"
-                value={selectedValue}
-                onChange={handleSelectChange}
-                label="Age"
-                style={{ textAlign: "center", fontSize: "13px"}}
+          <Box
+            display={"flex"}
+            alignItems={"center"}
+            justifyContent={"space-between"}
+            width={"100%"}
+          >
+            <Box display={"flex"} alignItems={"center"}>
+              <Typography color={"gray"} fontSize={14}>
+                Term : &nbsp;
+              </Typography>
+              <FormControl variant="standard" sx={{ minWidth: 100 }}>
+                <Select
+                  labelId="demo-simple-select-standard-label"
+                  id="demo-simple-select-standard"
+                  value={selectedValue}
+                  onChange={handleSelectChange}
+                  label="Age"
+                  style={{ textAlign: "center", fontSize: "13px" }}
+                >
+                  <MenuItem value={0}>1st Term</MenuItem>
+                  <MenuItem value={1}>2nd Term</MenuItem>
+                  <MenuItem value={2}>3rd Term</MenuItem>
+                  <MenuItem value={2}>4th Term</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
+            <Box>
+              <Button
+                variant="contained"
+                size="small"
+                sx={{ fontSize: "11px" }}
+                onClick={() => navigate("/view-result")}
               >
-                <MenuItem value={0}>1st Term</MenuItem>
-                <MenuItem value={1}>2nd Term</MenuItem>
-                <MenuItem value={2}>3rd Term</MenuItem>
-                <MenuItem value={2}>4th Term</MenuItem>
-              </Select>
-            </FormControl>
+                View Result
+              </Button>
+            </Box>
           </Box>
         </Box>
         <TableContainer

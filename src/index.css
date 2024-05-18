@@ -927,6 +927,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .home-profile-main {
   @media (max-width: 800px) {
     margin: 0 10px !important;
+    gap: 8%;
   }
 }
 
