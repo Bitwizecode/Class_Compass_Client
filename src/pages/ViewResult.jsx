@@ -17,62 +17,22 @@ import { useExamResultContext } from "../contexts/ExamResultContextProvider";
 
 const ViewResult = () => {
   const navigate = useNavigate();
-  const rows = [
-    {
-      name: "Ravi Gupta",
-      fathername: "Raju Gupta",
-      class: "10",
-      div: "B",
-      rollno: 151,
-      dob: "12-12-2001",
-    },
-    {
-      name: "Raj Gupta",
-      fathername: "Raju Gupta",
-      class: "9",
-      div: "B",
-      rollno: 152,
-      dob: "12-12-2003",
-    },
-    {
-      name: "Rohit Gupta",
-      fathername: "Raju Gupta",
-      class: "12",
-      div: "B",
-      rollno: 131,
-      dob: "12-12-2004",
-    },
-    {
-      name: "Rahul Gupta",
-      fathername: "Raju Gupta",
-      class: "15",
-      div: "B",
-      rollno: 141,
-      dob: "12-12-2005",
-    },
-  ];
 
-  const {selectedStudent} = useExamResultContext();
+  const { selectedStudent } = useExamResultContext();
 
-  const marks = [
-    { sub: "English", markobt: 95, marktottal: 100, grade: "A" },
-    { sub: "Marathi", markobt: 98, marktottal: 100, grade: "A+" },
-    { sub: "Hindi", markobt: 99, marktottal: 100, grade: "A+" },
-    { sub: "Maths", markobt: 83, marktottal: 100, grade: "C" },
-    { sub: "Science", markobt: 79, marktottal: 100, grade: "C" },
-    { sub: "History & PS", markobt: 86, marktottal: 100, grade: "B" },
-    { sub: "Geography", markobt: 83, marktottal: 100, grade: "C" },
-    { sub: "EVS", markobt: 95, marktottal: 100, grade: "B" },
-  ];
   const date = new Date();
 
+  if (!selectedStudent) {
+    return <Typography variant="h6">No student selected.</Typography>;
+  }
+
   // Calculate total marks obtained and total maximum marks
-  const totalMarksObtained = marks.reduce(
-    (total, mark) => total + mark.markobt,
+  const totalMarksObtained = selectedStudent.marks.reduce(
+    (total, mark) => total + mark.markObt,
     0
   );
-  const totalMaxMarks = marks.reduce(
-    (total, mark) => total + mark.marktottal,
+  const totalMaxMarks = selectedStudent.marks.reduce(
+    (total, mark) => total + mark.markTotal,
     0
   );
 
@@ -86,7 +46,7 @@ const ViewResult = () => {
   } else {
     status = "Pass";
   }
-
+console.log(selectedStudent)
   return (
     <Box m={"0 auto"} width={"100%"}>
       <Box
@@ -97,11 +57,16 @@ const ViewResult = () => {
         flexDirection={"column"}
         alignItems={"center"}
       >
-        <Box mb={"10px"} display={"flex"} justifyContent={"right"} width={"60%"}>
+        <Box
+          mb={"10px"}
+          display={"flex"}
+          justifyContent={"right"}
+          width={"60%"}
+        >
           <Button
             variant="contained"
             size="small"
-            sx={{ fontSize: "11px"}}
+            sx={{ fontSize: "11px" }}
             onClick={() => navigate("/set-result")}
           >
             Edit Result
@@ -151,23 +116,29 @@ const ViewResult = () => {
               </div>
               <div className="name-result">
                 Father Name :{" "}
-                <span className="text-result">{rows[0].fathername}</span>
+                <span className="text-result">
+                  {selectedStudent?.fathername}
+                </span>
               </div>
             </div>
             <div className="name-father-name">
               <div className="name-result">
-                DOB : <span className="text-result"> {rows[0].dob}</span>
+                DOB :{" "}
+                <span className="text-result"> {selectedStudent?.dob}</span>
               </div>
               <div className="name-result">
-                Class : <span className="text-result">{rows[0].class}</span>
+                Class :{" "}
+                <span className="text-result">{selectedStudent?.class}</span>
               </div>
             </div>
             <div className="name-father-name">
               <div className="name-result">
-                Roll No : <span className="text-result"> {rows[0].rollno}</span>
+                Roll No :{" "}
+                <span className="text-result"> {selectedStudent?.rollno}</span>
               </div>
               <div className="name-result">
-                Div : <span className="text-result"> {rows[0].div}</span>
+                Div :{" "}
+                <span className="text-result"> {selectedStudent?.div}</span>
               </div>
             </div>
           </div>
@@ -198,16 +169,16 @@ const ViewResult = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {marks.map((mark) => (
+              {selectedStudent?.marks.map((mark) => (
                 <TableRow key={mark.sub} sx={{ fontSize: "10px" }}>
                   <TableCell className="result-inside-text" sx={{ pl: "20px" }}>
                     {mark.sub}
                   </TableCell>
                   <TableCell className="result-inside-text" align="center">
-                    {mark.markobt}
+                    {mark.markObt}
                   </TableCell>
                   <TableCell className="result-inside-text" align="center">
-                    {mark.marktottal}
+                    {mark.markTotal}
                   </TableCell>
                   <TableCell className="result-inside-text" align="center">
                     {mark.grade}

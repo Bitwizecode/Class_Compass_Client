@@ -26,12 +26,70 @@ const ExamResult = ({ selected, setSelected }) => {
   const { setSelectedStudent, selectedStudent } = useExamResultContext();
   console.log(selectedStudent);
   const rows = [
-    { name: "Ravi Gupta", class: "1-A", marks: true },
-    { name: "Rahul Gupta", class: "1-A", marks: false },
-    { name: "Raj Gupta", class: "1-A", marks: true },
-    { name: "Prathamesh Gupta", class: "1-A", marks: true },
-    { name: "Siddhu Gupta", class: "1-A", marks: false },
-    { name: "Rohit Gupta", class: "1-A", marks: true },
+    {
+      name: "Ravi Gupta",
+      fathername: "Raju D Gupta",
+      class: "10",
+      div: "B",
+      rollno: 151,
+      dob: "12-12-2001",
+      isResultSet: true,
+      marks: [
+        { sub: "English", markObt: 95, markTotal: 100, grade: "A" },
+        { sub: "Marathi", markObt: 98, markTotal: 100, grade: "A+" },
+        { sub: "Hindi", markObt: 99, markTotal: 100, grade: "A+" },
+        { sub: "Maths", markobt: 83, markTotal: 100, grade: "C" },
+        { sub: "Science", markObt: 79, markTotal: 100, grade: "C" },
+        { sub: "History & PS", markObt: 86, markTotal: 100, grade: "B" },
+        { sub: "Geography", markObt: 83, markTotal: 100, grade: "C" },
+        { sub: "EVS", markObt: 95, markTotal: 100, grade: "B" },
+      ],
+    },
+    {
+      name: "Rahul Gupta",
+      fathername: "Raju Devnath Gupta",
+      class: "10",
+      div: "B",
+      rollno: 151,
+      dob: "12-12-2001",
+      isResultSet: false,
+    },
+    {
+      name: "Raj Gupta",
+      fathername: "Raju D Gupta",
+      class: "10",
+      div: "B",
+      rollno: 151,
+      dob: "12-12-2001",
+      isResultSet: true,
+    },
+    {
+      name: "Prathamesh Chavan",
+      fathername: "Shashikant C",
+      class: "10",
+      div: "B",
+      rollno: 151,
+      dob: "12-12-2001",
+      isResultSet: true,
+    },
+    {
+      name: "Siddhu Gupta",
+      fathername: "Shashikant Chavan",
+      class: "10",
+      div: "B",
+      rollno: 151,
+      dob: "12-12-2001",
+      isResultSet: false,
+    },
+    {
+      name: "Rohit Gupta",
+      fathername: "Raju D G",
+      class: "10",
+      div: "B",
+      rollno: 151,
+      dob: "12-12-2001",
+      isResultSet: true,
+    },
   ];
   const term = [
     { value: "1st Term" },
@@ -99,11 +157,13 @@ const ExamResult = ({ selected, setSelected }) => {
                         onClick={() => {
                           setSelectedStudent(row);
                           navigate(
-                            row.marks == true ? "/view-result" : "/set-result"
+                            row.isResultSet == true
+                              ? "/view-result"
+                              : "/set-result"
                           );
                         }}
                       >
-                        {row.marks == true ? "View Result" : "Set Result"}
+                        {row.isResultSet == true ? "View Result" : "Set Result"}
                       </Button>
                     </TableCell>
                     {/* <TableCell align="center">
