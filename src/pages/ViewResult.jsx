@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Button,
@@ -19,6 +19,23 @@ const ViewResult = () => {
   const navigate = useNavigate();
 
   const { selectedStudent } = useExamResultContext();
+  const [results, setResults] = useState([]);
+  const [selectedTerm, setSelectedTerm] = useState("1st Term");
+
+  useEffect(() => {
+    const storedResults = localStorage.getItem("editResult");
+    if (storedResults) {
+      setResults(JSON.parse(storedResults));
+    }
+  }, []);
+
+  useEffect(() => {
+    const term = localStorage.getItem("selectedTerm");
+    if (term !== null) {
+      const termMap = ["1st Term", "2nd Term", "3rd Term", "4th Term"];
+      setSelectedTerm(termMap[term]);
+    }
+  }, []);
 
   const date = new Date();
 
@@ -27,17 +44,17 @@ const ViewResult = () => {
   }
 
   // Calculate total marks obtained and total maximum marks
-  const totalMarksObtained = selectedStudent.marks.reduce(
-    (total, mark) => total + mark.markObt,
+  const totalMarksObtained = results.reduce(
+    (total, result) => total + Number(result.markObt),
     0
   );
-  const totalMaxMarks = selectedStudent.marks.reduce(
-    (total, mark) => total + mark.markTotal,
+  const totalMaxMarks = results.reduce(
+    (total, result) => total + Number(result.markTotal),
     0
   );
 
   // Calculate percentage
-  const percentage = (totalMarksObtained / totalMaxMarks) * 100;
+  const percentage = ((totalMarksObtained / totalMaxMarks) * 100).toFixed(2);
 
   // Status
   let status;
@@ -46,7 +63,7 @@ const ViewResult = () => {
   } else {
     status = "Pass";
   }
-console.log(selectedStudent)
+  console.log(selectedStudent);
   return (
     <Box m={"0 auto"} width={"100%"}>
       <Box
@@ -61,7 +78,7 @@ console.log(selectedStudent)
           mb={"10px"}
           display={"flex"}
           justifyContent={"right"}
-          width={"60%"}
+          className="result-main-container"
         >
           <Button
             variant="contained"
@@ -94,9 +111,7 @@ console.log(selectedStudent)
               <div className="school-add">
                 Academic Year : {date.getFullYear()} - {date.getFullYear() + 1}
               </div>
-              <div className="school-add">
-                1<sup>st</sup> Semester Exam
-              </div>
+              <div className="school-add">Term : {selectedTerm}</div>
             </div>
           </div>
         </Box>
@@ -169,22 +184,33 @@ console.log(selectedStudent)
               </TableRow>
             </TableHead>
             <TableBody>
-              {selectedStudent?.marks.map((mark) => (
-                <TableRow key={mark.sub} sx={{ fontSize: "10px" }}>
-                  <TableCell className="result-inside-text" sx={{ pl: "20px" }}>
-                    {mark.sub}
-                  </TableCell>
-                  <TableCell className="result-inside-text" align="center">
-                    {mark.markObt}
-                  </TableCell>
-                  <TableCell className="result-inside-text" align="center">
-                    {mark.markTotal}
-                  </TableCell>
-                  <TableCell className="result-inside-text" align="center">
-                    {mark.grade}
+              {results.length > 0 ? (
+                results.map((result, i) => (
+                  <TableRow key={i} sx={{ fontSize: "10px" }}>
+                    <TableCell
+                      className="result-inside-text"
+                      sx={{ pl: "20px" }}
+                    >
+                      {result.subject}
+                    </TableCell>
+                    <TableCell className="result-inside-text" align="center">
+                      {result.markObt}
+                    </TableCell>
+                    <TableCell className="result-inside-text" align="center">
+                      {result.markTotal}
+                    </TableCell>
+                    <TableCell className="result-inside-text" align="center">
+                      {result.grade}
+                    </TableCell>
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell colSpan={4} align="center">
+                    No results found
                   </TableCell>
                 </TableRow>
-              ))}
+              )}
             </TableBody>
           </Table>
         </TableContainer>

@@ -25,22 +25,16 @@ const Teachers = ({ selected, setSelected }) => {
   };
   const [openAddStudents, setOpenAddStudents] = React.useState(false);
   const navigate = useNavigate();
-  function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-  }
 
-  const rows = [
-    createData("Frozen yoghurt", 159),
-    createData("Ice cream sandwich", 237),
-    createData("Eclair", 262),
-    createData("Cupcake", 305),
-    createData("Gingerbread", 356),
-    createData("Frozen yoghurt", 159),
-    createData("Ice cream sandwich", 237),
-    createData("Eclair", 262),
-    createData("Cupcake", 305),
-    createData("Gingerbread", 356),
-  ];
+  const [teacherData, setTeacherData] = useState({
+    name: "",
+    email: "",
+    class: "",
+    school_id: 123,
+  });
+
+  const [rows, setRows] = useState({ })
+
   return (
     <Layout
       isBack
@@ -76,7 +70,14 @@ const Teachers = ({ selected, setSelected }) => {
             submitText={"Submit"}
             subHeaderText={"Fill the Teacher Details"}
             onSubmit={() => {
-              setOpenAddStudents(false);
+              // setOpenAddStudents(false);
+              rows.push(teacherData);
+              setTeacherData({
+                name: "",
+                email: "",
+                class: "",
+                school_id: 123,
+              });
             }}
           >
             <Box display={"flex"} justifyContent={"center"} mt={2} mb={1.3}>
@@ -100,8 +101,12 @@ const Teachers = ({ selected, setSelected }) => {
                 <TextField
                   required
                   id="outlined-required"
-                  label="Teacher Name"
+                  label="Name"
                   fullWidth
+                  value={teacherData.name}
+                  onChange={(e) =>
+                    setTeacherData({ ...teacherData, name: e.target.value })
+                  }
                 />
               </Box>
               <Box>
@@ -110,14 +115,23 @@ const Teachers = ({ selected, setSelected }) => {
                   id="outlined-required"
                   label="Class"
                   fullWidth
+                  value={teacherData.class}
+                  onChange={(e) =>
+                    setTeacherData({ ...teacherData, class: e.target.value })
+                  }
                 />
               </Box>
               <Box>
                 <TextField
                   required
                   id="outlined-required"
-                  label="Student Phone/Email"
+                  label="Email"
+                  type="email"
                   fullWidth
+                  value={teacherData.email}
+                  onChange={(e) =>
+                    setTeacherData({ ...teacherData, email: e.target.value })
+                  }
                 />
               </Box>
             </Box>
