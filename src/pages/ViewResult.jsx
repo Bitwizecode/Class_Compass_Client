@@ -39,26 +39,26 @@ const ViewResult = () => {
 
   const date = new Date();
 
-  if (!selectedStudent) {
-    return <Typography variant="h6">No student selected.</Typography>;
+  let totalMarksObtained = 0;
+  let totalMaxMarks = 0;
+
+  if (selectedStudent?.marks) {
+    Object.values(selectedStudent.marks).forEach((subject) => {
+      totalMarksObtained += Number(subject.markObt) || 0;
+      totalMaxMarks += Number(subject.markTotal) || 0;
+    });
   }
 
-  // Calculate total marks obtained and total maximum marks
-  const totalMarksObtained = results.reduce(
-    (total, result) => total + Number(result.markObt),
-    0
-  );
-  const totalMaxMarks = results.reduce(
-    (total, result) => total + Number(result.markTotal),
-    0
-  );
-
-  // Calculate percentage
-  const percentage = ((totalMarksObtained / totalMaxMarks) * 100).toFixed(2);
+  const percentage =
+    totalMaxMarks > 0
+      ? ((totalMarksObtained / totalMaxMarks) * 100).toFixed(2)
+      : 0;
 
   // Status
   let status;
-  if (totalMarksObtained < 280) {
+  if (totalMaxMarks === 0) {
+    status = "Not Declared";
+  } else if (percentage < 35) {
     status = "Fail";
   } else {
     status = "Pass";
@@ -128,33 +128,33 @@ const ViewResult = () => {
                 Student Name :
                 <span className="text-result"> {selectedStudent?.name}</span>
               </div>
-              <div className="name-result">
+              <div className="name-result father_name">
                 Father Name :{" "}
                 <span className="text-result">
                   {selectedStudent?.fathername}
                 </span>
               </div>
             </div>
-            <div className="name-father-name">
+            <div className="name-father-name roll_class">
               <div className="name-result">
-                DOB :{" "}
-                <span className="text-result"> {selectedStudent?.dob}</span>
+                Roll No :{" "}
+                <span className="text-result"> {selectedStudent?.rollno}</span>
               </div>
               <div className="name-result">
                 Class :{" "}
                 <span className="text-result">{selectedStudent?.class}</span>
               </div>
             </div>
-            <div className="name-father-name">
+            {/* <div className="name-father-name">
               <div className="name-result">
-                Roll No :{" "}
-                <span className="text-result"> {selectedStudent?.rollno}</span>
+                DOB :{" "}
+                <span className="text-result"> {selectedStudent?.dob}</span>
               </div>
               <div className="name-result">
                 Div :{" "}
                 <span className="text-result"> {selectedStudent?.div}</span>
               </div>
-            </div>
+            </div> */}
           </div>
         </Box>
         <TableContainer

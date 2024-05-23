@@ -78,7 +78,7 @@ const ExamResult = ({ selected, setSelected }) => {
                         </Box>
                       </TableCell>
                       <TableCell align="left">
-                        {resultsData[student].class}
+                        {resultsData[student].rollno}
                       </TableCell>
 
                       <TableCell align="center">
