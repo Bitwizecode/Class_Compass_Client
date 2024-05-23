@@ -33,7 +33,7 @@ const Teachers = ({ selected, setSelected }) => {
     school_id: 123,
   });
 
-  const [rows, setRows] = useState({ })
+  const [rows, setRows] = useState([]);
 
   return (
     <Layout
@@ -72,6 +72,7 @@ const Teachers = ({ selected, setSelected }) => {
             onSubmit={() => {
               // setOpenAddStudents(false);
               rows.push(teacherData);
+              setOpenAddStudents(false);
               setTeacherData({
                 name: "",
                 email: "",
@@ -87,6 +88,7 @@ const Teachers = ({ selected, setSelected }) => {
                   src={Edit}
                   alt=""
                   onClick={handleOpenFile}
+                  alt={"edit"}
                 />
                 <input
                   type="file"
@@ -158,7 +160,7 @@ const Teachers = ({ selected, setSelected }) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map((row) => (
+                {rows?.map((row) => (
                   <TableRow key={row.name}>
                     <TableCell>
                       <Box display={"flex"} alignItems={"center"} gap={"10px"}>
@@ -170,7 +172,7 @@ const Teachers = ({ selected, setSelected }) => {
                         {row.name}
                       </Box>
                     </TableCell>
-                    <TableCell align="left">{row.calories}</TableCell>
+                    <TableCell align="left">{row.class}</TableCell>
 
                     <TableCell align="center">
                       <Button

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Layout from "../components/Layout";
 import {
   Box,
@@ -22,131 +22,9 @@ const ExamResult = ({ selected, setSelected }) => {
   const handleOpenFile = () => {
     fileInputRef.current.click();
   };
+  const [studentsResultData, setStudentsResultData] = useState({});
   const navigate = useNavigate();
-  const { setSelectedStudent, selectedStudent } = useExamResultContext();
-  console.log(selectedStudent);
-  const rows = [
-    {
-      name: "Ravi Gupta",
-      fathername: "Raju D Gupta",
-      class: "10",
-      div: "A",
-      rollno: 151,
-      dob: "12-12-2001",
-      isResultSet: true,
-      marks: [
-        { sub: "English", markObt: "", markTotal: "", grade: "A" },
-        { sub: "Marathi", markObt: "", markTotal: "", grade: "A+" },
-        { sub: "Hindi", markObt: "", markTotal: "", grade: "A+" },
-        { sub: "Maths", markObt: "", markTotal: "", grade: "C" },
-        { sub: "Science", markObt: "", markTotal: "", grade: "C" },
-        { sub: "History & PS", markObt: "", markTotal: "", grade: "B" },
-        { sub: "Geography", markObt: "", markTotal: "", grade: "C" },
-        { sub: "EVS", markObt: "", markTotal: "", grade: "B" },
-      ],
-    },
-    {
-      name: "Rahul Gupta",
-      fathername: "Raju Devnath Gupta",
-      class: "10",
-      div: "B",
-      rollno: 151,
-      dob: "12-12-2001",
-      isResultSet: true,
-      marks: [
-        { sub: "English", markObt: 75, markTotal: 100, grade: "A" },
-        { sub: "Marathi", markObt: 68, markTotal: 100, grade: "A+" },
-        { sub: "Hindi", markObt: 59, markTotal: 100, grade: "A+" },
-        { sub: "Maths", markObt: 43, markTotal: 100, grade: "C" },
-        { sub: "Science", markObt: 69, markTotal: 100, grade: "C" },
-        { sub: "History & PS", markObt: 82, markTotal: 100, grade: "B" },
-        { sub: "Geography", markObt: 53, markTotal: 100, grade: "C" },
-        { sub: "EVS", markObt: 95, markTotal: 100, grade: "B" },
-      ],
-    },
-    {
-      name: "Raj Gupta",
-      fathername: "Raju D Gupta",
-      class: "10",
-      div: "C",
-      rollno: 151,
-      dob: "12-12-2001",
-      isResultSet: true,
-      marks: [
-        { sub: "English", markObt: 25, markTotal: 100, grade: "A" },
-        { sub: "Marathi", markObt: 18, markTotal: 100, grade: "A+" },
-        { sub: "Hindi", markObt: 29, markTotal: 100, grade: "A+" },
-        { sub: "Maths", markObt: 13, markTotal: 100, grade: "C" },
-        { sub: "Science", markObt: 27, markTotal: 100, grade: "C" },
-        { sub: "History & PS", markObt: 16, markTotal: 100, grade: "B" },
-        { sub: "Geography", markObt: 23, markTotal: 100, grade: "C" },
-        { sub: "EVS", markObt: 35, markTotal: 100, grade: "B" },
-      ],
-    },
-    {
-      name: "Prathamesh Chavan",
-      fathername: "Shashikant C",
-      class: "10",
-      div: "D",
-      rollno: 151,
-      dob: "12-12-2001",
-      isResultSet: true,
-      marks: [
-        { sub: "English", markObt: 95, markTotal: 100, grade: "A" },
-        { sub: "Marathi", markObt: 98, markTotal: 100, grade: "A+" },
-        { sub: "Hindi", markObt: 99, markTotal: 100, grade: "A+" },
-        { sub: "Maths", markObt: 83, markTotal: 100, grade: "C" },
-        { sub: "Science", markObt: 79, markTotal: 100, grade: "C" },
-        { sub: "History & PS", markObt: 86, markTotal: 100, grade: "B" },
-        { sub: "Geography", markObt: 83, markTotal: 100, grade: "C" },
-        { sub: "EVS", markObt: 95, markTotal: 100, grade: "B" },
-      ],
-    },
-    {
-      name: "Siddhu Gupta",
-      fathername: "Shashikant Chavan",
-      class: "10",
-      div: "E",
-      rollno: 151,
-      dob: "12-12-2001",
-      isResultSet: true,
-      marks: [
-        { sub: "English", markObt: 95, markTotal: 100, grade: "A" },
-        { sub: "Marathi", markObt: 98, markTotal: 100, grade: "A+" },
-        { sub: "Hindi", markObt: 99, markTotal: 100, grade: "A+" },
-        { sub: "Maths", markObt: 83, markTotal: 100, grade: "C" },
-        { sub: "Science", markObt: 79, markTotal: 100, grade: "C" },
-        { sub: "History & PS", markObt: 86, markTotal: 100, grade: "B" },
-        { sub: "Geography", markObt: 83, markTotal: 100, grade: "C" },
-        { sub: "EVS", markObt: 95, markTotal: 100, grade: "B" },
-      ],
-    },
-    {
-      name: "Rohit Gupta",
-      fathername: "Raju D G",
-      class: "10",
-      div: "F",
-      rollno: 151,
-      dob: "12-12-2001",
-      isResultSet: true,
-      marks: [
-        { sub: "English", markObt: 95, markTotal: 100, grade: "A" },
-        { sub: "Marathi", markObt: 98, markTotal: 100, grade: "A+" },
-        { sub: "Hindi", markObt: 99, markTotal: 100, grade: "A+" },
-        { sub: "Maths", markObt: 83, markTotal: 100, grade: "C" },
-        { sub: "Science", markObt: 79, markTotal: 100, grade: "C" },
-        { sub: "History & PS", markObt: 86, markTotal: 100, grade: "B" },
-        { sub: "Geography", markObt: 83, markTotal: 100, grade: "C" },
-        { sub: "EVS", markObt: 95, markTotal: 100, grade: "B" },
-      ],
-    },
-  ];
-  const term = [
-    { value: "1st Term" },
-    { value: "2nd Term" },
-    { value: "3rd Term" },
-    { value: "4th Term" },
-  ];
+  const { setSelectedStudent, resultsData } = useExamResultContext();
 
   return (
     <Layout isBack title={"Exam Results"}>
@@ -185,49 +63,46 @@ const ExamResult = ({ selected, setSelected }) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map((row, i) => (
-                  <TableRow key={i}>
-                    <TableCell>
-                      <Box
-                        display={"flex"}
-                        alignItems={"center"}
-                        flexWrap={"wrap"}
-                        gap={"10px"}
-                      >
-                        {row.name}
-                      </Box>
-                    </TableCell>
-                    <TableCell align="left">{row.class}</TableCell>
+                {Object.keys(resultsData).map((student, i) => {
+                  console.log(resultsData[student]);
+                  return (
+                    <TableRow key={i}>
+                      <TableCell>
+                        <Box
+                          display={"flex"}
+                          alignItems={"center"}
+                          flexWrap={"wrap"}
+                          gap={"10px"}
+                        >
+                          {resultsData[student].name}
+                        </Box>
+                      </TableCell>
+                      <TableCell align="left">
+                        {resultsData[student].class}
+                      </TableCell>
 
-                    <TableCell align="center">
-                      <Button
-                        variant="contained"
-                        size="small"
-                        sx={{ fontSize: "11px" }}
-                        onClick={() => {
-                          setSelectedStudent(row);
-                          navigate(
-                            row.isResultSet == true
-                              ? "/view-result"
-                              : "/set-result"
-                          );
-                        }}
-                      >
-                        {row.isResultSet == true ? "View Result" : "Set Result"}
-                      </Button>
-                    </TableCell>
-                    {/* <TableCell align="center">
-                      <Button
-                        variant="contained"
-                        size="small"
-                        sx={{ fontSize: "11px" }}
-                        onClick={() => navigate("/set-result")}
-                      >
-                        Set Result
-                      </Button>
-                    </TableCell> */}
-                  </TableRow>
-                ))}
+                      <TableCell align="center">
+                        <Button
+                          variant="contained"
+                          size="small"
+                          sx={{ fontSize: "11px" }}
+                          onClick={() => {
+                            setSelectedStudent(resultsData[student]);
+                            navigate(
+                              resultsData[student].isResultSet == true
+                                ? "/view-result"
+                                : "/set-result"
+                            );
+                          }}
+                        >
+                          {resultsData[student].isResultSet == true
+                            ? "View Result"
+                            : "Set Result"}
+                        </Button>
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
               </TableBody>
             </Table>
           </TableContainer>

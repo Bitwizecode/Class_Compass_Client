@@ -22,32 +22,21 @@ import TripleDotMenu from "../components/TripleDotMenu";
 import { useExamResultContext } from "../contexts/ExamResultContextProvider";
 function SetResult() {
   const navigate = useNavigate();
-  const { selectedStudent } = useExamResultContext();
+  const { selectedStudent, resultsData, setResultsData, setSelectedStudent } =
+    useExamResultContext();
   const [openEditExamTT, setOpenEditExamTT] = React.useState(false);
-  const [editResult, setEditResult] = useState(
-    JSON.parse(localStorage.getItem("editResult")) || []
-  );
+
   const [data, setData] = useState({
     subject: "",
     markObt: "",
     markTotal: "",
     grade: "",
   });
-  useEffect(() => {
-    const storedData = localStorage.getItem("subjects");
-    if (storedData) {
-      setEditResult(JSON.parse(storedData));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("editResult", JSON.stringify(editResult));
-  }, [editResult]);
 
   const handleDelete = (index) => {
-    const updatedResults = [...editResult];
-    updatedResults.splice(index, 1);
-    setEditResult(updatedResults);
+    // const updatedResults = [...editResult];
+    // updatedResults.splice(index, 1);
+    // setEditResult(updatedResults);
   };
 
   const [selectedValue, setSelectedValue] = useState(0);
@@ -58,12 +47,11 @@ function SetResult() {
   };
 
   const handleAddResult = () => {
-    setEditResult([...editResult, data]);
-    setData({ subject: "", markObt: "", markTotal: "", grade: "" });
-    setOpenEditExamTT(false);
+    // setEditResult([...editResult, data]);
+    // setData({ subject: "", markObt: "", markTotal: "", grade: "" });
+    // setOpenEditExamTT(false);
   };
 
-  const date = new Date();
   console.log(selectedStudent);
   return (
     <Box
@@ -161,8 +149,9 @@ function SetResult() {
             </TableHead>
 
             <TableBody>
-              {editResult.length > 0 ? (
-                editResult.map((sub, i) => (
+              {selectedStudent?.marks &&
+              Object.keys(selectedStudent?.marks).length > 0 ? (
+                Object.keys(selectedStudent?.marks).map((sub, i) => (
                   <TableRow key={i} sx={{ fontSize: "10px" }}>
                     <TableCell
                       className="result-inside-text"
@@ -180,28 +169,28 @@ function SetResult() {
                       className="result-inside-text"
                       style={{ textTransform: "capitalize" }}
                     >
-                      {sub.subject}
+                      {selectedStudent?.marks[sub].subject}
                     </TableCell>
                     <TableCell
                       className="result-inside-text"
                       align="center"
                       style={{ textTransform: "capitalize" }}
                     >
-                      {sub.markObt}
+                      {selectedStudent?.marks[sub].markObt || 0}
                     </TableCell>
                     <TableCell
                       className="result-inside-text"
                       align="center"
                       style={{ textTransform: "capitalize" }}
                     >
-                      {sub.markTotal}
+                      {selectedStudent?.marks[sub].markTotal || 0}
                     </TableCell>
                     <TableCell
                       className="result-inside-text"
                       align="center"
                       style={{ textTransform: "capitalize" }}
                     >
-                      {sub.grade}
+                      {selectedStudent?.marks[sub].grade || 0}
                     </TableCell>
                   </TableRow>
                 ))
@@ -239,91 +228,100 @@ function SetResult() {
           submitText={"Save"}
           subHeaderText={"Update Exam Time Table"}
           onSubmit={() => {
-            setEditResult([...editResult, data]);
+            console.log(data);
+            let student = {
+              ...selectedStudent,
+              marks: { ...selectedStudent?.marks, [data.subject]: data },
+            };
+
+            setResultsData({ ...resultsData, [student.name]: student });
+            setSelectedStudent(student);
+            setData({
+              subject: "",
+              markObt: "",
+              markTotal: "",
+              grade: "",
+            });
             setOpenEditExamTT(false);
           }}
         >
-            <Box
-              display={"flex"}
-              flexDirection={"column"}
-              gap={1.2}
-              height={"220px"}
-              overflow={"auto"}
-              mt={2}
-            >
-              <Box mt={2}>
-                <TextField
-                  className="subject-term-textfield"
-                  InputLabelProps={{ shrink: true }}
-                  required
-                  fullWidth
-                  type="text"
-                  id="outlined-required"
-                  label="Subject"
-                  onChange={(e) =>
-                    setData({ ...data, subject: e.target.value })
-                  }
-                  inputProps={{
-                    style: {
-                      textTransform: "capitalize",
-                    },
-                  }}
-                />
-              </Box>
-              <Box display={"flex"} flexDirection={"row"} gap={1.2}>
-                <TextField
-                  InputLabelProps={{ shrink: true }}
-                  required
-                  type="text"
-                  inputProps={{
-                    style: {
-                      textTransform: "capitalize",
-                    },
-                    maxLength: 3,
-                  }}
-                  id="outlined-required"
-                  label="Marks Obtained"
-                  onChange={(e) =>
-                    setData({ ...data, markObt: e.target.value })
-                  }
-                />
-                <TextField
-                  InputLabelProps={{ shrink: true }}
-                  required
-                  type="text"
-                  inputProps={{
-                    style: {
-                      textTransform: "capitalize",
-                    },
-                    maxLength: 3,
-                  }}
-                  id="outlined-required"
-                  label="Total Marks"
-                  value={data.markTotal}
-                  onChange={(e) =>
-                    setData({ ...data, markTotal: e.target.value })
-                  }
-                />
-              </Box>
-              <Box>
-                <TextField
-                  className="subject-term-textfield"
-                  InputLabelProps={{ shrink: true }}
-                  required
-                  fullWidth
-                  type="text"
-                  id="outlined-required"
-                  label="Grade"
-                  onChange={(e) => setData({ ...data, grade: e.target.value })}
-                  inputProps={{
-                    style: {
-                      textTransform: "capitalize",
-                    },
-                    maxLength: 2,
-                  }}
-                />
-              </Box>
+          <Box
+            display={"flex"}
+            flexDirection={"column"}
+            gap={1.2}
+            height={"220px"}
+            overflow={"auto"}
+            mt={2}
+          >
+            <Box mt={2}>
+              <TextField
+                className="subject-term-textfield"
+                InputLabelProps={{ shrink: true }}
+                required
+                fullWidth
+                type="text"
+                id="outlined-required"
+                label="Subject"
+                onChange={(e) => setData({ ...data, subject: e.target.value })}
+                inputProps={{
+                  style: {
+                    textTransform: "capitalize",
+                  },
+                }}
+              />
             </Box>
+            <Box display={"flex"} flexDirection={"row"} gap={1.2}>
+              <TextField
+                InputLabelProps={{ shrink: true }}
+                required
+                type="text"
+                inputProps={{
+                  style: {
+                    textTransform: "capitalize",
+                  },
+                  maxLength: 3,
+                }}
+                id="outlined-required"
+                label="Marks Obtained"
+                onChange={(e) => setData({ ...data, markObt: e.target.value })}
+              />
+              <TextField
+                InputLabelProps={{ shrink: true }}
+                required
+                type="text"
+                inputProps={{
+                  style: {
+                    textTransform: "capitalize",
+                  },
+                  maxLength: 3,
+                }}
+                id="outlined-required"
+                label="Total Marks"
+                value={data.markTotal}
+                onChange={(e) =>
+                  setData({ ...data, markTotal: e.target.value })
+                }
+              />
+            </Box>
+            <Box>
+              <TextField
+                className="subject-term-textfield"
+                InputLabelProps={{ shrink: true }}
+                required
+                fullWidth
+                type="text"
+                id="outlined-required"
+                label="Grade"
+                onChange={(e) => setData({ ...data, grade: e.target.value })}
+                inputProps={{
+                  style: {
+                    textTransform: "capitalize",
+                  },
+                  maxLength: 2,
+                }}
+              />
+            </Box>
+          </Box>
         </Model>
       </Box>
     </Box>

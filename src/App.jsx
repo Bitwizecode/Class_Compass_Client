@@ -32,77 +32,60 @@ import SetResult from "./pages/SetResult";
 import UpcomingPage from "./pages/UpcomingPage";
 function App() {
   return (
-    <>
-      <Routes>
-        <Route path="*" element={<PrivateRoute component={Home} />} />
-        <Route path="/map" element={<PrivateRoute component={Map} />} />
-        <Route
-          path="/students"
-          element={<PrivateRoute component={Students} />}
-        />
-        <Route path="/class" element={<PrivateRoute component={Class} />} />
-        <Route
-          path="/division"
-          element={<PrivateRoute component={Division} />}
-        />
-        <Route
-          path="/teachers"
-          element={<PrivateRoute component={Teachers} />}
-        />
-        <Route
-          path="/attendance"
-          element={<PrivateRoute component={Attendance} />}
-        />
-        <Route path="/message" element={<PrivateRoute component={Message} />} />
-        <Route path="/digest" element={<PrivateRoute component={Digest} />} />
-        <Route
-          path="/help-support"
-          element={<PrivateRoute component={HelpSupport} />}
-        />
-        <Route
-          path="/notification"
-          element={<PrivateRoute component={Notification} />}
-        />
-        <Route path="/profile" element={<PrivateRoute component={Profile} />} />
-        <Route
-          path="/school-gallery"
-          element={<PrivateRoute component={SchoolGallery} />}
-        />
-        <Route
-          path="/exam-time-table"
-          element={<PrivateRoute component={ExamTimeTable} />}
-        />
-        <Route
-          path="/time-table"
-          element={<PrivateRoute component={TimeTable} />}
-        />
-        <Route path="/drivers" element={<PrivateRoute component={Drivers} />} />
-        <Route path="/todo" element={<PrivateRoute component={Todo} />} />
-        <Route
-          path="/syllabus"
-          element={<PrivateRoute component={Syllabus} />}
-        />
-        <Route
-          path="/homework"
-          element={<PrivateRoute component={Homework} />}
-        />
-        <Route
-          path="/student-leave"
-          element={<PrivateRoute component={StudentLeave} />}
-        />
+    <Routes>
+      <Route path="*" element={<PrivateRoute component={Home} />} />
+      <Route path="/map" element={<PrivateRoute component={Map} />} />
+      <Route path="/students" element={<PrivateRoute component={Students} />} />
+      <Route path="/class" element={<PrivateRoute component={Class} />} />
+      <Route path="/division" element={<PrivateRoute component={Division} />} />
+      <Route path="/teachers" element={<PrivateRoute component={Teachers} />} />
+      <Route
+        path="/attendance"
+        element={<PrivateRoute component={Attendance} />}
+      />
+      <Route path="/message" element={<PrivateRoute component={Message} />} />
+      <Route path="/digest" element={<PrivateRoute component={Digest} />} />
+      <Route
+        path="/help-support"
+        element={<PrivateRoute component={HelpSupport} />}
+      />
+      <Route
+        path="/notification"
+        element={<PrivateRoute component={Notification} />}
+      />
+      <Route path="/profile" element={<PrivateRoute component={Profile} />} />
+      <Route
+        path="/school-gallery"
+        element={<PrivateRoute component={SchoolGallery} />}
+      />
+      <Route
+        path="/exam-time-table"
+        element={<PrivateRoute component={ExamTimeTable} />}
+      />
+      <Route
+        path="/time-table"
+        element={<PrivateRoute component={TimeTable} />}
+      />
+      <Route path="/drivers" element={<PrivateRoute component={Drivers} />} />
+      <Route path="/todo" element={<PrivateRoute component={Todo} />} />
+      <Route path="/syllabus" element={<PrivateRoute component={Syllabus} />} />
+      <Route path="/homework" element={<PrivateRoute component={Homework} />} />
+      <Route
+        path="/student-leave"
+        element={<PrivateRoute component={StudentLeave} />}
+      />
 
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/sign-up" element={<Signup />} />
-        <Route path="/todo" element={<Todo />} />
-        <Route path="/syllabus" element={<Syllabus />} />
-        <Route path="/homework" element={<Homework />} />
-        <Route path="/student-leave" element={<StudentLeave />} />
-        <Route path="/exam-result" element={<ExamResult />} />
-        <Route path="/view-result" element={<ViewResult />} />
-        <Route path="/set-result" element={<SetResult />} />
-      </Routes>
-    </>
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/sign-up" element={<Signup />} />
+      <Route path="/todo" element={<Todo />} />
+      <Route path="/syllabus" element={<Syllabus />} />
+      <Route path="/homework" element={<Homework />} />
+      <Route path="/student-leave" element={<StudentLeave />} />
+      <Route path="/exam-result" element={<ExamResult />} />
+      <Route path="/view-result" element={<ViewResult />} />
+      <Route path="/set-result" element={<SetResult />} />
+    </Routes>
   );
 }
 

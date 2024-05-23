@@ -63,7 +63,6 @@ const ViewResult = () => {
   } else {
     status = "Pass";
   }
-  console.log(selectedStudent);
   return (
     <Box m={"0 auto"} width={"100%"}>
       <Box
@@ -184,23 +183,24 @@ const ViewResult = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {results.length > 0 ? (
-                results.map((result, i) => (
+              {selectedStudent?.marks &&
+              Object.keys(selectedStudent?.marks)?.length > 0 ? (
+                Object.keys(selectedStudent?.marks).map((result, i) => (
                   <TableRow key={i} sx={{ fontSize: "10px" }}>
                     <TableCell
                       className="result-inside-text"
                       sx={{ pl: "20px" }}
                     >
-                      {result.subject}
+                      {selectedStudent.marks[result]?.subject}
                     </TableCell>
                     <TableCell className="result-inside-text" align="center">
-                      {result.markObt}
+                      {selectedStudent.marks[result]?.markObt || 0}
                     </TableCell>
                     <TableCell className="result-inside-text" align="center">
-                      {result.markTotal}
+                      {selectedStudent.marks[result]?.markTotal || 0}
                     </TableCell>
                     <TableCell className="result-inside-text" align="center">
-                      {result.grade}
+                      {selectedStudent.marks[result]?.grade}
                     </TableCell>
                   </TableRow>
                 ))
