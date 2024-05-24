@@ -34,9 +34,18 @@ function SetResult() {
   });
 
   const handleDelete = (index) => {
-    // const updatedResults = [...editResult];
-    // updatedResults.splice(index, 1);
-    // setEditResult(updatedResults);
+    const subjects = Object.keys(selectedStudent?.marks);
+    let updatedObj = selectedStudent;
+    delete selectedStudent?.marks[subjects[index]];
+
+    setResultsData({ ...resultsData, [selectedStudent.name]: updatedObj });
+    setSelectedStudent(updatedObj);
+    setData({
+      subject: "",
+      markObt: "",
+      markTotal: "",
+      grade: "",
+    });
   };
 
   const [selectedValue, setSelectedValue] = useState(0);
@@ -47,12 +56,22 @@ function SetResult() {
   };
 
   const handleAddResult = () => {
-    // setEditResult([...editResult, data]);
-    // setData({ subject: "", markObt: "", markTotal: "", grade: "" });
-    // setOpenEditExamTT(false);
+    let student = {
+      ...selectedStudent,
+      marks: { ...selectedStudent?.marks, [data.subject]: data },
+    };
+
+    setResultsData({ ...resultsData, [student.name]: student });
+    setSelectedStudent(student);
+    setData({
+      subject: "",
+      markObt: "",
+      markTotal: "",
+      grade: "",
+    });
+    setOpenEditExamTT(false);
   };
 
-  console.log(selectedStudent);
   return (
     <Box
       width={"100%"}
@@ -84,7 +103,7 @@ function SetResult() {
             Name : {selectedStudent?.name}
           </Typography>
           <Typography color={"gray"} fontSize={14}>
-            Class : {selectedStudent?.class + "/" + selectedStudent?.div}
+            Class : {selectedStudent?.class}
           </Typography>
           <Box
             display={"flex"}
@@ -161,7 +180,7 @@ function SetResult() {
                         menuItems={["Delete"]}
                         handleActions={({ open, setOpen }) => {
                           setOpen(false);
-                          handleDelete();
+                          handleDelete(i);
                         }}
                       />
                     </TableCell>
@@ -227,23 +246,7 @@ function SetResult() {
           headerText={"Exam Time Table"}
           submitText={"Save"}
           subHeaderText={"Update Exam Time Table"}
-          onSubmit={() => {
-            console.log(data);
-            let student = {
-              ...selectedStudent,
-              marks: { ...selectedStudent?.marks, [data.subject]: data },
-            };
-
-            setResultsData({ ...resultsData, [student.name]: student });
-            setSelectedStudent(student);
-            setData({
-              subject: "",
-              markObt: "",
-              markTotal: "",
-              grade: "",
-            });
-            setOpenEditExamTT(false);
-          }}
+          onSubmit={handleAddResult}
         >
           <Box
             display={"flex"}
@@ -274,50 +277,55 @@ function SetResult() {
               <TextField
                 InputLabelProps={{ shrink: true }}
                 required
-                type="text"
-                inputProps={{
-                  style: {
-                    textTransform: "capitalize",
-                  },
-                  maxLength: 3,
-                }}
+                type="number"
                 id="outlined-required"
                 label="Marks Obtained"
-                onChange={(e) => setData({ ...data, markObt: e.target.value })}
+                value={data.markObt}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  const numberValue = Number(value);
+                  if (value.length <= 3 && numberValue <= 100) {
+                    setData({ ...data, markObt: value });
+                  }
+                }}
               />
               <TextField
                 InputLabelProps={{ shrink: true }}
                 required
-                type="text"
-                inputProps={{
-                  style: {
-                    textTransform: "capitalize",
-                  },
-                  maxLength: 3,
-                }}
+                type="number"
                 id="outlined-required"
                 label="Total Marks"
                 value={data.markTotal}
-                onChange={(e) =>
-                  setData({ ...data, markTotal: e.target.value })
-                }
+                onChange={(e) => {
+                  const value = e.target.value;
+                  const numberValue = Number(value);
+                  if (value.length <= 3 && numberValue <= 100) {
+                    setData({ ...data, markTotal: value });
+                  }
+                }}
               />
             </Box>
             <Box>
               <TextField
                 className="subject-term-textfield"
                 InputLabelProps={{ shrink: true }}
-                required
                 fullWidth
-                type="text"
+                // type="text"
                 id="outlined-required"
                 label="Grade"
-                onChange={(e) => setData({ ...data, grade: e.target.value })}
+                value={data.grade}
                 inputProps={{
                   style: {
                     textTransform: "capitalize",
                   },
                   maxLength: 2,
+                }}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  // Allow only alphabetic characters and the "+" symbol, limit length to 2
+                  if (/^[A-Za-z+-]{0,2}$/.test(value)) {
+                    setData({ ...data, grade: value });
+                  }
                 }}
               />
             </Box>

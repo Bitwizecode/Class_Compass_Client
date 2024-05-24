@@ -64,7 +64,6 @@ const ExamResult = ({ selected, setSelected }) => {
               </TableHead>
               <TableBody>
                 {Object.keys(resultsData).map((student, i) => {
-                  console.log(resultsData[student]);
                   return (
                     <TableRow key={i}>
                       <TableCell>
