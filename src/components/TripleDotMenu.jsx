@@ -38,9 +38,8 @@ const TripleDotMenu = ({ menuItems = [], handleActions, find_details }) => {
           <MenuItem
             style={{ height: "20px", fontSize: "12px" }}
             key={option}
-            selected={option === "Pyxis"}
             onClick={() => {
-              handleActions({ open, setOpen });
+              handleActions({ open, setOpen, option });
             }}
           >
             {option}

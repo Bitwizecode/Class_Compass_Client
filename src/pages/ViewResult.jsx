@@ -19,50 +19,48 @@ const ViewResult = () => {
   const navigate = useNavigate();
 
   const { selectedStudent } = useExamResultContext();
-  const [results, setResults] = useState([]);
+  const [useCalculation, setUseCalculation] = useState([]);
   const [selectedTerm, setSelectedTerm] = useState("1st Term");
-
-  useEffect(() => {
-    const storedResults = localStorage.getItem("editResult");
-    if (storedResults) {
-      setResults(JSON.parse(storedResults));
-    }
-  }, []);
-
-  useEffect(() => {
-    const term = localStorage.getItem("selectedTerm");
-    if (term !== null) {
-      const termMap = ["1st Term", "2nd Term", "3rd Term", "4th Term"];
-      setSelectedTerm(termMap[term]);
-    }
-  }, []);
 
   const date = new Date();
 
-  let totalMarksObtained = 0;
-  let totalMaxMarks = 0;
+  const calculation = () => {
+    let totalMarksObtained = 0;
+    let totalMaxMarks = 0;
 
-  if (selectedStudent?.marks) {
-    Object.values(selectedStudent.marks).forEach((subject) => {
-      totalMarksObtained += Number(subject.markObt) || 0;
-      totalMaxMarks += Number(subject.markTotal) || 0;
+    if (selectedStudent?.marks) {
+      Object.values(selectedStudent.marks).forEach((subject) => {
+        totalMarksObtained += Number(subject.markObt) || 0;
+        totalMaxMarks += Number(subject.markTotal) || 0;
+      });
+    }
+
+    const percentage =
+      totalMaxMarks > 0
+        ? ((totalMarksObtained / totalMaxMarks) * 100).toFixed(2)
+        : 0;
+
+    // Status
+    let status;
+    if (totalMaxMarks === 0) {
+      status = "Not Declared";
+    } else if (percentage < 35) {
+      status = "Fail";
+    } else {
+      status = "Pass";
+    }
+    setUseCalculation({
+      status,
+      percentage,
+      totalMarksObtained,
+      totalMaxMarks,
     });
-  }
+  };
 
-  const percentage =
-    totalMaxMarks > 0
-      ? ((totalMarksObtained / totalMaxMarks) * 100).toFixed(2)
-      : 0;
+  useEffect(() => {
+    calculation();
+  },[]);
 
-  // Status
-  let status;
-  if (totalMaxMarks === 0) {
-    status = "Not Declared";
-  } else if (percentage < 35) {
-    status = "Fail";
-  } else {
-    status = "Pass";
-  }
   return (
     <Box m={"0 auto"} width={"100%"}>
       <Box
@@ -228,14 +226,14 @@ const ViewResult = () => {
                 Marks Obtained :{" "}
                 <span className="text-result" style={{ color: "#1976d2" }}>
                   {" "}
-                  {totalMarksObtained} / {totalMaxMarks}
+                  {useCalculation.totalMarksObtained ? useCalculation.totalMarksObtained : "--"} / {useCalculation.totalMaxMarks ? useCalculation.totalMaxMarks : "--"}
                 </span>
               </div>
               <div className="percentage-calculate">
                 Percentage :{" "}
                 <span className="text-result" style={{ color: "#1976d2" }}>
                   {" "}
-                  {percentage}%
+                  {useCalculation.percentage ? useCalculation.percentage + "%" : "--"}
                 </span>
               </div>
             </div>
@@ -244,10 +242,10 @@ const ViewResult = () => {
                 Status :{" "}
                 <span
                   className="text-result"
-                  style={{ color: status === "Pass" ? "green" : "red" }}
+                  style={{ color: useCalculation.status === "Pass" ? "green" : "red" }}
                 >
                   {" "}
-                  {status}
+                  {useCalculation.status}
                 </span>
               </div>
             </div>
