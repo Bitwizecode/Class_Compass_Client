@@ -7,7 +7,7 @@ const ExamResultContextProvider = ({ children }) => {
     "Ravi Gupta": {
       name: "Ravi Gupta",
       fathername: "Raju D Gupta",
-      class: "10",
+      class: "10-A",
       div: "A",
       rollno: 151,
       dob: "12-12-2001",
@@ -17,8 +17,8 @@ const ExamResultContextProvider = ({ children }) => {
 
     "Rahul Gupta": {
       name: "Rahul Gupta",
-      fathername: "Raju Devnath Gupta",
-      class: "10",
+      fathername: "Raju Devnath Gupta gipta gupta gupt prathamesh rohit Gupta prathamesh rohit Guptaprathamesh rohit Gupta",
+      class: "10-B",
       div: "B",
       rollno: 151,
       dob: "12-12-2001",
@@ -29,7 +29,7 @@ const ExamResultContextProvider = ({ children }) => {
     "Raj Gupta": {
       name: "Raj Gupta",
       fathername: "Raju D Gupta",
-      class: "10",
+      class: "10-C",
       div: "C",
       rollno: 151,
       dob: "12-12-2001",
@@ -40,7 +40,7 @@ const ExamResultContextProvider = ({ children }) => {
     "Prathamesh Chavan": {
       name: "Prathamesh Chavan",
       fathername: "Shashikant C",
-      class: "10",
+      class: "10-D",
       div: "D",
       rollno: 151,
       dob: "12-12-2001",
@@ -51,7 +51,7 @@ const ExamResultContextProvider = ({ children }) => {
     "Siddhu Gupta": {
       name: "Siddhu Gupta",
       fathername: "Shashikant Chavan",
-      class: "10",
+      class: "10-E",
       div: "E",
       rollno: 151,
       dob: "12-12-2001",
@@ -62,7 +62,7 @@ const ExamResultContextProvider = ({ children }) => {
     "Rohit Gupta": {
       name: "Rohit Gupta",
       fathername: "Raju D G",
-      class: "10",
+      class: "10-F",
       div: "F",
       rollno: 151,
       dob: "12-12-2001",

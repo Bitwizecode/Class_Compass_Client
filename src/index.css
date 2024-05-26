@@ -719,7 +719,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .main-details {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 8px 20px;
 }
 
@@ -746,6 +746,8 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .name-father-name {
+  display: flex;
+  flex-direction: column;
   line-height: 25px;
 
   @media (max-width: 815px) {
@@ -762,6 +764,19 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 }
 
+.father_name {
+  @media (max-width: 650px) {
+    width: 90%;
+  }
+}
+
+.roll_class{
+  align-items: end;
+  width: 30%;
+  @media (max-width: 650px) {
+    width: 50%;
+  }
+}
 .result-table-text {
   font-size: 14px !important;
   font-weight: 550 !important;
@@ -813,6 +828,12 @@ input[type="number"]::-webkit-outer-spin-button {
   font-weight: 450;
   @media (max-width: 690px) {
     font-size: 14px;
+  }
+  @media (max-width: 578px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
   @media (max-width: 520px) {
     font-size: 13px;
