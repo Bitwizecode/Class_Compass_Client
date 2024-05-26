@@ -52,7 +52,6 @@ function SetResult() {
 
   const handleEdit = ({ index, editData } = {}) => {
     if (isEditOpen) {
-      console.log(editData);
       let updatedObj = {
         ...selectedStudent,
         marks: { ...selectedStudent.marks, [editData.subject]: editData },

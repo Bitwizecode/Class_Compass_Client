@@ -120,7 +120,6 @@ const ForgotPassword = () => {
       setLoading(false);
     }
   };
-  console.log(isOtpSent, isOtpSubmit);
   return (
     <Box className="forgot-pass-main">
       <ToastContainer />
