@@ -192,7 +192,7 @@ function TimeTable({ selected, setSelected }) {
                       </TableCell>
                     );
                   })}
-                  <TableCell>
+                  <TableCell align="center">
                     <Button
                       onClick={() => {
                         setOpenEditTT(true);

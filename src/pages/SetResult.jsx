@@ -52,7 +52,6 @@ function SetResult() {
 
   const handleEdit = ({ index, editData } = {}) => {
     if (isEditOpen) {
-      console.log(editData);
       let updatedObj = {
         ...selectedStudent,
         marks: { ...selectedStudent.marks, [editData.subject]: editData },
@@ -172,7 +171,7 @@ function SetResult() {
           <Table aria-label="simple table">
             <TableHead>
               <TableRow style={{ backgroundColor: "whitesmoke" }}>
-                <TableCell className="result-table-text" sx={{}}></TableCell>
+                <TableCell className="result-table-text"></TableCell>
                 <TableCell className="result-table-text">Subject</TableCell>
                 <TableCell className="result-table-text" align="center">
                   Marks Obtained
@@ -190,7 +189,7 @@ function SetResult() {
               {selectedStudent?.marks &&
               Object.keys(selectedStudent?.marks).length > 0 ? (
                 Object.keys(selectedStudent?.marks).map((sub, i) => (
-                  <TableRow key={i} sx={{ fontSize: "10px" }}>
+                  <TableRow key={i}>
                     <TableCell
                       className="result-inside-text"
                       sx={{ pl: "20px", cursor: "pointer" }}
@@ -232,7 +231,7 @@ function SetResult() {
                       align="center"
                       style={{ textTransform: "capitalize" }}
                     >
-                      {selectedStudent?.marks[sub].grade || 0}
+                      {selectedStudent?.marks[sub].grade || "--"}
                     </TableCell>
                   </TableRow>
                 ))

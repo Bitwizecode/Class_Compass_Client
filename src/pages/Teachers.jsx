@@ -86,7 +86,6 @@ const Teachers = ({ selected, setSelected }) => {
                 <img
                   className="students-profile-pic-add"
                   src={Edit}
-                  alt=""
                   onClick={handleOpenFile}
                   alt={"edit"}
                 />

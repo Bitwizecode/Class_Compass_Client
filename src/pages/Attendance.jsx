@@ -66,8 +66,8 @@ const Attendance = ({ selected, setSelected }) => {
           >
             <Table aria-label="simple table">
               <TableHead>
-                <TableRow>
-                  <TableCell sx={{ pl: "25px" }}>Name</TableCell>
+                <TableRow >
+                  <TableCell  sx={{ pl: "25px" }}>Name</TableCell>
                   <TableCell align="left">Roll No</TableCell>
                   <TableCell align="center">Attendance</TableCell>
                 </TableRow>
@@ -101,7 +101,7 @@ const Attendance = ({ selected, setSelected }) => {
             width="95%"
             justifyContent={"right"}
           >
-            <Button variant="contained" size="large">
+            <Button variant="contained" size="medium">
               Submit
             </Button>
           </Box>

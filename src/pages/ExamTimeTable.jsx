@@ -174,6 +174,7 @@ function ExamTimeTable({ selected, setSelected }) {
                         setOpenEditExamTT(true);
                       }}
                       size="small"
+                      sx={{ fontSize: "11px" }}
                       variant="contained"
                       startIcon={<EditIcon />}
                     >

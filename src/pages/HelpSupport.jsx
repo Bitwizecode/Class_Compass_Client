@@ -20,13 +20,12 @@ const HelpSupport = ({selected, setSelected}) => {
               fontWeight={650}
               mt={-6}
               mb={1}
-              className=""
               color={"#1976d2"}
             >
               Contact Us
             </Typography>
             <hr className="line" />
-            <Typography className="contact-text" marginInline={2}>
+            <Typography marginInline={2}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam
               consequuntur <br /> dicta, officiis ducimus ipsam adipisci sequi
               molestias temporibus corrupti, <br /> nesciunt dignissimos nulla

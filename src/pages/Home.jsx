@@ -172,8 +172,8 @@ const Home = ({ selected, setSelected }) => {
                     <img width={"60px"} src={item.icon} alt="" />
                   </Box>
                   <Typography
-                    className="home-item-text"
-                    sx={{ lineHeight: 1.1, mt: "10px", fontSize: "14px" }}
+                    className="home-item-text global_Font_Size"
+                    sx={{ lineHeight: 1.1, mt: "10px" }}
                   >
                     {item.text}
                   </Typography>

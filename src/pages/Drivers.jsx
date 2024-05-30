@@ -139,7 +139,7 @@ const Drivers = ({ selected, setSelected }) => {
               <TableHead>
                 <TableRow>
                   <TableCell sx={{ pl: "25px" }}>Name</TableCell>
-                  <TableCell align="left">Class</TableCell>
+                  <TableCell align="left">Bus No</TableCell>
                   <TableCell align="center"></TableCell>
                 </TableRow>
               </TableHead>

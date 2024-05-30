@@ -71,21 +71,21 @@ const Division = ({ selected, setSelected }) => {
             <Table aria-label="simple table">
               <TableHead>
                 <TableCell>Division</TableCell>
-                <TableCell align="right">Teacher</TableCell>
-                <TableCell align="right"></TableCell>
+                <TableCell align="center">Teacher</TableCell>
+                <TableCell align="center"></TableCell>
               </TableHead>
               <TableBody>
                 {rows.map((row) => (
-                  <TableRow key={row}>
-                    <TableCell className="clickable-cell">
+                  <TableRow className="clickable-cell" key={row}>
+                    <TableCell  >
                       <Box display={"flex"} alignItems={"center"} gap={"10px"}>
                         <Typography variant="p">{row.div}</Typography>
                       </Box>
                     </TableCell>
-                    <TableCell align="right" className="clickable-cell">
+                    <TableCell align="center" >
                       <Typography variant="p">{row.teacher}</Typography>
                     </TableCell>
-                    <TableCell align="right">
+                    <TableCell align="center">
                       <Button
                         variant="contained"
                         size="small"

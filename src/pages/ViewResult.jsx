@@ -198,7 +198,7 @@ const ViewResult = () => {
                       {selectedStudent.marks[result]?.markTotal || 0}
                     </TableCell>
                     <TableCell className="result-inside-text" align="center">
-                      {selectedStudent.marks[result]?.grade}
+                      {selectedStudent.marks[result]?.grade || "--"}
                     </TableCell>
                   </TableRow>
                 ))
