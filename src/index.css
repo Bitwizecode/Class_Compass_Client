@@ -766,7 +766,7 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 }
 
-.roll_class{
+.roll_class {
   align-items: end;
   width: 30%;
   @media (max-width: 650px) {
@@ -793,10 +793,10 @@ input[type="number"]::-webkit-outer-spin-button {
     font-size: 12px !important;
   }
   @media (max-width: 410px) {
-    font-size: 11px !important;
+    font-size: 12px !important;
   }
   @media (max-width: 340px) {
-    font-size: 10px !important;
+    font-size: 12px !important;
   }
 }
 

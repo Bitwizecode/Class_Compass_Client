@@ -17,23 +17,49 @@ import {
 import Model from "../components/Model";
 import { useNavigate } from "react-router-dom";
 import Edit from "../assets/icon/edit.png";
+import { authApiService } from "../api-services/authApiService";
+import { toast, ToastContainer } from "react-toastify";
+import Loader from "../components/Loader";
 
 const Teachers = ({ selected, setSelected }) => {
+  const [loading, setLoading] = useState(false);
   const fileInputRef = useRef(null);
   const handleOpenFile = () => {
     fileInputRef.current.click();
   };
   const [openAddStudents, setOpenAddStudents] = React.useState(false);
   const navigate = useNavigate();
-
+  const { whitelistUser } = authApiService();
   const [teacherData, setTeacherData] = useState({
     name: "",
     email: "",
-    class: "",
+    class_std: "",
     school_id: 123,
+    account_type: "teacher",
   });
 
   const [rows, setRows] = useState([]);
+
+  const handleWhitelist = async () => {
+    try {
+      setOpenAddStudents(false);
+      setLoading(true);
+      const res = await whitelistUser(teacherData);
+      toast.success("Teacher added successfully!");
+      rows.push(teacherData);
+      setTeacherData({
+        name: "",
+        email: "",
+        class: "",
+        school_id: 123,
+      });
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong!");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <Layout
@@ -43,6 +69,8 @@ const Teachers = ({ selected, setSelected }) => {
       selected={selected}
       setSelected={setSelected}
     >
+      <ToastContainer />
+      {loading && <Loader />}
       <Box mt={10} width={"100%"} mb={9}>
         <Box
           width={"95%"}
@@ -70,15 +98,7 @@ const Teachers = ({ selected, setSelected }) => {
             submitText={"Submit"}
             subHeaderText={"Fill the Teacher Details"}
             onSubmit={() => {
-              // setOpenAddStudents(false);
-              rows.push(teacherData);
-              setOpenAddStudents(false);
-              setTeacherData({
-                name: "",
-                email: "",
-                class: "",
-                school_id: 123,
-              });
+              handleWhitelist();
             }}
           >
             <Box display={"flex"} justifyContent={"center"} mt={2} mb={1.3}>
@@ -116,9 +136,12 @@ const Teachers = ({ selected, setSelected }) => {
                   id="outlined-required"
                   label="Class"
                   fullWidth
-                  value={teacherData.class}
+                  value={teacherData.class_std}
                   onChange={(e) =>
-                    setTeacherData({ ...teacherData, class: e.target.value })
+                    setTeacherData({
+                      ...teacherData,
+                      class_std: e.target.value,
+                    })
                   }
                 />
               </Box>
@@ -171,7 +194,7 @@ const Teachers = ({ selected, setSelected }) => {
                         {row.name}
                       </Box>
                     </TableCell>
-                    <TableCell align="left">{row.class}</TableCell>
+                    <TableCell align="left">{row.class_std}</TableCell>
 
                     <TableCell align="center">
                       <Button
